@@ -27,4 +27,8 @@ class ConBdMySql {
         }
     }
 
+        public function cierreBd() {
+            $this -> conexion= NULL;
+        }
+
 }
