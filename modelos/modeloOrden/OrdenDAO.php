@@ -31,13 +31,57 @@
                 return $listadoRegistroOrden;
             
         }
-        /* public function seleccionarId($ordId ) {
+
+        public function seleccionarId($ordId) {
+
+            
+            /* $planConsulta = "select  O.ordId,O.ordvalorTotal,Mn.menId,Mn.menObservacion,Ms.mesNumeroMesa,pl.plaDescripcion,
+            Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre
+            from orden O
+            join menu Mn on O.ordIdMenu= menId 
+            join plato Pl on O.ordIdMenu=plaId
+            join tipo_plato Tp on ordIdMenu=tipPlaId
+            join mesa Ms on O.ordIdMesa=Ms.mesId
+            where O.ordId = 2;"; */
+
+            $Consulta = "select * from orden O
+            where O.ordId = ?;";
+
+            $listar=$this->conexion->prepare($Consulta);
+            $listar->execute(array($ordId[0]));
+
+            $registroEncontrado = array();
+
+            while($registro=$listar -> fetch(PDO::FETCH_OBJ)) {
+                $registroEncontrado[] = $registro;
+            }
+
+            $this->cierreBd();
+
+    
+
+            if(!empty($registroEncontrado)){
+
+                return ["exito Seleccion Id" => true, "Registro encontrado" => $registroEncontrado];
+
+            }else {
+                return ["exito Seleccion Id" => false, "Registro encontrado" => $registroEncontrado];
+            }
+
 
         }
-        public function insertar($ordDescripcion) {
+
+         public function insertar($registro) {
+
+            try {
+                //code...
+            } catch (PDOException $pdoExc) {
+                return['inserto' > 0, $pdoExc -> errorInfo[2]];
+            }
 
         }
-        public function actualizar($ordDescripcion) {
+
+         /* public function actualizar($ordDescripcion) {
 
         }
         public function eliminar($ordId = array()) {
@@ -48,7 +92,8 @@
         }
         public function eliminadorLogico($ordId = array()) {
 
-        } */
+        }  */
+
      } 
      
 
