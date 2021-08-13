@@ -2,11 +2,11 @@
      
      include_once "../../modelos/ConstantesConexion.php";
      include_once PATH."modelos/ConBdMysql.php";
-     include_once PATH. "modelos/modeloOrden/OrdenDAO.php";
+     include_once PATH. "modelos/modeloRol/rolDAO.php";
      
     
-     $orden = new OrdenDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
-     $listadoCompleto = $orden -> seleccionarTodos();
+     $rol = new rolDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+     $listadoCompleto = $rol -> seleccionarTodos();
 
      echo "<pre>";
      print_r($listadoCompleto);
