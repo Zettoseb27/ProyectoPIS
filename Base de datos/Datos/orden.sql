@@ -1,3 +1,4 @@
+use proyecto;
 select * from orden;
 
 insert into orden values (1,1,1,12000,1,null,'2021-08-12 9:30:00','2021-08-12 9:31:00'),
@@ -6,7 +7,7 @@ insert into orden values (1,1,1,12000,1,null,'2021-08-12 9:30:00','2021-08-12 9:
 (4,5,4,13000,1,null,'2021-08-12 9:38:00','2021-08-12 9:40:00');
 
 select  O.ordId,O.ordvalorTotal,Mn.menId,Mn.menObservacion,Ms.mesNumeroMesa,pl.plaDescripcion,
-Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre
+Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre,Tp.tipPlaPlato
 from orden O
 join menu Mn on O.ordIdMenu= menId 
 join plato Pl on O.ordIdMenu=plaId
