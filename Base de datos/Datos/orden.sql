@@ -21,5 +21,8 @@ join tipo_plato;
  SELECT * FROM orden O 
 WHERE O.ordId =  1 ;
 
-insert into orden values (:ordId, :ordIdMenu, :ordIdMesa, :ordvalorTotal, :ordEstado,
- :ordSesion, :ordCreated_at, :ordUpdate_at);
+insert into orden values (1,1,1,12000,1,null,'2021-08-12 9:30:00','2021-08-12 9:31:00');
+delete from orden
+where ordId = 1;
+
+update orden set ordvalorTotal = 21000 where ordId = 1;

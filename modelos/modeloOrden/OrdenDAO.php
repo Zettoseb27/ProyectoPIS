@@ -32,7 +32,7 @@
             
         }
 
-        public function seleccionarId($ordId) { // Método: seleccionarId($sId),  
+        public function seleccionarId($ordId) { // Método: seleccionarId($ordId),  
 
             $planConsulta = " SELECT * FROM orden O ";
             $planConsulta .= " WHERE O.ordId =  ? ;";
@@ -84,21 +84,60 @@
 
         }
 
-          public function actualizar($ordDescripcion) {
-
-        }
         public function eliminar($ordId = array()) {
+
+            $planConsulta = "delete from orden where ordId = :ordId;";
+
+            $eliminar = $this -> conexion -> prepare($planConsulta);
+            $eliminar -> bindParam(':ordId', $ordId[0], PDO:: PARAM_INT);    
+            $resultado = $eliminar->execute();
+
+            $this -> cierreBd();
+
+            if (!empty($resultado)) {
+                return ['eliminar' => TRUE, 'registroEliminado' => array($ordId[0])];
+            } else {
+                return ['eliminar' => FALSE, 'registroEliminado' => array($ordId[0])];
+            }
 
         }
         public function habilitar($ordId = array()) {
 
+
+            try {
+
+            $cambiarEstado = 1;
+
+            if (isset($ordId[0])) {
+
+                $actualizar = "update orden set ordvalorTotal = ? where ordId = ?;";
+                $actualizacion = $this-> conexion -> prepare($actualizar);
+                $actualizacion = $actualizacion -> execute(array($cambiarValorTotal, $ordId[0]));
+                return['actualizacion' => $actualizacion, 'mensaje' => "Registro activado"];
+                }
+
+            }catch (PDOException $pdoExc) {
+                return['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+            }
         }
+
         public function eliminadorLogico($ordId = array()) {
 
-        }  
+            try {
 
-     } 
-     
+            $cambiarEstado = 0;
+            if (isset($ordId[0])) {
+                $actualizar = "update orden set ordvalorTotal = ? where ordId = ?;";
+                $actualizacion = $this->conexion->prepare($actualizar);
+                $actualizacion = $actualizacion->execute(array($cambiarEstado, $ordId[0]));
+                return ['actualizacion' => $actualizacion, 'mensaje' => "Registro Desactivado."];
+            }
+        } catch (PDOException $pdoExc) {
+            return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+        }
 
+    }
 
+}
+      
 ?>
