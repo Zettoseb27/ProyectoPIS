@@ -18,5 +18,8 @@ select *
 from orden
 join tipo_plato;
 
+ SELECT * FROM orden O 
+WHERE O.ordId =  1 ;
 
-
+insert into orden values (:ordId, :ordIdMenu, :ordIdMesa, :ordvalorTotal, :ordEstado,
+ :ordSesion, :ordCreated_at, :ordUpdate_at);

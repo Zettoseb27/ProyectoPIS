@@ -8,7 +8,7 @@
             parent::__construct($servidor, $base, $loginBD, $passwordBD);
         }
 
-        public function seleccionarTodos(){
+        public function seleccionarTodos(){ // Método: seleccionarTodos(), 
             $planConsulta = "select  O.ordId,O.ordvalorTotal,Mn.menId,Mn.menObservacion,Ms.mesNumeroMesa,pl.plaDescripcion,
             Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre,Tp.tipPlaPlato from orden O
             join menu Mn on O.ordIdMenu= menId 
@@ -31,15 +31,15 @@
                 return $listadoRegistroOrden;
             
         }
- /* ------------------------------------------------------------------------------------------------------------------- */
-        public function seleccionarId($sId) {
+
+        public function seleccionarId($ordId) { // Método: seleccionarId($sId),  
 
             $planConsulta = " SELECT * FROM orden O ";
             $planConsulta .= " WHERE O.ordId =  ? ;";
 
             $listar = $this->conexion->prepare($planConsulta);
 
-            $listar->execute(array($sId[0]));
+            $listar->execute(array($ordId[0]));
 
             $registroEncontrado = array();
 
@@ -57,13 +57,27 @@
             }
         }
 
-
-        
-
-         public function insertar($registro) {
+         public function insertar($registro) { // Método: insertar($registro), 
 
             try {
-                //code...
+                $consulta = "insert into orden values (:ordId, :ordIdMenu, :ordIdMesa, :ordvalorTotal, :ordEstado, :ordSesion, :ordCreated_at, :ordUpdate_at);";
+
+                $insertar = $this -> conexion -> prepare($consulta);
+
+                $insertar -> bindParam("ordId", $registro['ordId']);
+                $insertar -> bindParam("ordIdMenu", $registro['ordIdMenu']);
+                $insertar -> bindParam("ordIdMesa", $registro['ordIdMesa']);
+                $insertar -> bindParam("ordvalorTotal", $registro['ordvalorTotal']);
+                $insertar -> bindParam("ordEstado", $registro['ordEstado']);
+                $insertar -> bindParam("ordSesion", $registro['ordSesion']);
+                $insertar -> bindParam("ordCreated_at", $registro['ordCreated_at']);
+                $insertar -> bindParam("ordUpdate_at", $registro['ordUpdate_at']);
+
+                $insercion = $insertar -> execute();
+                $clavePrimaria = $this -> conexion -> lastInsertId();
+
+                return ['inserto' => 1, 'resultado' => $clavePrimaria];
+                $this -> cierreBd();
             } catch (PDOException $pdoExc) {
                 return['inserto' > 0, $pdoExc -> errorInfo[2]];
             }
