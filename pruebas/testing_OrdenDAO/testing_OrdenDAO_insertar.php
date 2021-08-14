@@ -6,7 +6,7 @@ include_once PATH.'modelos/ConBdMysql.php';
 include_once PATH.'modelos/modeloOrden/OrdenDAO.php';
 
 
-$registro['ordId'] = 5;
+$registro['ordId'] = 1;
 $registro['ordIdMenu'] = 6;
 $registro['ordIdMesa'] = 5;
 $registro['ordvalorTotal'] = "15000";
