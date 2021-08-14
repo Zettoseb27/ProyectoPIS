@@ -2,13 +2,13 @@
      
      include_once "../../modelos/ConstantesConexion.php";
      include_once PATH."modelos/ConBdMysql.php";
-     include_once PATH. "modelos/modeloOrden/OrdenDAO.php";
+     include_once PATH. "modelos/modeloPersona/PersonaDAO.php";
 
-     $ordId = array(1);
+     $perId = array(9);
 
-     $orden = new OrdenDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+     $orden = new PersonaDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
 
-     $listado=$orden->seleccionarId($ordId);
+     $listado=$orden->seleccionarId($perId);
 
      echo "<pre>";
      print_r($listado);

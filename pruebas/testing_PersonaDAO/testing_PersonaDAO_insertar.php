@@ -1,9 +1,9 @@
 <?php
 
 
-include_once '../../modelos/ConstantesConexion.php';
-include_once PATH.'modelos/ConBdMysql.php';
-include_once PATH.'modelos/modeloOrden/OrdenDAO.php';
+include_once "../../modelos/ConstantesConexion.php";
+include_once PATH."modelos/ConBdMysql.php";
+include_once PATH. "modelos/modeloPersona/PersonaDAO.php";
 
 
 $registro['ordId'] = 5;
