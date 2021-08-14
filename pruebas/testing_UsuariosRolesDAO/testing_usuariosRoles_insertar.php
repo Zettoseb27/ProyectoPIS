@@ -7,8 +7,8 @@ include_once PATH.'modelos/modeloUsuariosRoles/UsuariosRolesDAO.php';
 
 
 
-$registro['id_usuario_s'] = 8;
-$registro['id_rol'] = 8;
+$registro['id_usuario_s'] = 9;
+$registro['id_rol'] = 9;
 $registro['fechaUserRol'] = "2019-10-29 18:52:17";
 $registro['estado'] = 1;
 $registro['usuRolUsuSesion'] = NULL;

@@ -3,7 +3,7 @@
      include_once PATH.'modelos/ConBdMysql.php';
      include_once PATH.'modelos/modeloUsuariosRoles/UsuariosRolesDAO.php';
 
-     $id_usuario_s = array(7);
+     $id_usuario_s = array(9);
 
      $usuario_s_roles = new UsuariosRolesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 

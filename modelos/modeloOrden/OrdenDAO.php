@@ -106,7 +106,7 @@
 
             try {
 
-            $cambiarEstado = 1;
+            $cambiarValorTotal = 1;
 
             if (isset($ordId[0])) {
 

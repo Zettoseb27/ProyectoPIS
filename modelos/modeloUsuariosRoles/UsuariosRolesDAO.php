@@ -97,14 +97,14 @@
         public function habilitar($id_usuario_s = array()) {
             
             try {
-                $cambiarEstado = 1;
+                $cambiarValorRolSesion = 1;
 
                 if (isset($id_usuario_s[0])) {
 
                     $actualizar = "update usuario_s_roles set usuRolUsuSesion = ? where id_usuario_s = ?;";
                     $actualizacion = $this-> conexion -> prepare($actualizar);
                     $actualizacion = $actualizacion -> execute(array($cambiarValorRolSesion, $id_usuario_s[0]));
-                    return['actualizacion' => $actualizacion, 'mensaje' => "Registro activado"];
+                    return ['actualizacion' => $actualizacion, 'mensaje' => "Registro activado"];
                     }
 
             } catch (PDOException $pdoExc) {
@@ -125,7 +125,4 @@
             }
         }
     }
-
-    
-
 ?>
