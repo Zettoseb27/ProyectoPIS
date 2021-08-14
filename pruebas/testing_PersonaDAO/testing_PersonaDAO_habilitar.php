@@ -3,14 +3,14 @@
      include_once PATH."modelos/ConBdMysql.php";
      include_once PATH. "modelos/modeloPersona/PersonaDAO.php";
      
-     $ordId=array(7);
+     $perId=array(1);
      
-     $orden=new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+     $persona=new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
-    $ordenHabilitar = $orden ->habilitar($ordId);
+    $personaHabilitar = $persona ->habilitar($perId);
 
     echo "<pre>";
-    print_r($ordenHabilitar);
+    print_r($personaHabilitar);
     echo "</pre>";
 
 ?>

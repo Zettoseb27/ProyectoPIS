@@ -3,13 +3,13 @@
      include_once PATH."modelos/ConBdMysql.php";
      include_once PATH. "modelos/modeloPersona/PersonaDAO.php";
 
-     $ordId = array(1);
+     $perId = array(9);
 
-     $orden = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+     $persona = new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
-     $OrdenEliminadoFisico=$orden->eliminar($ordId);
+     $personaEliminadoFisico = $persona -> eliminar($perId);
 
     echo "<pre>";
-    print_r($OrdenEliminadoFisico);
+    print_r($personaEliminadoFisico);
     echo "</pre>";
 ?>
