@@ -6,7 +6,7 @@
 
      $id_usuario_s = array(4);
 
-     $orden = new UruariosRolesDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+     $orden = new UsuariosRolesDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
 
      $listado=$orden->seleccionarId($id_usuario_s);
 

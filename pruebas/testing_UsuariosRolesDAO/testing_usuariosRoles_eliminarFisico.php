@@ -1,15 +1,15 @@
 <?php
      include_once '../../modelos/ConstantesConexion.php';
      include_once PATH.'modelos/ConBdMysql.php';
-     include_once PATH.'modelos/modeloOrden/OrdenDAO.php';
+     include_once PATH.'modelos/modeloUsuariosRoles/UsuariosRolesDAO.php';
 
-     $ordId = array(1);
+     $id_usuario_s = array(7);
 
-     $orden = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+     $usuario_s_roles = new UsuariosRolesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
-     $OrdenEliminadoFisico=$orden->eliminar($ordId);
+     $usuario_s_rolesEliminadoFisico=$usuario_s_roles->eliminar($id_usuario_s);
 
     echo "<pre>";
-    print_r($OrdenEliminadoFisico);
+    print_r($usuario_s_rolesEliminadoFisico);
     echo "</pre>";
 ?>

@@ -1,16 +1,16 @@
 <?php
      include_once '../../modelos/ConstantesConexion.php';
      include_once PATH.'modelos/ConBdMysql.php';
-     include_once PATH.'modelos/modeloOrden/OrdenDAO.php';
+     include_once PATH.'modelos/modeloUsuariosRoles/UsuariosRolesDAO.php';
      
-     $ordId=array(7);
+     $id_usuario_s =array(2);
      
-     $orden=new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+     $usuario_s_roles=new UsuariosRolesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
-    $ordenHabilitar = $orden ->habilitar($ordId);
+    $usuario_s_rolesHabilitar = $usuario_s_roles ->habilitar($id_usuario_s );
 
     echo "<pre>";
-    print_r($ordenHabilitar);
+    print_r($usuario_s_rolesHabilitar);
     echo "</pre>";
 
 ?>

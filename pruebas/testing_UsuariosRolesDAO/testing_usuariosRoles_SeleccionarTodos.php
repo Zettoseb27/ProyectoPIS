@@ -5,7 +5,7 @@
      include_once PATH. "modelos/modeloUsuariosRoles/UsuariosRolesDAO.php";
      
     
-     $UsuariosRoles = new UruariosRoles(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+     $UsuariosRoles = new UsuariosRolesDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
      $listadoCompleto = $UsuariosRoles -> seleccionarTodos();
 
      echo "<pre>";
