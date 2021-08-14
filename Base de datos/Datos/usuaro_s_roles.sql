@@ -7,8 +7,16 @@ insert into usuario_s_roles values (1,1,'2021-08-13 7:56',1,null,'2021-08-13 7:5
 (3,3,'2021-08-13 7:59',1,null,'2021-08-13 8:02','2021-08-22 12:36'),
 (4,4,'2021-08-13 8:06',1,null,'2021-08-13 8:10','2021-08-15 13:36');
 
+/* ------------------------------------------------------------------------------- */
+
 select Ur.estado,Ur.fechaUserRol,Rl.rolNombre,Rl.rolDescripcion,Us.usuLogin
 from usuario_s_roles Ur
 join usuario_s Us
 join rol Rl;
+
+/* ---------------------------------------------------------------------------------- */
+
+select * from usuario_s_roles Ur
+where Ur.id_usuario_s = 4;
+
 
