@@ -46,13 +46,38 @@
                 return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
             }
         }
-        public function insertar($plaDescripcion) {
+        public function insertar($registro) {
 
-        }
-        public function actualizar($plaDescripcion) {
+            try {
+                $consulta = "insert into tipo_plato values (:tipPlaId,:tipPlaPlato,:tipPlaAdicional,:tipPlaBebida,:tipPlaPostre,:tipPlaEstado,:tipPlaSesion,:tipPlacreated_at,:tipPlaupdated_at);";
 
+                $insertar = $this -> conexion -> prepare($consulta);
+
+                $insertar -> bindParam("tipPlaId", $registro["tipPlaId"]);
+                $insertar -> bindParam("tipPlaPlato", $registro["tipPlaPlato"]);
+                $insertar -> bindParam("tipPlaAdicional", $registro["tipPlaAdicional"]);
+                $insertar -> bindParam("tipPlaBebida", $registro["tipPlaBebida"]);
+                $insertar -> bindParam("tipPlaPostre", $registro["tipPlaPostre"]);
+                $insertar -> bindParam("tipPlaEstado", $registro["tipPlaEstado"]);
+                $insertar -> bindParam("tipPlaSesion", $registro["tipPlaSesion"]);
+                $insertar -> bindParam("tipPlacreated_at", $registro["tipPlacreated_at"]);
+                $insertar -> bindParam("tipPlaupdated_at", $registro["tipPlaupdated_at"]);
+
+                $insercion = $insertar -> execute();
+                $claveprimaria = $this -> conexion-> lastInsertId();
+
+                return ['inserto' => 1, 'resultado' => $claveprimaria];
+                $this -> cierreBd();
+
+            } catch (PDOException $pdoExc) {
+                return['inserto' > 0, $pdoExc -> errorInfo[2]];
+            }
         }
+
         public function eliminar($plaId = array()) {
+
+            $consulta = "delete from tipo_plato Tp
+            where Tp.tipPlaId = ?;";
 
         }
         public function habilitar($plaId = array()) {
