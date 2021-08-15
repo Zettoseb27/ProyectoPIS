@@ -90,10 +90,38 @@
                 return ['eliminar' => FALSE, 'registroEliminado' => array($tipPlaId[0])];
             }
         }
-        public function habilitar($plaId = array()) {
+        public function habilitar($tipPlaId = array()) {
 
+            try {
+
+                $cambiarValorTotal = 1;
+    
+                if (isset($tipPlaId[0])) {
+    
+                    $actualizar = "update tipo_plato set tipPlaEstado = ? where tipPlaId = ?;";
+                    $actualizacion = $this-> conexion -> prepare($actualizar);
+                    $actualizacion = $actualizacion -> execute(array($cambiarValorTotal, $tipPlaId[0]));
+                    return['actualizacion' => $actualizacion, 'mensaje' => "Registro activado"];
+                    }
+    
+                }catch (PDOException $pdoExc) {
+                    return['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+                }
         }
-        public function eliminadorLogico($plaId = array()) {
+        public function eliminadorLogico($tipPlaId = array()) {
+
+            try {
+
+                $cambiarEstado = 0;
+                if (isset($tipPlaId[0])) {
+                    $actualizar = "update tipo_plato set tipPlaAdicional = ? where tipPlaId = ?;";
+                    $actualizacion = $this->conexion->prepare($actualizar);
+                    $actualizacion = $actualizacion->execute(array($cambiarEstado, $tipPlaId[0]));
+                    return ['actualizacion' => $actualizacion, 'mensaje' => "Registro Desactivado."];
+                }
+            } catch (PDOException $pdoExc) {
+                return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+            }
 
         } 
         

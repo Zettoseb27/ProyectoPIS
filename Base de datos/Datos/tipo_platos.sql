@@ -21,3 +21,11 @@ select tipPlaId, tipPlaPlato, tipPlaAdicional, tipPlaBebida, tipPlaPostre
 from tipo_plato;
 
 /*--------------------------------------------------------------------------*/
+select tipPlaId, tipPlaPlato, tipPlaAdicional, tipPlaBebida, tipPlaPostre
+from tipo_plato
+where tipPlaId = 1;
+
+/* --------------------------------------------------------------------------- */
+
+delete from tipo_plato Tp
+where Tp.tipPlaId = 6;
