@@ -14,3 +14,18 @@ insert into tipo_plato values (2,'Pollo en salsa','Papas fritas','Coca Cola','To
 1,null,'2021-03-02 13:02:32','2021-10-09 15:10:14'),
 (6,'Arroz con pollo','Platano frito','Manzana','Torta de fresas',
 1,null,'2021-07-08 15:02:04','2021-10-09 15:10:14');
+
+/* ------------------------------------------------------------------------ */
+
+select tipPlaId, tipPlaPlato, tipPlaAdicional, tipPlaBebida, tipPlaPostre
+from tipo_plato;
+
+/*--------------------------------------------------------------------------*/
+select tipPlaId, tipPlaPlato, tipPlaAdicional, tipPlaBebida, tipPlaPostre
+from tipo_plato
+where tipPlaId = 1;
+
+/* --------------------------------------------------------------------------- */
+
+delete from tipo_plato Tp
+where Tp.tipPlaId = 6;
