@@ -25,9 +25,26 @@
             return $listadoTipoPlato;
         }
 
-      
-        public function seleccionarId($plaId /* llave foranea */) {
+        public function seleccionarId($tipPlaId) {
 
+            $consulta = "select tipPlaId, tipPlaPlato, tipPlaAdicional, tipPlaBebida, tipPlaPostre
+            from tipo_plato
+            where tipPlaId = ?;";
+
+            $listar = $this->conexion->prepare($consulta);
+            $listar -> execute(array($tipPlaId[0]));
+            $registroEncontrado = array();
+
+            while ($registro = $listar -> fetch(PDO::FETCH_OBJ)) {
+                $registroEncontrado[] = $registro;
+            }
+            $this->cierreBd();
+
+            if (!empty($registroEncontrado)) {
+                return ['exitoSeleccionId' => true, 'registroEncontrado' => $registroEncontrado];
+            } else {
+                return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
+            }
         }
         public function insertar($plaDescripcion) {
 
