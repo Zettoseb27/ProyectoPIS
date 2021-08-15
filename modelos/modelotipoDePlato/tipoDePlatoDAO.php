@@ -74,11 +74,21 @@
             }
         }
 
-        public function eliminar($plaId = array()) {
+        public function eliminar($tipPlaId = array()) {
 
-            $consulta = "delete from tipo_plato Tp
-            where Tp.tipPlaId = ?;";
+            $consulta = "delete from tipo_plato Tp where Tp.tipPlaId = :tipPlaId;";
 
+            $eliminar = $this -> conexion -> prepare($consulta);
+            $eliminar -> bindParam(':tipPlaId', $tipPlaId[0], PDO:: PARAM_INT);
+            $resultado = $eliminar -> execute();
+
+            $this->cierreBd();
+
+            if (!empty($resultado)) {
+                return ['eliminar' => TRUE, 'registroEliminado' => array($tipPlaId[0])];
+            } else {
+                return ['eliminar' => FALSE, 'registroEliminado' => array($tipPlaId[0])];
+            }
         }
         public function habilitar($plaId = array()) {
 
