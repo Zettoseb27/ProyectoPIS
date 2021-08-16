@@ -5,6 +5,8 @@ insert into usuario_s values (1,'zettoseb27@gmail.com','123456','null',1,'','201
 (2,'fren124@gmail.com','f123456','null',1,'','2018-05-29 11:48:38', '2018-06-08 15:18:53'),
 (3,'cvenus66@gmail.com','c123456','null',1,'','2018-05-29 11:48:38', '2018-06-08 15:18:53'),
 (4,'medejo@gmail.com','m123456','null',1,'','2018-05-29 11:48:38', '2018-06-08 15:18:53');
+<<<<<<< HEAD
+=======
 
 INSERT INTO `usuario_s` (`usuId`, `usuLogin`, `usuPassword`, `usuUsuSesion`, `usuEstado`, `usuRemember_token`, `usu_created_at`, `usu_updated_at`) VALUES
 	(5, 'adminHAGS@si.com', 'd9840773233fa6b19fde8caf765402f5', NULL, 1, '', '2018-05-29 11:48:38', '2018-06-08 15:18:53'),
@@ -23,3 +25,4 @@ SELECT * FROM usuario_s;
 select usuId, usuLogin, usu_created_at
 from usuario_s;
 
+>>>>>>> develop
