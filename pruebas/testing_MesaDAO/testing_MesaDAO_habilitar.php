@@ -1,16 +1,16 @@
 <?php
      include_once "../../modelos/ConstantesConexion.php";
      include_once PATH."modelos/ConBdMysql.php";
-     include_once PATH. "modelos/modeloPersona/PersonaDAO.php";
+     include_once PATH. "modelos/modeloMesa/MesaDAO.php";
      
-     $perId=array(1);
+     $mesId=array(2);
      
-     $persona=new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+     $mesa = new MesaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
-    $personaHabilitar = $persona ->habilitar($perId);
+    $mesaHabilitar = $mesa -> habilitar($mesId);
 
     echo "<pre>";
-    print_r($personaHabilitar);
+    print_r($mesaHabilitar);
     echo "</pre>";
 
 ?>

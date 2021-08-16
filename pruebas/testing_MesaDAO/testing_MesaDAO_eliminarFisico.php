@@ -1,15 +1,15 @@
 <?php
      include_once "../../modelos/ConstantesConexion.php";
      include_once PATH."modelos/ConBdMysql.php";
-     include_once PATH. "modelos/modeloPersona/PersonaDAO.php";
+     include_once PATH. "modelos/modeloMesa/MesaDAO.php";
 
-     $perId = array(9);
+     $mesId = array(6);
 
-     $persona = new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+     $Mesa = new MesaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
-     $personaEliminadoFisico = $persona -> eliminar($perId);
+     $mesaEliminadoFisico = $Mesa -> eliminar($mesId);
 
     echo "<pre>";
-    print_r($personaEliminadoFisico);
+    print_r($mesaEliminadoFisico);
     echo "</pre>";
 ?>

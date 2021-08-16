@@ -2,11 +2,11 @@
      
      include_once "../../modelos/ConstantesConexion.php";
      include_once PATH."modelos/ConBdMysql.php";
-     include_once PATH. "modelos/modeloPersona/PersonaDAO.php";
+     include_once PATH. "modelos/modeloMesa/MesaDAO.php";
      
     
-     $persona = new PersonaDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
-     $listadoCompleto = $persona -> seleccionarTodos();
+     $mesa = new MesaDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+     $listadoCompleto = $mesa -> seleccionarTodos();
 
      echo "<pre>";
      print_r($listadoCompleto);
