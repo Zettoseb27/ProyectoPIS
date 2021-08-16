@@ -68,5 +68,22 @@
          return['inserto' > 0, $pdoExc -> errorInfo[2]];
       }
      }
+     public function eliminar($mesId = array()) {
+
+      $consultar = "delete from mesa where mesId = :mesId;";
+
+      $eliminar = $this -> conexion -> prepare($consultar);
+      $eliminar -> bindParam(':mesId', $mesId[0], PDO:: PARAM_INT);
+      $resultado = $eliminar -> execute();
+
+      $this -> cierreBd();
+
+      if (!empty($resultado)) {
+          return ['eliminar' => TRUE, 'registroEliminado' => array($mesId[0])];
+      } else {
+          return ['eliminar' => FALSE, 'registroEliminado' => array($mesId[0])];
+      }
+     
+     }
    }
 ?>
