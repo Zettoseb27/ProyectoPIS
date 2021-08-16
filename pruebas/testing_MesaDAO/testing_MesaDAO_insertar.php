@@ -1,26 +1,22 @@
 <?php
-
-
     include_once "../../modelos/ConstantesConexion.php";
     include_once PATH."modelos/ConBdMysql.php";
-    include_once PATH. "modelos/modeloPersona/PersonaDAO.php";
+    include_once PATH. "modelos/modeloMesa/MesaDAO.php";
 
 
 
-    $registro['perId'] = 9;
-    $registro['perDocumento'] = "1.023.961.818";
-    $registro['perNombre'] = "Jhon Sebastian";
-    $registro['perApellido'] = "Sanabria Mogollon";
-    $registro['perEstado'] = 1;
-    $registro['perUsuSesion'] = null;
-    $registro['per_created_at'] = "2019-11-19 18:38:40";
-    $registro['per_updated_at'] = "2019-11-19 18:38:40";
-    $registro['usuario_s_usuId'] = 9;
+    $registro['mesId'] = 6;        
+    $registro['mesNumeroMesa'] = 8;
+    $registro['mesCantidadComensales'] = 12;
+    $registro['mesEstado'] = 1;
+    $registro['mesSesion'] = "hola";
+    $registro['mesCreated_at'] = "2021-08-11 22:01:00";
+    $registro['mesUpdated_at'] = "2021-08-11 22:01:00";
 
 
-    $orden=new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+    $mesa = new MesaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
-    $insertar=$orden->insertar($registro);
+    $insertar = $mesa -> insertar($registro);
 
 
     echo "<pre>";
