@@ -83,7 +83,41 @@
       } else {
           return ['eliminar' => FALSE, 'registroEliminado' => array($mesId[0])];
       }
-     
+   }
+        public function habilitar($mesId = array()) {
+
+
+            try {
+
+            $cambiarValorTotal = 1;
+
+            if (isset($mesId[0])) {
+
+                $actualizar = "update mesa set mesEstado = ? where mesId = ?;";
+                $actualizacion = $this-> conexion -> prepare($actualizar);
+                $actualizacion = $actualizacion -> execute(array($cambiarValorTotal, $mesId[0]));
+                return['actualizacion' => $actualizacion, 'mensaje' => "Registro activado"];
+                }
+
+            }catch (PDOException $pdoExc) {
+                return['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+            }
      }
+     public function eliminadorLogico($mesId = array()) {
+
+      try {
+
+      $cambiarEstado = 0;
+      if (isset($mesId[0])) {
+          $actualizar = "update mesa set mesNumeroMesa = ? where mesId = ?;";
+          $actualizacion = $this->conexion->prepare($actualizar);
+          $actualizacion = $actualizacion->execute(array($cambiarEstado, $mesId[0]));
+          return ['actualizacion' => $actualizacion, 'mensaje' => "Registro Desactivado."];
+      }
+  } catch (PDOException $pdoExc) {
+      return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+  }
+
+}   
    }
 ?>
