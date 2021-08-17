@@ -6,9 +6,9 @@ include_once PATH.'modelos/ConBdMysql.php';
 include_once PATH.'modelos/modeloCocinero/CocineroDAO.php';
 
 
-$registro['cocId'] = 5;
-$registro['cocIdCocinero'] = 5;
-$registro['cocCodigoCocinero'] = 1234567;
+$registro['cocId'] = 1;
+$registro['cocIdCocinero'] = 1;
+$registro['cocCodigoCocinero'] = 123;
 $registro['cocEstado'] = 1;
 $registro['cocSesion'] = null;
 $registro['cocCreated_at'] = "2018-06-06 15:02:04";

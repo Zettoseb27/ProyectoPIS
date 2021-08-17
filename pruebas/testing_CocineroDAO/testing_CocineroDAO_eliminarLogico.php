@@ -1,15 +1,15 @@
 <?php
      include_once '../../modelos/ConstantesConexion.php';
      include_once PATH. 'modelos/ConBdMysql.php';
-     include_once PATH. 'modelos/modeloMenu/MenuDAO.php';
+     include_once PATH. 'modelos/modeloCocinero/CocineroDAO.php';
 
-     $menId=array(2);
+     $cocId=array(2);
 
-     $menu = new MenuDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+     $cocinero = new CocineroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
-     $menEliminadorLogico = $menu -> eliminadorLogico($menId);
+     $cocineroEliminadorLogico = $cocinero -> eliminadorLogico($cocId);
 
      echo "<pre>";
-    print_r($menEliminadorLogico);
+    print_r($cocineroEliminadorLogico);
     echo "</pre>";
 ?>

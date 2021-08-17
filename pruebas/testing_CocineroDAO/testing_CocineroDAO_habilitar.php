@@ -1,16 +1,16 @@
 <?php
      include_once '../../modelos/ConstantesConexion.php';
      include_once PATH.'modelos/ConBdMysql.php';
-     include_once PATH.'modelos/modeloMenu/MenuDAO.php';
+     include_once PATH.'modelos/modeloCocinero/CocineroDAO.php';
      
-     $menId=array(2);
+     $cocId=array(3);
      
-     $menu=new MenuDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+     $cocinero=new CocineroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
-    $menuHabilitar = $menu ->habilitar($menId);
+    $cocineroHabilitar = $cocinero ->habilitar($cocId);
 
     echo "<pre>";
-    print_r($menuHabilitar);
+    print_r($cocineroHabilitar);
     echo "</pre>";
 
 ?>
