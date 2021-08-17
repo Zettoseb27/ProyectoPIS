@@ -77,7 +77,6 @@
             return['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
         }
     }
-
     public function eliminadorLogico($rolId = array()) {
         try {
         $cambiarEstado = 0;
