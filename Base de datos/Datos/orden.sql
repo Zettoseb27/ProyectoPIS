@@ -13,7 +13,7 @@ join menu Mn on O.ordIdMenu= menId
 join plato Pl on O.ordIdMenu=plaId
 join tipo_plato Tp on ordIdMenu=tipPlaId
 join mesa Ms on O.ordIdMesa=Ms.mesId
-where O.ordId = 4 ;
+where O.ordId = 2 ;
 
 select *
 from orden
