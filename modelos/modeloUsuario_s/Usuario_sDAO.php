@@ -10,7 +10,8 @@
         }
 
        public function seleccionarTodos (){
-           $planConsulta = "SELECT * FROM usuario_s;";
+           $planConsulta = "select usuId, usuLogin, usu_created_at
+           from usuario_s;";
 
 
 
