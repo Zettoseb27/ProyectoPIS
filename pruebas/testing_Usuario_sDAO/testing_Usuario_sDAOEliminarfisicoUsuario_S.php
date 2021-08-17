@@ -7,7 +7,7 @@ include_once PATH.'modelos/modeloUsuario_s/Usuario_sDAO.php';
 
 $sId=array(129);
 
-$EliminarUsuario_s=new LibroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+$EliminarUsuario_s=new LibroDAO(usuId,usuLogin,usuPassaword,usuUsuSesion,usuEstado,usuRemember_token,usu_created_at,usu_updated_at);
 
 $EliminarfisicoUsuario_s=$Usuario_s->eliminar($sId);
 

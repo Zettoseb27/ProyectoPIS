@@ -6,7 +6,7 @@ include_once PATH.'modelos/modeloRol/RolDAO.php';
 
 $sId=array(258);
 
-$Rol=new RolDAO(rolid, rolnombre, rolDescripcion, rolEstado,rolUsuSesion,rol_created_at,rol_update_at);
+$Rol=new RolDAO(usuId,usuLogin,usuPassaword,usuUsuSesion,usuEstado,usuRemember_token,usu_created_at,usu_updated_at);
 
 
 $ElimnarlogicaRol=$Rol->EliminarLogico($sId);

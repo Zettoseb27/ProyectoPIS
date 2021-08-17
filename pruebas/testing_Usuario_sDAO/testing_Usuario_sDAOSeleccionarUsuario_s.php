@@ -8,7 +8,7 @@ include_once PATH.'modelos/modeloUsuario_s/Usuario_sDAO.php';
 $sId=array(5);
 
 
-$Usuario_sSeleccionado=new LibroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+$Usuario_sSeleccionado=new LibroDAO(usuId,usuLogin,usuPassaword,usuUsuSesion,usuEstado,usuRemember_token,usu_created_at,usu_updated_at);
 
 $Usuario_sSeleccionado=$Usuario_sSeleccionado->seleccionarId($sId);
 

@@ -5,7 +5,7 @@
 
      $id_usuario_s = array(9);
 
-     $usuario_s_roles = new UsuariosRolesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+     $usuario_s_roles = new UsuariosRolesDAO();
 
      $usuario_s_rolesEliminadoFisico=$usuario_s_roles->eliminar($id_usuario_s);
 
