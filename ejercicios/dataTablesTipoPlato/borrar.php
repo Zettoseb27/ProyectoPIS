@@ -2,7 +2,7 @@
 
 include("config.php");
 
-$id = $_GET['tipPlaId'];
+$id = $_GET['id'];
 
 $query = "delete from tipo_plato where tipPlaId = $id;";
 

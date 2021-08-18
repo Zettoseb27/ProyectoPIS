@@ -8,13 +8,14 @@ include 'config.php';
 
 if (isset($_POST['Submit'])) {
 
-    $id = $_POST['tipPlaId'];
-    $Id = $_POST['tipPlaId'];
+    $id = $_POST['id'];
+    $Id = $_POST['Id'];
     $Plato = $_POST['Plato'];
-    $Adicional = $_POST['tipPlaAdicional'];
+    $Adicional = $_POST['Adicional'];
     $Bebida = $_POST['Bebida'];
+    $Postre = $_POST['Postre'];
     
-    $consulta="update tipo_plato set tipPlaAdicional = '$Adicional' where tipPlaId = '$Id'";
+    $consulta="update tipo_plato set tipPlaAdicional = '$Adicional', tipPlaBebida = '$Bebida', tipPlaPlato = '$Plato', tipPlaPostre = '$Postre' where tipPlaId = '$id'";
     
     $result=mysqli_query($connect, $consulta);
     
@@ -24,7 +25,7 @@ if (isset($_POST['Submit'])) {
 
 $id = $_GET['id'];
 
-$query = "select * from tipo_plato where tipPlaId=$id";
+$query = "select * from tipo_plato where tipPlaId = $id";
 $result = mysqli_query($connect, $query);
 
 while ($row = mysqli_fetch_array($result)) {
