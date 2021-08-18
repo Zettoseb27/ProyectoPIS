@@ -27,5 +27,8 @@ where tipPlaId = 1;
 
 /* --------------------------------------------------------------------------- */
 
-delete from tipo_plato Tp
-where Tp.tipPlaId = 6;
+delete from tipo_plato 
+where tipPlaId = 6;
+
+/* ----------------------------------------------------------------------- */
+update tipo_plato set tipPlaAdicional = 'Papa Salada' where tipPlaId = 1;
