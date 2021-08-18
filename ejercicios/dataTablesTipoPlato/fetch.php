@@ -11,7 +11,7 @@ if(isset($_SESSION['mensaje'])) {//isset()
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Listar Libros</title>
+        <title>Tipo Plato</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -25,10 +25,9 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <thead>
                         <tr>
                             <th>Id</th> 
-                            <th>Valor Total</th> 
-                            <th>Descripcion</th> 
-                            <th>Bebida</th> 
+                            <th>Plato</th> 
                             <th>Adicional</th> 
+                            <th>Bebida</th> 
                             <th>Postre</th> 
                             <th>Edit</th> 
                             <th>Delete</th> 
@@ -37,26 +36,20 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <tbody>
                         <?php
                         include './config.php';
-                        $query = "select  O.ordId,O.ordvalorTotal,
-                        Tp.tipPlaPlato, Tp.tipPlaAdicional, Tp.tipPlaBebida, Tp.tipPlaPostre,
-                        Ms.mesNumeroMesa,
-                        Pl.plaDescripcion
-                        from orden O
-                        join tipo_plato Tp on ordId = Tp.tipPlaId
-                        join mesa Ms on O.ordId = Ms.mesId
-                        join plato Pl on ordId = Pl.plaId;";
+                        $query = "select tipPlaId, tipPlaPlato, tipPlaAdicional, tipPlaBebida, tipPlaPostre
+                        from tipo_plato;";
+                        
                         $sql = mysqli_query($connect, $query);
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>                       
                             <tr>
-                                <td><?php echo $row["ordId"]; ?></td>  
-                                <td><?php echo $row["ordvalorTotal"]; ?></td>  
-                                <td><?php echo $row["plaDescripcion"]; ?></td>  
-                                <td><?php echo $row["tipPlaBebida"]; ?></td>  
-                                <td><?php echo $row["tipPlaAdicional"]; ?></td>  
+                                <td><?php echo $row["tipPlaId"]; ?></td>  
+                                <td><?php echo $row["tipPlaPlato"]; ?></td>  
+                                <td><?php echo $row["tipPlaAdicional"]; ?></td> 
+                                <td><?php echo $row["tipPlaBebida"]; ?></td> 
                                 <td><?php echo $row["tipPlaPostre"]; ?></td>  
-                                <td><a href= "actualizar.php? id=<?php echo $row["ordId"]; ?>">Actualizar</a></td>  
-                                <td><a href="borrar.php?id=<?php echo $row["ordId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                <td><a href="actualizar.php?id=<?php echo $row["tipPlaId"]; ?>">Actualizar</a></td>  
+                                <td><a href="borrar.php?id=<?php echo $row["tipPlaId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
                         <?php } ?>
                     </tbody>

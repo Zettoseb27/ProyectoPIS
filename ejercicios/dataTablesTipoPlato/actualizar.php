@@ -1,22 +1,20 @@
 <?php
-/*
 echo "<pre>";
 print_r($_GET);
 echo "</pre>";
-*/
+
 include 'config.php';
 
 
 if (isset($_POST['Submit'])) {
 
-    $id = $_POST['id'];
-    $ordId = $_POST['Id'];
-    $ValorTotal = $_POST['valorTotal'];
-    $Descripcion = $_POST['ordDescripcion'];
-    $Bebida = $_POST['tipPlaBebida'];
+    $id = $_POST['tipPlaId'];
+    $Id = $_POST['tipPlaId'];
+    $Plato = $_POST['Plato'];
     $Adicional = $_POST['tipPlaAdicional'];
+    $Bebida = $_POST['Bebida'];
     
-    $consulta="update orden set ordId='$ordId', valorTotal='$ValorTotal', ordDescripcion='$Descripcion', ordBebida = '$Bebida', tipPlaAdicional = '$Adicional'  where ordId='$id'";
+    $consulta="update tipo_plato set tipPlaAdicional = '$Adicional' where tipPlaId = '$Id'";
     
     $result=mysqli_query($connect, $consulta);
     
@@ -26,24 +24,15 @@ if (isset($_POST['Submit'])) {
 
 $id = $_GET['id'];
 
-$query = "select  O.ordId,O.ordvalorTotal,
-Tp.tipPlaPlato, Tp.tipPlaAdicional, Tp.tipPlaBebida, Tp.tipPlaPostre,
-Ms.mesNumeroMesa,
-Pl.plaDescripcion
-from orden O
-join tipo_plato Tp on ordId = Tp.tipPlaId
-join mesa Ms on O.ordId = Ms.mesId
-join plato Pl on ordId = Pl.plaId
-where ordId = $id; ";
+$query = "select * from tipo_plato where tipPlaId=$id";
 $result = mysqli_query($connect, $query);
 
 while ($row = mysqli_fetch_array($result)) {
 
-    $ordId = $row['ordId'];
-    $ValorTotal = $row['ordvalorTotal'];
-    $Descripcion = $row['plaDescripcion'];
-    $Bebida = $row['tipPlaBebida'];
+    $Id = $row['tipPlaId'];
+    $Plato = $row['tipPlaPlato'];
     $Adicional = $row['tipPlaAdicional'];
+    $Bebida = $row['tipPlaBebida'];
     $Postre = $row['tipPlaPostre'];
 }
 ?>
@@ -67,28 +56,24 @@ while ($row = mysqli_fetch_array($result)) {
                         </div>
                         <div class="form-group">
                             <label>Id</label>
-                            <input type="text" name="ordId" class="form-control" value="<?php echo $ordId; ?>" readonly="readonly">
+                            <input type="text" name="Id" class="form-control" value="<?php echo $Id; ?>" readonly="readonly">
 
                         </div>
                         <div class="form-group">
-                            <label>Valor Total</label>
-                            <input type="text" name="Valor Total" class="form-control" value="<?php echo $ValorTotal; ?>">
-                        </div>
-                        <div class="form-group">
-                            <label>Descripcion</label>
-                            <input type="text" name="Descripcion" class="form-control" value="<?php echo $Descripcion; ?>">
-                        </div>
-                        <div class="form-group">
-                            <label>Bebida</label>
-                            <input type="text" name="Bebida$Bebida" class="form-control" value="<?php echo $Bebida; ?>">
+                            <label>Titulo</label>
+                            <input type="text" name="Plato" class="form-control" value="<?php echo $Plato; ?>">
                         </div>
                         <div class="form-group">
                             <label>Adicional</label>
-                            <input type="text" name="Bebida$Bebida" class="form-control" value="<?php echo $Adicional; ?>">
+                            <input type="text" name="Adicional" class="form-control" value="<?php echo $Adicional; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Bebida</label>
+                            <input type="text" name="Bebida" class="form-control" value="<?php echo $Bebida; ?>">
                         </div>
                         <div class="form-group">
                             <label>Postre</label>
-                            <input type="text" name="Bebida$Bebida" class="form-control" value="<?php echo $Postre; ?>">
+                            <input type="text" name="Postre" class="form-control" value="<?php echo $Postre; ?>">
                         </div>
                         <div class="form-group">
                             <input type="submit" name="Submit" value="Update" class="btn btn-primary btn-block" name="update">    
