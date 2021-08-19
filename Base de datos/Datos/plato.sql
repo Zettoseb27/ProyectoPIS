@@ -1,3 +1,4 @@
+use proyecto;
 select * from plato;
 
 insert into plato values (1,1,'arroz con pollo y papa a la francesa',12000,1,null,'2021-08-12 8:43:00','2021-08-12 8:44:00');
@@ -9,8 +10,9 @@ insert into plato values (5,6,'arroz con pollo y papa a la francesa',12000,1,nul
 
 /* ------------------------------------------------------------------------------ */
 
-select plaId, plaDescripcion ,plaPrecio, plaEstado
-from plato ;
+select pl.plaId, tpl.tipPlaPlato, pl.plaDescripcion ,pl.plaPrecio, pl.plaEstado
+from plato pl
+join  tipo_plato tpl on pl.plaId = tpl.tipPlaId;
 
 /* --------------------------------------------------------------------------- */
 
