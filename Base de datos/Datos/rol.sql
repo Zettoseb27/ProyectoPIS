@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-use proyecto
-=======
 use proyecto;
->>>>>>> develop
 select * from rol;
 
 insert into rol values (1,'cocinero','encargo de la preparacion de los platos',1,null,'21-08-12 9:21:00', '21-08-12 9:22:00'),

@@ -9,18 +9,43 @@ insert into orden values (1,1,1,12000,1,null,'2021-08-12 9:30:00','2021-08-12 9:
 select  O.ordId,O.ordvalorTotal,Mn.menId,Mn.menObservacion,Ms.mesNumeroMesa,pl.plaDescripcion,
 Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre,Tp.tipPlaPlato
 from orden O
-join menu Mn on O.ordIdMenu= menId 
-join plato Pl on O.ordIdMenu=plaId
-join tipo_plato Tp on ordIdMenu=tipPlaId
-join mesa Ms on O.ordIdMesa=Ms.mesId
-where O.ordId = 2 ;
+join menu Mn on O.ordId= menId 
+join plato Pl on O.ordId=plaId
+join tipo_plato Tp on ordId=tipPlaId
+join mesa Ms on O.ordId = Ms.mesId;
 
-select *
-from orden
-join tipo_plato;
 
+select  O.ordId, O.ordvalorTotal,
+Tp.tipPlaPlato, Tp.tipPlaAdicional, Tp.tipPlaBebida, Tp.tipPlaPostre,
+Ms.mesNumeroMesa,
+Pl.plaDescripcion
+from orden O
+join tipo_plato Tp on ordId = Tp.tipPlaId
+join mesa Ms on O.ordId = Ms.mesId
+join plato Pl on ordId = Pl.plaId;
+
+
+/* ------------------Borrar seleccionado ------------------------ */
+
+delete  O.ordId, O.ordvalorTotal,
+Tp.tipPlaPlato, Tp.tipPlaAdicional, Tp.tipPlaBebida, Tp.tipPlaPostre,
+Ms.mesNumeroMesa,
+Pl.plaDescripcion
+from orden O
+join tipo_plato Tp on ordId = Tp.tipPlaId
+join mesa Ms on O.ordId = Ms.mesId
+join plato Pl on ordId = Pl.plaId
+where ordId = 1;
  SELECT * FROM orden O 
 WHERE O.ordId =  1 ;
+
+/* ---------------------------- Actualizar ---------------------------------*/
+
+update orden O
+join tipo_plato Tp on  O.tipPlaBebida = Tp.tipPlaId
+set Tp.tipPlaBebida = 'lola';
+
+/* ------------------------------------- */
 
 insert into orden values (1,1,1,12000,1,null,'2021-08-12 9:30:00','2021-08-12 9:31:00');
 delete from orden
