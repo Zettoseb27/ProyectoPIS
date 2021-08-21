@@ -4,7 +4,7 @@ include("config.php");
 
 $id = $_GET['id'];
 
-$query = "delete from libros where isbn=$id";
+$query = "delete from usuario_s_roles where id_usuario_s =$id";
 
 $result = mysqli_query($connect, $query);
 

@@ -25,29 +25,34 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <thead>
                         <tr>
                             <th>Id</th> 
-                            <th>Nombre</th> 
+                            <th>Estado</th> 
+                            <th>Fecha</th> 
+                            <th>Cargo</th> 
                             <th>Descripcion</th> 
-                            <th>Creacion</th> 
-                            <th>Edit</th> 
-                            <th>Delete</th> 
+                            <th>Login</th> 
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         include './config.php';
-                        $query = "select rolId, rolNombre, rolDescripcion, rol_created_at
-                        from rol;";
+                        $query = "select id_usuario_s,Ur.estado,Ur.fechaUserRol,Rl.rolNombre,Rl.rolDescripcion,Us.usuLogin
+                        from usuario_s_roles Ur
+                        join usuario_s Us on Ur.id_usuario_s = Us.usuId
+                        join rol Rl on  Ur.id_usuario_s = Rl.rolId
+                        order by id_usuario_s ASC;";
                         
                         $sql = mysqli_query($connect, $query);
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>                       
                             <tr>
-                                <td><?php echo $row["rolId"]; ?></td>  
-                                <td><?php echo $row["rolNombre"]; ?></td>  
+                                <td><?php echo $row["id_usuario_s"]; ?></td>  
+                                <td><?php echo $row["estado"] ?></td>
+                                <td><?php echo $row["fechaUserRol"]?></td>
+                                <td><?php echo $row["rolNombre"]; ?></td> 
+                                
                                 <td><?php echo $row["rolDescripcion"]; ?></td>  
-                                <td><?php echo $row["rol_created_at"]; ?></td>  
-                                <td><a href="actualizar.php?id=<?php echo $row["rolId"]; ?>">Actualizar</a></td>  
-                                <td><a href="borrar.php?id=<?php echo $row["rolId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                <td><a href="actualizar.php?id=<?php echo $row["id_usuario_s"]; ?>">Actualizar</a></td>  
+                                <td><a href="borrar.php?id=<?php echo $row["id_usuario_s"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
                         <?php } ?>
                     </tbody>

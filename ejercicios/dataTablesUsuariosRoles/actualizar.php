@@ -1,20 +1,19 @@
-<?php
-echo "<pre>";
-print_r($_GET);
-echo "</pre>";
 
+ <?php
 include 'config.php';
 
 
 if (isset($_POST['Submit'])) {
 
     $id = $_POST['id'];
-    $isbn = $_POST['isbn'];
-    $titulo = $_POST['titulo'];
-    $autor = $_POST['autor'];
-    $precio = $_POST['precio'];
+    $Id = $_POST['Id'];
+    $Estado = $_POST["Estado"];
+    $Fecha = $_POST['Fecha'];
+    $Cargo = $_POST['Cargo'];
+    $Descripcion = $_POST['Descripcion'];
+
     
-    $consulta="update libros set isbn='$isbn', titulo='$titulo', autor='$autor', precio=$precio where isbn='$id'";
+    $consulta="update usuario_s_roles set estado='$Estado' where id_usuario_s='$id'";
     
     $result=mysqli_query($connect, $consulta);
     
@@ -24,15 +23,20 @@ if (isset($_POST['Submit'])) {
 
 $id = $_GET['id'];
 
-$query = "select * from libros where isbn=$id";
+$query = "select id_usuario_s,Ur.estado,Ur.fechaUserRol,Rl.rolNombre,Rl.rolDescripcion,Us.usuLogin
+from usuario_s_roles Ur 
+join usuario_s Us on Ur.id_usuario_s = Us.usuId
+join rol Rl on  Ur.id_usuario_s = Rl.rolId
+where id_usuario_s = $id ;";
 $result = mysqli_query($connect, $query);
 
 while ($row = mysqli_fetch_array($result)) {
 
-    $isbn = $row['isbn'];
-    $titulo = $row['titulo'];
-    $autor = $row['autor'];
-    $precio = $row['precio'];
+    $id = $row['id_usuario_s'];
+    $Estado = $row["estado"];
+    $Fecha = $row['fechaUserRol'];
+    $Cargo = $row['rolNombre'];
+    $Descripcion = $row['rolDescripcion'];
 }
 ?>
 <html>
@@ -54,21 +58,27 @@ while ($row = mysqli_fetch_array($result)) {
                             <input type="hidden" name="id" class="form-control" value="<?php echo $id; ?>">
                         </div>
                         <div class="form-group">
-                            <label>ISBN</label>
-                            <input type="text" name="isbn" class="form-control" value="<?php echo $isbn; ?>" readonly="readonly">
+                            <label>Id</label>
+                            <input type="text" name="Id" class="form-control" value="<?php echo $id; ?>" readonly="readonly">
 
                         </div>
                         <div class="form-group">
-                            <label>Titulo</label>
-                            <input type="text" name="titulo" class="form-control" value="<?php echo $titulo; ?>">
+                            <label>Estado</label>
+                            <input type="text" name="Estado" class="form-control" value="<?php echo $Estado; ?>">
                         </div>
                         <div class="form-group">
-                            <label>Autor</label>
-                            <input type="text" name="autor" class="form-control" value="<?php echo $autor; ?>">
+                            <label>Fecha</label>
+                            <input type="text" name="Fecha" class="form-control" value="<?php echo $Fecha; ?>">
                         </div>
                         <div class="form-group">
-                            <label>Precio</label>
-                            <input type="text" name="precio" class="form-control" value="<?php echo $precio; ?>">
+                            <label>Cargo</label>
+                            <input type="text" name="Cargo" class="form-control" value="<?php echo $Cargo; ?>"
+                            readonly="readonly">
+                        </div>
+                        <div class="form-group">
+                            <label>Descripcion</label>
+                            <input type="text" name="Descripcion" class="form-control" value="<?php echo $Descripcion; ?>"
+                            readonly="readonly">
                         </div>
                         <div class="form-group">
                             <input type="submit" name="Submit" value="Update" class="btn btn-primary btn-block" name="update">    
