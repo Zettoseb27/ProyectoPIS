@@ -14,9 +14,8 @@ join plato Pl on Co.cociIdOrden = plaId;
 /* ----------------------------------------------------------------------*/
 select Co.cociId, 
 Me.mesNumeroMesa,
-Tp.tipPlaPlato,Tp.tipPlaAdicional,Tp.tipPlaPostre,
-Mn.menObservacion
+Tp.tipPlaPlato,Tp.tipPlaAdicional,Tp.tipPlaPostre
 from cocina Co
-join mesa Me on cociId = mesId
-join tipo_plato Tp on cociId = tipPlaId
-join menu Mn on ordId = menId;
+inner join mesa Me on cociId = mesId
+inner join tipo_plato Tp on cociId = tipPlaId
+where Co.cociId = 2;
