@@ -17,10 +17,7 @@ join tipo_plato Tp on ordId = Tp.tipPlaId
 join mesa Ms on O.ordId = Ms.mesId
 join plato Pl on ordId = Pl.plaId;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
 /* ------------------Borrar seleccionado ------------------------ */
 
 delete  O.ordId, O.ordvalorTotal,
@@ -39,20 +36,20 @@ WHERE O.ordId =  1 ;
 
 update orden O
 join tipo_plato Tp on  O.tipPlaBebida = Tp.tipPlaId
-<<<<<<< HEAD
+
 set Tp.tipPlaBebida = 'lola';
 
 /* ------------------------------------- */
 
 insert into orden values (1,1,1,12000,1,null,'2021-08-12 9:30:00','2021-08-12 9:31:00');
-=======
+
 set O.tipPlaBebida = Tp.tipPlaPostre;
 
 /* ----------------Insertar--------------------- */
 
 insert into orden 
 values (1,1,1,12000,1,null,'2021-08-12 9:30:00','2021-08-12 9:31:00');
->>>>>>> develop
+
 delete from orden
 where ordId = 1;
 
