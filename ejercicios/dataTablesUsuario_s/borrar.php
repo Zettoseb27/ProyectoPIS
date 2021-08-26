@@ -4,7 +4,7 @@ include("config.php");
 
 $id = $_GET['id'];
 
-$query = "delete from Usuario_s where usuId=$id";
+$query = "delete from usuario_s where usuId=$id";
 
 $result = mysqli_query($connect, $query);
 
