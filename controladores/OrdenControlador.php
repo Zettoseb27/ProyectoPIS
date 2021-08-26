@@ -19,7 +19,7 @@
 
             session_start();
             //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS INPRINA O UTILICE //
-            $__SESSION['listaDeOrden'] = $registroOrden;
+            $_SESSION['listaDeOrden'] = $registroOrden;
             header("location:principal.php?contenido=vistas/vistasOrden/listarDTRegistroOrden.php");
          }
      }

@@ -7,43 +7,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="principal.css">
-    <title>Principal</title>
+    <link rel="stylesheet" href="style.css">
+    <title>PRINCIPAL</title>
 </head>
 <body>
-    <div id = "provisional">Interface provisional
-        <div class = "gestion"> Menú Operaciones en Tabla Orden
+    <div id="provisional">Interface provisional
+        <div class="gestion">Menu de Operaciones de las Tablas Rol 
             <br>
-                <a href="Controlador.php?ruta = listarOrden&pag=0">Listar Orden</a>
-            </br>
-                <a href="">Agregar Libros</a>
+            <a href="Controlador.php?ruta=listarRol&pag=0">Listar Rol</a>
+            <br>
+            <a href="">Agregar Rol</a>
         </div>
-        <br>
-        <div class = "gestion">Menú Operaciones en Tabla x-1
+        <div class="gestion">Menu de Operaciones de las Tablas X_1
             <br>
-            <a href="">Listar x-1</a>
+            <a href="">Listar X_1</a>
             <br>
-            <a href="">Agregar x-1</a>
+            <a href="">Agregar X_1</a>
         </div>
-        <br>
-        <div class = "gestion">Menú Operacion en Tabal x-2
+        <div class="gestion">Menu de Operaciones de las Tablas  X_2 
             <br>
-            <a href="">listar x-2</a>
+            <a href="">Listar X_2</a>
             <br>
-            <a href="">Agregar x-2</a>
+            <a href="">Agregar X_2</a>
         </div>
-        <br>
-        <div id = "contenido">
+        <div id="contenido">
             <br>
-                        Zona de Resultados (Aqui la Funcionalidad!!!!)
+                Zona de Resultados (Aqui la funcionalidad!!!)
             <br>
             <br>
             <?php
                  if(isset($_GET['contenido'])){
-                     include($_GET['contenido']);
-                 }
+                 include($_GET['contenido']);
+                }
             ?>
+
         </div>
+
+
 
     </div>
 </body>

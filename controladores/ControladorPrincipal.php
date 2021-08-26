@@ -1,39 +1,37 @@
 <?php
-     include_once PATH."controladores/OrdenControlador.php";
-
+     include_once PATH.'controladores/RolControlador.php'; 
      class ControladorPrincipal{
-         private $datos = array();
-         public function __construct() {
+        private $datos = array();
+        public function __construct() {
             if (!empty($_POST) && isset($_POST["ruta"])) {
-                $this -> datos = $_POST;
+               $this -> datos = $_POST;
             }
             if (!empty($_GET) && isset($_GET["ruta"])) {
                 $this -> datos = $_GET;
             }
-            $this -> control();
+            $this->control();
+        }
+        public function control() {
+            switch ($this->datos['ruta']) {
+                case 'listarRol':
+                     $this->listarRol();
+                    break;
+                case 'actualizarRol':
+                    $this->actualizarRol();
+                    break;
+                case 'confirmaActualizacionRol':
+                    $this->confirmaActualizacionRol();
+                    break;
+            }
+        }
+        public function listarRol() {
+            $RolControlador = new RolControlador ($this->datos);
+        }
+        public function actualizarRol() {
+            $RolControlador = new RolControlador ($this->datos);
+        }
+        public function confirmaActualizacionRol() {
+            $RolControlador = new RolControlador ($this->datos);
+        }
      }
-     public function control() {
-         switch ($this -> datos["ruta"]) {
-             case 'listarOrden':
-                 $this -> listarOrden();
-                 break;
-             case 'actualizarOrden':
-                $this -> actualizarOrden();
-                break;
-             case 'confirmarActualizarOrden':
-                $this -> confirmarActualizarOrden();
-                break;
-         }
-     
-     }
-     public function listarOrden() {
-        $OrdenControlador = new OrdenControlador($this->datos);
-     }
-     public function actualizarOrden() {
-        $OrdenControlador = new OrdenControladro($this->datos);
-     }
-     public function confirmarActualizarOrden() {
-        $OrdenControlador = new OrdenControlador($this->datos);
-     }
-}
 ?>
