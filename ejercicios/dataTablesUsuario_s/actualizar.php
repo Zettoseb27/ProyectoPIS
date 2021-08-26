@@ -9,7 +9,7 @@ if (isset($_POST['Submit'])) {
     $Login = $_POST['Login'];
     $Estado = $_POST['Estado'];
     
-    $consulta="update Usuario_s set usuId='$Id', usuLogin='$Login', usuEstado='$Estado',  where isbn='$id'";
+    $consulta="update usuario_s set usuId='$Id', usuLogin='$Login', usuEstado='$Estado'  where usuId='$id'";
     
     $result=mysqli_query($connect, $consulta);
     
