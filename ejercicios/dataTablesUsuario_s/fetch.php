@@ -25,11 +25,8 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <thead>
                         <tr>
                             <th>Id</th> 
-                            <th>Login</th> 
-                            <th>Password</th> 
-                            <th>UsuSesion</th> 
+                            <th>Login</th>  
                             <th>Estado</th> 
-                            <th>Creacion</th> 
                             <th>Edit</th> 
                             <th>Delete</th> 
                         </tr>
@@ -37,19 +34,15 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <tbody>
                         <?php
                         include './config.php';
-                        $query = "select usuId, usuLogin, usuPassword, usuUsuSesion,usuEstado,
-                        from Usuario_s;";
+                        $query = "select usuId, usuLogin, usuEstado from Usuario_s;";
                         
-                        $sql = mysqli_query($connect, $query);
+                        $sql = mysqli_query($connect, $query); 
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>                       
                             <tr>
-                                <td><?php echo $row["Usuario_sId"]; ?></td>  
-                                <td><?php echo $row["Usuario_sLogin"]; ?></td>  
-                                <td><?php echo $row["Usuario_sPassword"]; ?></td>  
-                                <td><?php echo $row["Usuario_sUsuSesion"]; ?></td>  
-                                <td><?php echo $row["Usuario_sEstado"]; ?></td>  
-                                <td><?php echo $row["Usuario_sCreacion"]; ?></td>  
+                                <td><?php echo $row["usuId"]; ?></td>  
+                                <td><?php echo $row["usuLogin"]; ?></td>  
+                                <td><?php echo $row["usuEstado"]; ?></td>   
                                 <td><a href="actualizar.php?id=<?php echo $row["usuId"]; ?>">Actualizar</a></td>  
                                 <td><a href="borrar.php?id=<?php echo $row["usuId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
