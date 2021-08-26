@@ -15,10 +15,12 @@ INSERT INTO usuario_s_roles VALUES
 
 /* ------------------------------------------------------------------------------- */
 
-select Ur.estado,Ur.fechaUserRol,Rl.rolNombre,Rl.rolDescripcion,Us.usuLogin
-from usuario_s_roles Ur
-join usuario_s Us
-join rol Rl;
+select id_usuario_s,Ur.estado,Ur.fechaUserRol,Rl.rolNombre,Rl.rolDescripcion,Us.usuLogin
+from usuario_s_roles Ur 
+join usuario_s Us on Ur.id_usuario_s = Us.usuId
+join rol Rl on  Ur.id_usuario_s = Rl.rolId
+where id_usuario_s = 1 
+order by id_usuario_s ASC;
 
 /* ---------------------------------------------------------------------------------- */
 
