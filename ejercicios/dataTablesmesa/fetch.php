@@ -11,7 +11,7 @@ if(isset($_SESSION['mensaje'])) {//isset()
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Tipo Plato</title>
+        <title>Numero Mesa </title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -24,11 +24,10 @@ if(isset($_SESSION['mensaje'])) {//isset()
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Id</th> 
-                            <th>Plato</th>
-                            <th>Descripcion</th> 
-                            <th>Precio</th> 
-                            <th>Estado</th>  
+                            <th>mesId</th> 
+                            <th>NumeroMesa</th>
+                            <th>CantidadComenzales</th> 
+                            <th>Estado</th> 
                             <th>Edit</th> 
                             <th>Delete</th> 
                         </tr>
@@ -36,19 +35,17 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <tbody>
                         <?php
                         include './config.php';
-                        $query = "select pl.plaId, tpl.tipPlaPlato, pl.plaDescripcion ,pl.plaPrecio, pl.plaEstado
-                        from plato pl
-                        join  tipo_plato tpl on pl.plaId = tpl.tipPlaId;";
+                        $query = "select mesIdmesNumeroMesa, mesCantidadComenzales, mesEstado ,pl.plaPrecio, pl.plaEstado
+                        from mesa
                         
                         $sql = mysqli_query($connect, $query);
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>                       
                             <tr>
-                                <td><?php echo $row["plaId"]; ?></td>  
-                                <td><?php echo $row["tipPlaPlato"]?></td>
-                                <td><?php echo $row["plaDescripcion"]; ?></td>  
-                                <td><?php echo $row["plaPrecio"]; ?></td> 
-                                <td><?php echo $row["plaEstado"]; ?></td> 
+                                <td><?php echo $row["mesId"]; ?></td>  
+                                <td><?php echo $row["mesNumeroMesa"]?></td>
+                                <td><?php echo $row["mesCantidadComenzales"]; ?></td>  
+                                <td><?php echo $row["mesEstado"]; ?></td> 
                                 <td><a href="actualizar.php?id=<?php echo $row["plaId"]; ?>">Actualizar</a></td>  
                                 <td><a href="borrar.php?id=<?php echo $row["plaId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
