@@ -11,7 +11,7 @@ if(isset($_SESSION['mensaje'])) {//isset()
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ROL</title>
+        <title>codigo_mesero</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -24,10 +24,10 @@ if(isset($_SESSION['mensaje'])) {//isset()
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Id</th> 
-                            <th>Nombre</th> 
-                            <th>Descripcion</th> 
-                            <th>Creacion</th> 
+                            <th>Idmesero</th> 
+                            <th>CodigoIdMesMesero</th> 
+                            <th>CodigoMesero</th> 
+                            <th>Estado</th> 
                             <th>Edit</th> 
                             <th>Delete</th> 
                         </tr>
@@ -35,17 +35,17 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <tbody>
                         <?php
                         include './config.php';
-                        $query = "select rolId, rolNombre, rolDescripcion, rol_created_at
-                        from rol;";
+                        $query = "select codMesId, codMesIdMesero, codMesCodigoMesero, codMesEstado
+                        from codigo_mesero;";
                         
                         $sql = mysqli_query($connect, $query);
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>                       
                             <tr>
-                                <td><?php echo $row["rolId"]; ?></td>  
-                                <td><?php echo $row["rolNombre"]; ?></td>  
-                                <td><?php echo $row["rolDescripcion"]; ?></td>  
-                                <td><?php echo $row["rol_created_at"]; ?></td>  
+                                <td><?php echo $row["codMesId"]; ?></td>  
+                                <td><?php echo $row["codMesIdMesero"]; ?></td>  
+                                <td><?php echo $row["codMesCodigoMesero"]; ?></td>  
+                                <td><?php echo $row["codMesEstado"]; ?></td>  
                                 <td><a href="actualizar.php?id=<?php echo $row["rolId"]; ?>">Actualizar</a></td>  
                                 <td><a href="borrar.php?id=<?php echo $row["rolId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
