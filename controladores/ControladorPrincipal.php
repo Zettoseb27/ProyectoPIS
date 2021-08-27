@@ -12,6 +12,7 @@
             $this->control();
         }
         public function control() {
+     
             switch ($this->datos['ruta']) {
                 case 'listarRol':
                      $this->listarRol();
@@ -19,8 +20,14 @@
                 case 'actualizarRol':
                     $this->actualizarRol();
                     break;
-                case 'confirmaActualizacionRol':
-                    $this->confirmaActualizacionRol();
+                case 'confirmaActualizarRol':
+                    $this->confirmaActualizarRol();
+                    break;
+                case 'cancelarActualizarRol':
+                    $this->cancelarActualizarRol();  
+                    break;
+                case 'mostrarInsertarRol':
+                    $this->mostrarInsertarRol();  
                     break;
             }
         }
@@ -30,8 +37,16 @@
         public function actualizarRol() {
             $RolControlador = new RolControlador ($this->datos);
         }
-        public function confirmaActualizacionRol() {
+        public function confirmaActualizarRol() {
             $RolControlador = new RolControlador ($this->datos);
         }
+        public function cancelarActualizarRol() {
+            $RolControlador = new RolControlador ($this->datos);
+        }
+        public function mostrarInsertarRol() {
+            echo __LINE__." ".__CLASS__." ".__LINE__."<br/>"; exit();
+            $RolControlador = new RolControlador ($this->datos);
+        }
+        
      }
 ?>

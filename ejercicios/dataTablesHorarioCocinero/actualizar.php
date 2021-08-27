@@ -1,7 +1,7 @@
 <?php
-echo "<pre>";
+/* echo "<pre>";
 print_r($_GET);
-echo "</pre>";
+echo "</pre>"; */
 
 include 'config.php';
 
@@ -9,12 +9,12 @@ include 'config.php';
 if (isset($_POST['Submit'])) {
 
     $id = $_POST['id'];
-    $isbn = $_POST['isbn'];
-    $titulo = $_POST['titulo'];
-    $autor = $_POST['autor'];
-    $precio = $_POST['precio'];
+    $isbn = $_POST['Id'];
+    $FechaInicio = $_POST['FechaInicio'];
+    $FechaFin = $_POST['FechaFin'];
+    $Fecha = $_POST['Fecha'];
     
-    $consulta="update libros set isbn='$isbn', titulo='$titulo', autor='$autor', precio=$precio where isbn='$id'";
+    $consulta="update horario_cocinero set horCocFecha='$Fecha', horCocHoraInicio='$FechaInicio', horCocHoraFin='$FechaFin' where horCocId='$id'";
     
     $result=mysqli_query($connect, $consulta);
     
@@ -24,15 +24,19 @@ if (isset($_POST['Submit'])) {
 
 $id = $_GET['id'];
 
-$query = "select * from libros where isbn=$id";
+$query = "select hc.horCocId, co.cocIdCodigoCocinero, hc.horCocHoraInicio, hc.horCocHoraFin, hc.horCocFecha
+from horario_cocinero hc
+join cocinero co on hc.horCocId = co.cocId 
+where hc.horCocId = $id;";
 $result = mysqli_query($connect, $query);
 
 while ($row = mysqli_fetch_array($result)) {
 
-    $isbn = $row['isbn'];
-    $titulo = $row['titulo'];
-    $autor = $row['autor'];
-    $precio = $row['precio'];
+    $isbn = $row['horCocId'];
+    $codigo = $row['cocIdCodigoCocinero'];
+    $FechaInicio = $row['horCocHoraInicio'];
+    $FechaFin = $row['horCocHoraFin'];
+    $Fecha = $row['horCocFecha'];
 }
 ?>
 <html>
@@ -54,21 +58,26 @@ while ($row = mysqli_fetch_array($result)) {
                             <input type="hidden" name="id" class="form-control" value="<?php echo $id; ?>">
                         </div>
                         <div class="form-group">
-                            <label>ISBN</label>
-                            <input type="text" name="isbn" class="form-control" value="<?php echo $isbn; ?>" readonly="readonly">
+                            <label>Id</label>
+                            <input type="text" name="Id" class="form-control" value="<?php echo $isbn; ?>" readonly="readonly">
 
                         </div>
                         <div class="form-group">
-                            <label>Titulo</label>
-                            <input type="text" name="titulo" class="form-control" value="<?php echo $titulo; ?>">
+                            <label>Codigo Cocinero</label>
+                            <input type="text" name="Codigo Cocinero" class="form-control" value="<?php echo $codigo; ?>" readonly="readonly">
+
                         </div>
                         <div class="form-group">
-                            <label>Autor</label>
-                            <input type="text" name="autor" class="form-control" value="<?php echo $autor; ?>">
+                            <label>Fecha Inicio</label>
+                            <input type="text" name="FechaInicio" class="form-control" value="<?php echo $FechaInicio; ?>" readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label>Precio</label>
-                            <input type="text" name="precio" class="form-control" value="<?php echo $precio; ?>">
+                            <label>Fecha Fin</label>
+                            <input type="text" name="FechaFin" class="form-control" value="<?php echo $FechaFin; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha</label>
+                            <input type="text" name="Fecha" class="form-control" value="<?php echo $Fecha; ?>">
                         </div>
                         <div class="form-group">
                             <input type="submit" name="Submit" value="Update" class="btn btn-primary btn-block" name="update">    

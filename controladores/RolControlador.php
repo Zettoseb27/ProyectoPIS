@@ -14,6 +14,15 @@
                 case 'actualizarRol':
                     $this->actualizarRol();
                     break;
+                case 'confirmaActualizarRol':  
+                    $this->confirmaActualizarRol();
+                    break;
+                case 'cancelarActualizarRol':  
+                    $this->cancelarActualizarRol();
+                    break;
+                case 'mostrarInsertarRol':  
+                    $this->mostrarInsertarRol();
+                    break;
             }
          }
          public function listarRol() {
@@ -32,7 +41,27 @@
             header("location:principal.php?contenido=vistas/vistasRol/vistaActualizarRol.php");
             
          }
-
+         public function confirmaActualizarRol() {
+            $gestarRol = new RolDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $actualizarRol = $gestarRol -> actualizar(array($this->datos));
+            session_start();
+            $_SESSION['mensaje'] = "Actualizacion realizada";
+            header("location:Controlador.php?ruta=listarRol");
+         }
+         public function cancelarActualizarRol() {
+            session_start();
+            $_SESSION['mensaje'] = "Desistio de la actualizacion";
+            header("location:Controlador.php?ruta=listarRol");
+         }
+         public function mostrarInsertarRol() {
+            
+            $gestarRol = new RolDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $registroRol = $gestarRol -> seleccionarId();
+            session_start();
+            $_SESSION['registroRol'] = $registroRol;
+            $registroRol = null;
+            header("location:principal.php?contenido=vistas/vistasRol/vistaInsertarRol.php");
+         }
      }
 
 ?>

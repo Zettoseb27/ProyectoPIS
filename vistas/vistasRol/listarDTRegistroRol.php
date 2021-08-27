@@ -1,4 +1,10 @@
-
+<?php
+     if (isset($_SESSION['mensaje'])) {
+        $mensaje = $_SESSION['mensaje'];
+        echo "<script languaje='javascript'>alert('$mensaje')</script>";
+        unset($_SESSION['mensaje']);
+    } 
+?>
 
 <!DOCTYPE html>
 <html>
@@ -42,7 +48,7 @@
                                 <td><?php echo $listaDeRol[$i] -> rolDescripcion; ?></td>  
                                 <td><?php echo $listaDeRol[$i] -> rol_created_at; ?></td>  
                               
-                                <td><a href="Controlador.php?tura=actualizarRol&idAct=<?php echo $listaDeRol[$i] -> rolId; ?>">Actualizar</a></td>  
+                                <td><a href="Controlador.php?ruta=actualizarRol&idAct=<?php echo $listaDeRol[$i] -> rolId; ?>">Actualizar</a></td>  
                                 <td><a href="Controlador.php?tura=eliminarRol&idAct=<?php echo $listaDeRol[$i] -> rolId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
                         <?php 
@@ -60,7 +66,7 @@
     <script type="text/javascript">
                         $(document).ready(function () {
                             $('#example').DataTable({
-                                pageLength: 3,
+                                pageLength: 5,
                                 lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
                             });
                         });
