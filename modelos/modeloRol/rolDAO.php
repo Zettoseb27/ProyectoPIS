@@ -64,6 +64,35 @@
             return ['eliminar' => FALSE, 'registroEliminado' => array($rolId[0])];
         }
     }
+    public function actualizar($registro) {
+        try {
+        $nombre = $registro[0]['rolNombre']; 
+        $descripcion = $registro[0]['rolDescripcion'];
+        $cambiarEstado = $registro[0]['rolEstado'];
+        $usuSesion = $registro[0]['rolUsuSesion'];
+        $created = $registro[0]['rol_created_at'];
+        $updated = $registro[0]['rol_updated_at'];
+        $Id = $registro[0]['rolId'];
+        if (isset($Id)) {
+            $actualizar = "UPDATE rol SET rolNombre=? ,";
+            $actualizar.= "rolDescripcion=? ,";
+            $actualizar.= "rolEstado=? ,";
+            $actualizar.= "rolUsuSesion=? ,";
+            $actualizar.= "rol_created_at=? ,";
+            $actualizar.= "rol_updated_at=? ";
+            $actualizar.= "where rolId=?;";
+            $actualizacion = $this->conexion->prepare($actualizar);
+            $resultadoAct=$actualizacion->execute(array($nombre,$descripcion,$cambiarEstado,$usuSesion,$created,$updated, $Id));
+            $this->cierreBd();
+						
+            //MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
+            return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];	
+        }
+            } catch (PDOException $pdoExc) {
+                $this->cierreBd();
+                return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+            }
+    }
     public function habilitar($rolId = array()) {
         try {
         $cambiarValorTotal = 1;

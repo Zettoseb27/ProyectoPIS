@@ -25,9 +25,9 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <thead>
                         <tr>
                             <th>Id</th> 
-                            <th>Nombre</th> 
-                            <th>Descripcion</th> 
-                            <th>Creacion</th> 
+                            <th>Hora Inicio</th> 
+                            <th>Horario Fin</th> 
+                            <th>Fecha</th> 
                             <th>Edit</th> 
                             <th>Delete</th> 
                         </tr>
@@ -35,19 +35,19 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <tbody>
                         <?php
                         include './config.php';
-                        $query = "select rolId, rolNombre, rolDescripcion, rol_created_at
-                        from rol;";
+                        $query = "select horCocId, horCocHoraInicio, horCocHoraFin, horCocFecha
+                        from horario_cocinero;";
                         
                         $sql = mysqli_query($connect, $query);
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>                       
                             <tr>
-                                <td><?php echo $row["rolId"]; ?></td>  
-                                <td><?php echo $row["rolNombre"]; ?></td>  
-                                <td><?php echo $row["rolDescripcion"]; ?></td>  
-                                <td><?php echo $row["rol_created_at"]; ?></td>  
-                                <td><a href="actualizar.php?id=<?php echo $row["rolId"]; ?>">Actualizar</a></td>  
-                                <td><a href="borrar.php?id=<?php echo $row["rolId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                <td><?php echo $row["horCocId"]; ?></td>  
+                                <td><?php echo $row["horCocHoraInicio"]; ?></td>  
+                                <td><?php echo $row["horCocHoraFin"]; ?></td>  
+                                <td><?php echo $row["horCocFecha"]; ?></td>  
+                                <td><a href="actualizar.php?id=<?php echo $row["horCocId"]; ?>">Actualizar</a></td>  
+                                <td><a href="borrar.php?id=<?php echo $row["horCocId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
                         <?php } ?>
                     </tbody>

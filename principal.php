@@ -16,7 +16,7 @@
             <br>
             <a href="Controlador.php?ruta=listarRol&pag=0">Listar Rol</a>
             <br>
-            <a href="">Agregar Rol</a>
+            <a href="Controlador.php?ruta=mostrarInsertarRol">Agregar Rol</a>
         </div>
         <div class="gestion">Menu de Operaciones de las Tablas X_1
             <br>

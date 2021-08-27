@@ -22,3 +22,7 @@ from rol where rolId = 1;
 /* ------------------------------------------------ */
 delete from rol 
 where rolId = 3;
+
+/* ---------------------- Actualizar ------------------------ */
+update rol set rolNombre='Coconi',rolDescripcion='Chef',rolEstado='2',rolUsuSesion=null,
+rol_created_at='2021-08-12 09:22:00',rol_updated_at='2021-08-12 09:22:00' where rolId=1;
