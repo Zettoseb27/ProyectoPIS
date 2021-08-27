@@ -1,3 +1,4 @@
+use proyecto; 
 select * from horario;
 /* ---------------------------------------------------------- */
 insert into horario values 
