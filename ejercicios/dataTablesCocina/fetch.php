@@ -11,7 +11,7 @@ if(isset($_SESSION['mensaje'])) {//isset()
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Listar Libros</title>
+        <title>cocina</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -24,11 +24,10 @@ if(isset($_SESSION['mensaje'])) {//isset()
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Id</th> 
-                            <th>Mesa</th> 
-                            <th>Plato</th> 
-                            <th>Adicional</th> 
-                            <th>Postre</th> 
+                            <th>cociId</th> 
+                            <th>Estado</th> 
+                            <th>Orden</th> 
+                            <th>Observacion</th> 
                             <th>Edit</th> 
                             <th>Delete</th> 
                         </tr>
@@ -38,8 +37,8 @@ if(isset($_SESSION['mensaje'])) {//isset()
                         include './config.php';
                         $query = "select Co.cociId, 
                         Me.mesNumeroMesa,
-                        Tp.tipPlaPlato,Tp.tipPlaAdicional,Tp.tipPlaPostre
-                        from cocina Co
+                        cociId,cociOrden,cociEstado,cociObservacion
+                        from cocina 
                         inner join mesa Me on cociId = mesId
                         inner join tipo_plato Tp on cociId = tipPlaId;";
                         $sql = mysqli_query($connect, $query);
@@ -47,10 +46,9 @@ if(isset($_SESSION['mensaje'])) {//isset()
                             ?>                       
                             <tr>
                                 <td><?php echo $row["cociId"]; ?></td>  
-                                <td><?php echo $row["mesNumeroMesa"]; ?></td>  
-                                <td><?php echo $row["tipPlaPlato"]; ?></td>  
-                                <td><?php echo $row["tipPlaAdicional"]; ?></td>  
-                                <td><?php echo $row["tipPlaPostre"]; ?></td>  
+                                <td><?php echo $row["cociOrden"]; ?></td>  
+                                <td><?php echo $row["cociObservacion"]; ?></td>  
+                                <td><?php echo $row["cociEstado"]; ?></td>  
                                 <td><a href= "actualizar.php? id=<?php echo $row["cociId"]; ?>">Actualizar</a></td>  
                                 <td><a href="borrar.php?Id=<?php echo $row["cociId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
