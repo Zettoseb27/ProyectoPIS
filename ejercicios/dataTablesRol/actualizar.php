@@ -1,7 +1,8 @@
-<?php
-echo "<pre>";
+ <?php
+/* echo "<pre>";
 print_r($_GET);
-echo "</pre>";
+echo "</pre>"; */
+
 
 include 'config.php';
 
@@ -9,12 +10,12 @@ include 'config.php';
 if (isset($_POST['Submit'])) {
 
     $id = $_POST['id'];
-    $isbn = $_POST['isbn'];
-    $titulo = $_POST['titulo'];
-    $autor = $_POST['autor'];
-    $precio = $_POST['precio'];
+    $Id = $_POST['Id'];
+    $Nombre = $_POST['Nombre'];
+    $Descripcion = $_POST['Descripcion'];
+    $Creacion = $_POST['Creacion'];
     
-    $consulta="update libros set isbn='$isbn', titulo='$titulo', autor='$autor', precio=$precio where isbn='$id'";
+    $consulta="update rol set rolId='$Id', rolNombre='$Nombre', rolDescripcion='$Descripcion', rol_created_at='$Creacion' where rolId='$id'";
     
     $result=mysqli_query($connect, $consulta);
     
@@ -24,15 +25,15 @@ if (isset($_POST['Submit'])) {
 
 $id = $_GET['id'];
 
-$query = "select * from libros where isbn=$id";
+$query = "select * from rol where rolId=$id";
 $result = mysqli_query($connect, $query);
 
 while ($row = mysqli_fetch_array($result)) {
 
-    $isbn = $row['isbn'];
-    $titulo = $row['titulo'];
-    $autor = $row['autor'];
-    $precio = $row['precio'];
+    $Id = $row['rolId'];
+    $Nombre = $row['rolNombre'];
+    $Descripcion = $row['rolDescripcion'];
+    $Creacion = $row['rol_created_at'];
 }
 ?>
 <html>
@@ -55,20 +56,20 @@ while ($row = mysqli_fetch_array($result)) {
                         </div>
                         <div class="form-group">
                             <label>ISBN</label>
-                            <input type="text" name="isbn" class="form-control" value="<?php echo $isbn; ?>" readonly="readonly">
+                            <input type="text" name="Id" class="form-control" value="<?php echo $Id; ?>" readonly="readonly">
 
                         </div>
                         <div class="form-group">
-                            <label>Titulo</label>
-                            <input type="text" name="titulo" class="form-control" value="<?php echo $titulo; ?>">
+                            <label>Nombre</label>
+                            <input type="text" name="Nombre" class="form-control" value="<?php echo $Nombre; ?>">
                         </div>
                         <div class="form-group">
-                            <label>Autor</label>
-                            <input type="text" name="autor" class="form-control" value="<?php echo $autor; ?>">
+                            <label>Descripcion</label>
+                            <input type="text" name="Descripcion" class="form-control" value="<?php echo $Descripcion; ?>">
                         </div>
                         <div class="form-group">
-                            <label>Precio</label>
-                            <input type="text" name="precio" class="form-control" value="<?php echo $precio; ?>">
+                            <label>Creacion</label>
+                            <input type="text" name="Creacion" class="form-control" value="<?php echo $Creacion; ?>"readonly="readonly">
                         </div>
                         <div class="form-group">
                             <input type="submit" name="Submit" value="Update" class="btn btn-primary btn-block" name="update">    

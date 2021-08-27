@@ -30,3 +30,5 @@ SELECT * FROM usuario_s;
 select usuId, usuLogin, usu_created_at
 from usuario_s
 where usuId = 1;
+
+
