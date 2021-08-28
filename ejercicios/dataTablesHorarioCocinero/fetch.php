@@ -25,10 +25,7 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <thead>
                         <tr>
                             <th>Id</th> 
-<<<<<<< HEAD
-=======
                             <th>Codigo Cocinero</th>
->>>>>>> develop
                             <th>Hora Inicio</th> 
                             <th>Horario Fin</th> 
                             <th>Fecha</th> 
@@ -39,25 +36,17 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <tbody>
                         <?php
                         include './config.php';
-<<<<<<< HEAD
-                        $query = "select horCocId, horCocHoraInicio, horCocHoraFin, horCocFecha
-                        from horario_cocinero;";
-=======
                         $query = "select hc.horCocId, co.cocIdCodigoCocinero, hc.horCocHoraInicio, hc.horCocHoraFin, hc.horCocFecha
                         from horario_cocinero hc
                         join cocinero co on hc.horCocId = co.cocId ;";
->>>>>>> develop
+
                         
                         $sql = mysqli_query($connect, $query);
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>                       
                             <tr>
-<<<<<<< HEAD
-                                <td><?php echo $row["horCocId"]; ?></td>  
-=======
                                 <td><?php echo $row["horCocId"]; ?></td> 
                                 <td><?php echo $row["cocIdCodigoCocinero"]; ?></td>  
->>>>>>> develop
                                 <td><?php echo $row["horCocHoraInicio"]; ?></td>  
                                 <td><?php echo $row["horCocHoraFin"]; ?></td>  
                                 <td><?php echo $row["horCocFecha"]; ?></td>  
