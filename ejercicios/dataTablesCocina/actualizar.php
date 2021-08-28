@@ -34,10 +34,11 @@ $result = mysqli_query($connect, $query);
 
 while ($row = mysqli_fetch_array($result)) {
 
-    $cociId = $row['cociId'];
-    $cociOrden = $row['cociOrden'];
-    $cociEstado = $row['cociEstado'];
-    $cociObservacion = $row['cociObservacion'];
+    $Id = $row['cociId'];
+    $Mesa = $row['mesNumeroMesa'];
+    $Plato = $row['tipPlaPlato'];
+    $Adicional = $row['tipPlaAdicional'];
+    $Postre = $row['tipPlaPostre'];
 
 }
 ?>
@@ -60,22 +61,26 @@ while ($row = mysqli_fetch_array($result)) {
                             <input type="hidden" name="id" class="form-control" value="<?php echo $id; ?>">
                         </div>
                         <div class="form-group">
-                            <label>cociId</label>
+                            <label>Id</label>
                             <input type="text" name="Id" class="form-control" value="<?php echo $Id; ?>" readonly="readonly">
 
                         </div>
                         <div class="form-group">
-                            <label>cociOrden</label>
-                            <input type="text" name="Mesa" class="form-control" value="<?php echo $Mesa; ?>"readonly="readonly">
+                            <label>Numero Mesa</label>
+                            <input type="text" name="NumeroMesa" class="form-control" value="<?php echo $Mesa; ?>"readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label>cociEstado</label>
+                            <label>Plato</label>
                             <input type="text" name="Plato" class="form-control" value="<?php echo $Plato; ?>"
                             readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label>cociObservacion</label>
+                            <label>Adicional</label>
                             <input type="text" name="Adicional" class="form-control" value="<?php echo $Adicional; ?>"readonly="readonly">
+                        </div>
+                        <div class="form-group">
+                            <label>Postre</label>
+                            <input type="text" name="Postre" class="form-control" value="<?php echo $Postre; ?>"readonly="readonly">
                         </div>
                         <div class="form-group">
                             <input type="submit" name="Submit" value="Update" class="btn btn-primary btn-block" name="update">    

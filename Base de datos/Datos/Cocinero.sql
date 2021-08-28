@@ -12,3 +12,9 @@ from cocinero ;
 select cocId, cocIdCodigoCocinero, cocCreated_at
 from cocinero 
 where cocId = 1;
+
+select cocId, cocIdCocinero, cocIdCodigoCocinero, cocEstado
+from cocinero;
+
+/* ------------------------ */
+update cocinero set CodigoCocinero= 123455 where cocId=2;
