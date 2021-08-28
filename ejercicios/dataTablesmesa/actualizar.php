@@ -7,11 +7,11 @@ if (isset($_POST['Submit'])) {
 
     $id = $_POST['id'];
     $Id = $_POST['Id'];
-    $CantidadComenzales = $_POST['CantidadComensales'];
+    $CantidadComensales = $_POST['CantidadComensales'];
     $NumeroMesa = $_POST['NumeroMesa'];
     $Estado = $_POST['Estado'];
     
-    $consulta="update mesa set mesNumeroMesa=´$NumeroMesa', mesCantidadComensales ='$CantidadComensales', mesEstado='$Estado' where mesId='$id'"; 
+    $consulta="update mesa set mesNumeroMesa='$NumeroMesa', mesCantidadComensales ='$CantidadComensales', mesEstado='$Estado' where mesId='$id'"; 
     
     $result=mysqli_query($connect, $consulta);
     
