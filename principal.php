@@ -18,11 +18,11 @@
             <br>
             <a href="Controlador.php?ruta=mostrarInsertarRol">Agregar Rol</a>
         </div>
-        <div class="gestion">Menu de Operaciones de las Tablas X_1
+        <div class="gestion">Menu de Operaciones de las Tablas Mesa
             <br>
-            <a href="">Listar X_1</a>
+            <a href="Controlador.php?ruta=listarMesa&pag=0">Listar Mesa</a>
             <br>
-            <a href="">Agregar X_1</a>
+            <a href="">Agregar Mesa</a>
         </div>
         <div class="gestion">Menu de Operaciones de las Tablas  X_2 
             <br>
