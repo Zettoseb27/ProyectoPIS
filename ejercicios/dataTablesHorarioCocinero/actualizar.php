@@ -24,12 +24,23 @@ if (isset($_POST['Submit'])) {
 
 $id = $_GET['id'];
 
+<<<<<<< HEAD
 $query = "select * from horario_cocinero where horCocId=$id";
+=======
+$query = "select hc.horCocId, co.cocIdCodigoCocinero, hc.horCocHoraInicio, hc.horCocHoraFin, hc.horCocFecha
+from horario_cocinero hc
+join cocinero co on hc.horCocId = co.cocId 
+where hc.horCocId = $id;";
+>>>>>>> develop
 $result = mysqli_query($connect, $query);
 
 while ($row = mysqli_fetch_array($result)) {
 
     $isbn = $row['horCocId'];
+<<<<<<< HEAD
+=======
+    $codigo = $row['cocIdCodigoCocinero'];
+>>>>>>> develop
     $FechaInicio = $row['horCocHoraInicio'];
     $FechaFin = $row['horCocHoraFin'];
     $Fecha = $row['horCocFecha'];
@@ -59,6 +70,14 @@ while ($row = mysqli_fetch_array($result)) {
 
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
+=======
+                            <label>Codigo Cocinero</label>
+                            <input type="text" name="Codigo Cocinero" class="form-control" value="<?php echo $codigo; ?>" readonly="readonly">
+
+                        </div>
+                        <div class="form-group">
+>>>>>>> develop
                             <label>Fecha Inicio</label>
                             <input type="text" name="FechaInicio" class="form-control" value="<?php echo $FechaInicio; ?>" readonly="readonly">
                         </div>
