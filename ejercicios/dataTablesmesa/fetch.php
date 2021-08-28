@@ -11,7 +11,7 @@ if(isset($_SESSION['mensaje'])) {//isset()
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Numero Mesa </title>
+        <title> Mesa </title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -24,9 +24,9 @@ if(isset($_SESSION['mensaje'])) {//isset()
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th>mesId</th> 
-                            <th>NumeroMesa</th>
-                            <th>CantidadComenzales</th> 
+                            <th>Id</th> 
+                            <th>Numero Mesa</th>
+                            <th>Cantidad Comensales</th> 
                             <th>Estado</th> 
                             <th>Edit</th> 
                             <th>Delete</th> 
@@ -35,19 +35,19 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <tbody>
                         <?php
                         include './config.php';
-                        $query = "select mesIdmesNumeroMesa, mesCantidadComenzales, mesEstado ,pl.plaPrecio, pl.plaEstado
-                        from mesa
+                        $query = " select mesId,mesNumeroMesa, mesCantidadComensales, mesEstado 
+                        from mesa;";
                         
                         $sql = mysqli_query($connect, $query);
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>                       
                             <tr>
-                                <td><?php echo $row["mesId"]; ?></td>  
+                                <td><?php echo $row["mesId"]; ?></td>
                                 <td><?php echo $row["mesNumeroMesa"]?></td>
-                                <td><?php echo $row["mesCantidadComenzales"]; ?></td>  
+                                <td><?php echo $row["mesCantidadComensales"]; ?></td>  
                                 <td><?php echo $row["mesEstado"]; ?></td> 
-                                <td><a href="actualizar.php?id=<?php echo $row["plaId"]; ?>">Actualizar</a></td>  
-                                <td><a href="borrar.php?id=<?php echo $row["plaId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                <td><a href="actualizar.php?id=<?php echo $row["mesId"]; ?>">Actualizar</a></td>  
+                                <td><a href="borrar.php?id=<?php echo $row["mesId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
                         <?php } ?>
                     </tbody>

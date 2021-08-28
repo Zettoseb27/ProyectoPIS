@@ -4,7 +4,7 @@ include("config.php");
 
 $id = $_GET['id'];
 
-$query = "delete from mesa where tipPlaId = $id";
+$query = "delete from mesa where mesId = $id";
 
 $result = mysqli_query($connect, $query);
 
