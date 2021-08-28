@@ -10,12 +10,12 @@ include 'config.php';
 if (isset($_POST['Submit'])) {
 
     $id = $_POST['id'];
-    $cocId = $_POST['cocId'];
-    $cocIdCocinero = $_POST['Idcocinero'];
-    $cocCodigoCocinero = $_POST['CodigoCocinero'];
-    $cocEstado= $_POST['Estado'];
+    $Id = $_POST['Id'];
+    $CodigoCocinero = $_POST['CodigoCocinero'];
+    $Estado = $_POST['Estado'];
+    $Creacion= $_POST['Creacion'];
     
-    $consulta="update rol set cocId='$cocId', cocIdCocinero='$IdCocinero', cocCodigoCocinero='$CodigoCocinero', cocEstado='$Estado' where rolId='$id'";
+    $consulta="update cocinero set cocIdCodigoCocinero='$CodigoCocinero',cocEstado='$Estado' where cocId='$id'";
     
     $result=mysqli_query($connect, $consulta);
     
@@ -25,15 +25,15 @@ if (isset($_POST['Submit'])) {
 
 $id = $_GET['id'];
 
-$query = "select * from cocinero where rolId=$id";
+$query = "select * from cocinero where cocId=$id";
 $result = mysqli_query($connect, $query);
 
 while ($row = mysqli_fetch_array($result)) {
 
-    $cocId = $row['cocId'];
-    $CodigoCocinero = $row['cocCodigoCocinero'];
-    $IdCocinero= $row['cocIdCocinero'];
-    $Estado = $row['cocEstado '];
+    $Id = $row['cocId'];
+    $CodigoCocinero = $row['cocIdCodigoCocinero'];
+    $Creacion= $row['cocCreated_at'];
+    $Estado = $row['cocEstado'];
 }
 ?>
 <html>
@@ -55,24 +55,20 @@ while ($row = mysqli_fetch_array($result)) {
                             <input type="hidden" name="id" class="form-control" value="<?php echo $id; ?>">
                         </div>
                         <div class="form-group">
-                            <label>ISBN</label>
+                            <label>Id</label>
                             <input type="text" name="Id" class="form-control" value="<?php echo $Id; ?>" readonly="readonly">
 
                         </div>
                         <div class="form-group">
-                            <label>cocId</label>
-                            <input type="text" name="Nombre" class="form-control" value="<?php echo $Nombre; ?>">
-                        </div>
-                        <div class="form-group">
-                            <label>CodigoCocinero</label>
-                            <input type="text" name="Descripcion" class="form-control" value="<?php echo $Descripcion; ?>">
-                        </div>
-                        <div class="form-group">
-                            <label>IdCocinero</label>
-                            <input type="text" name="Creacion" class="form-control" value="<?php echo $Creacion; ?>"readonly="readonly">
+                            <label>Codigo Cocinero</label>
+                            <input type="text" name="CodigoCocinero" class="form-control" value="<?php echo $CodigoCocinero; ?>">
                         </div>
                         <div class="form-group">
                             <label>Estado</label>
+                            <input type="text" name="Estado" class="form-control" value="<?php echo $Estado; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Creacion</label>
                             <input type="text" name="Creacion" class="form-control" value="<?php echo $Creacion; ?>"readonly="readonly">
                         </div>
                         <div class="form-group">

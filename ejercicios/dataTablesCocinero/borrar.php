@@ -4,7 +4,7 @@ include("config.php");
 
 $id = $_GET['id'];
 
-$query = "delete from cocinero where rolId=$id";
+$query = "delete from cocinero where cocId=$id";
 
 $result = mysqli_query($connect, $query);
 

@@ -25,9 +25,9 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <thead>
                         <tr>
                             <th>cocId</th> 
-                            <th>cocIdcocinero</th> 
                             <th>CodigoCocinero</th> 
-                            <th>Estado</th> 
+                            <th>Estado</th>
+                            <th>Creacion</th> 
                             <th>Edit</th> 
                             <th>Delete</th> 
                         </tr>
@@ -35,19 +35,19 @@ if(isset($_SESSION['mensaje'])) {//isset()
                     <tbody>
                         <?php
                         include './config.php';
-                        $query = "select cocId, cocIdCocinero, cocCodigoCocinero, cocEstado
-                        from rol;";
+                        $query = "select cocId, cocIdCocinero, cocIdCodigoCocinero, cocEstado,cocCreated_at
+                        from cocinero;";
                         
                         $sql = mysqli_query($connect, $query);
                         while ($row = mysqli_fetch_array($sql)) {
                             ?>                       
                             <tr>
                                 <td><?php echo $row["cocId"]; ?></td>  
-                                <td><?php echo $row["cocIdCocinero"]; ?></td>  
-                                <td><?php echo $row["cocCodigoCocinero"]; ?></td>  
+                                <td><?php echo $row["cocIdCodigoCocinero"]; ?></td>  
                                 <td><?php echo $row["cocEstado"]; ?></td>  
-                                <td><a href="actualizar.php?id=<?php echo $row["rolId"]; ?>">Actualizar</a></td>  
-                                <td><a href="borrar.php?id=<?php echo $row["rolId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                <td><?php echo $row["cocCreated_at"]; ?></td> 
+                                <td><a href="actualizar.php?id=<?php echo $row["cocId"]; ?>">Actualizar</a></td>  
+                                <td><a href="borrar.php?id=<?php echo $row["cocId"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
                         <?php } ?>
                     </tbody>
