@@ -52,8 +52,8 @@ if(isset($_SESSION['listaDeOrden'])){
                     <td><?php echo $listaDeOrden[$i]-> tipPlaAdicional; ?></td>   
                     <td><?php echo $listaDeOrden[$i]-> tipPlaBebida; ?></td>  
                     <td><?php echo $listaDeOrden[$i]-> tipPlaPostre; ?></td> 
-                    <td><a href="Controlador.php?ruta=actualizarLibro&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarLibro&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><a href="Controlador.php?ruta=actualizarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;

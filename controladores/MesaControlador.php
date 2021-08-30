@@ -6,7 +6,7 @@
             $this->datos = $datos;
             $this->MesaControlador();
          }
-         public function RolControlador() {
+         public function MesaControlador() {
             switch ($this->datos['ruta']) {
                 case 'listarMesa':
                     $this->listarMesa();
@@ -25,6 +25,14 @@
                     break;
             }
          }
-    
+         public function listarMesa() {
+            $gestarMesa = new MesaDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $registroMesa = $gestarMesa -> seleccionarTodos();
+            session_start();
+            //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS INPRINA O UTILICE //
+            $_SESSION['listarDeMesa'] = $registroMesa;
+            header("location:principal.php?contenido=vistas/vistasMesa/listarDTRegistroMesa.php");
+         }
 
+        }
 ?>

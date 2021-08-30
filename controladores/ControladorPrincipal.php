@@ -5,6 +5,7 @@
      include_once PATH.'controladores/PlatoControlador.php'; 
      include_once PATH.'controladores/MenuControlador.php'; 
      include_once PATH.'controladores/PersonaControlador.php'; 
+     include_once PATH.'controladores/MesaControlador.php'; 
      class ControladorPrincipal{
         private $datos = array();
         public function __construct() {
@@ -81,6 +82,16 @@
                 case 'confirmaActualizarMenu':
                     $this->confirmaActualizarMenu();
                     break;
+                /* ---------  MESA -------------- */
+                case 'listarMesa':
+                    $this->listarMesa();
+                    break;
+                case 'actualizarMesa':
+                    $this->actualizarMesa();
+                    break;
+                case 'confirmaActualizarMesa':
+                    $this->confirmaActualizarMesa();
+                    break;
                 /* ------------- TIPO DE ORDEN ------- */
                 case 'listarOrden':
                     $this->listarOrden();
@@ -148,6 +159,16 @@
         }
         public function confirmaActualizarMenu() {
             $MenuControlador = new MenuControlador ($this->datos);
+        }
+        /* ------------------------- MESA ----------------------------- */
+        public function listarMesa() {
+            $MesaControlador = new MesaControlador($this->datos); 
+        }
+        public function actualizarMesa() {
+            $MesaControlador = new MesaControlador ($this->datos);
+        }
+        public function confirmaActualizarMesa() {
+            $MesaControlador = new MesaControlador ($this->datos);
         }
          /* ------------------------- ORDEN ----------------------------- */
         public function listarOrden() {
