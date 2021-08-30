@@ -1,11 +1,3 @@
-<?php
-     if (isset($_SESSION['mensaje'])) {
-        $mensaje = $_SESSION['mensaje'];
-        echo "<script languaje='javascript'>alert('$mensaje')</script>";
-        unset($_SESSION['mensaje']);
-    } 
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,9 +12,9 @@
     <body>
 
     <?php
-     if (isset($_SESSION['listaDeRol'])) {
-         $listaDeRol = $_SESSION['listaDeRol'];
-         unset($_SESSION['listaDeRol']);
+     if (isset($_SESSION['listaDePlato'])) {
+         $listaDePlato = $_SESSION['listaDePlato'];
+         unset($_SESSION['listaDePlato']);
      }
     ?>
 
@@ -30,9 +22,9 @@
                     <thead>
                         <tr>
                             <th>Id</th> 
-                            <th>Nombre</th> 
                             <th>Descripcion</th> 
-                            <th>Creacion</th> 
+                            <th>Precion</th> 
+                            <th>Estado</th> 
                             <th>Edit</th> 
                             <th>Delete</th> 
                         </tr>
@@ -40,21 +32,21 @@
                     <tbody>
                         <?php
                         $i = 0;
-                        foreach ($listaDeRol as $key => $value){
+                        foreach ($listaDePlato as $key => $value){
                             ?>                       
                             <tr>
-                                <td><?php echo $listaDeRol[$i] -> rolId; ?></td>  
-                                <td><?php echo $listaDeRol[$i] -> rolNombre; ?></td>  
-                                <td><?php echo $listaDeRol[$i] -> rolDescripcion; ?></td>  
-                                <td><?php echo $listaDeRol[$i] -> rol_created_at; ?></td>  
+                                <td><?php echo $listaDePlato[$i] -> plaId; ?></td>  
+                                <td><?php echo $listaDePlato[$i] -> plaDescripcion; ?></td>  
+                                <td><?php echo $listaDePlato[$i] -> plaPrecio; ?></td>  
+                                <td><?php echo $listaDePlato[$i] -> plaEstado; ?></td>  
                               
-                                <td><a href="Controlador.php?ruta=actualizarRol&idAct=<?php echo $listaDeRol[$i] -> rolId; ?>">Actualizar</a></td>  
-                                <td><a href="Controlador.php?ruta=eliminarRol&idAct=<?php echo $listaDeRol[$i] -> rolId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                <td><a href="Controlador.php?ruta=actualizarPlato&idAct=<?php echo $listaDePlato[$i] -> plaId; ?>">Actualizar</a></td>  
+                                <td><a href="Controlador.php?ruta=eliminarPlato&idAct=<?php echo $listaDePlato[$i] -> plaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                             </tr>             
                         <?php 
                         $i++;
                         }
-                        $listaDeRol = null;
+                        $listaDePlato = null;
                         ?>
                     </tbody>
                 </table>

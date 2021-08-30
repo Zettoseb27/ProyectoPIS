@@ -1,14 +1,14 @@
 <?php
-     include_once PATH. "modelos/modeloOrden/OrdenDAO.php";
+     include_once PATH. 'modelos/modeloOrden/OrdenDAO.php';
      class OrdenControlador {
          private $datos;
          public function __construct($datos) {
             $this->datos = $datos;
-            $this->ordenControlador();
+            $this->OrdenControlador();
          }
-         public function ordenControlador() {
+         public function OrdenControlador() {
             switch ($this->datos['ruta']) {
-                case 'ListarOrden': // provisionalmente para trabajar con datatables
+                case 'listarOrden': // provisionalmente para trabajar con datatables
                     $this->listarOrden();
                     break;
             }
@@ -16,7 +16,6 @@
          public function listarOrden() {
             $gestarOrden = new OrdenDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
             $registroOrden = $gestarOrden -> seleccionarTodos();
-
             session_start();
             //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS INPRINA O UTILICE //
             $_SESSION['listaDeOrden'] = $registroOrden;
