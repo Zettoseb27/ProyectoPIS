@@ -1,7 +1,6 @@
 <?php
-     
-     include_once '../../modelos/ConstantesConexion.php';
-     include_once PATH."controladores/ControladorPrincipal.php";
+     include_once "../../modelos/ConstantesConexion.php";
+     include_once PATH."modelos/ConBdMysql.php";
 
      class OrdenDAO extends ConBdMySql {
         public function __construct ($servidor, $base, $loginBD, $passwordBD) {

@@ -16,21 +16,18 @@
 	
 	<body>
 <?php
-if(isset($_SESSION['listaDeOrden'])){
+if(isset($_SESSION['listarTipoPlato'])){
 	
-	 $listaDeOrden=$_SESSION['listaDeOrden'];
-	 unset($_SESSION['listaDeOrden']);
+	 $listarTipoPlato=$_SESSION['listarTipoPlato'];
+	 unset($_SESSION['listarTipoPlato']);
 	
 }
 ?>
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Plato</th> 
-                <th>Valor Total</th> 
-                <th>Observacion</th> 
-                <th>Descripcion</th> 
+                <th>Id</th> 
+                <th>Tipo de Plato</th> 
                 <th>Adicional</th> 
                 <th>Bebida</th> 
                 <th>Postre</th> 
@@ -41,24 +38,21 @@ if(isset($_SESSION['listaDeOrden'])){
         <tbody>
             <?php
             $i = 0;
-            foreach ($listaDeOrden as $key => $value) {
+            foreach ($listarTipoPlato as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeOrden[$i]-> ordId; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> tipPlaPlato; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> ordvalorTotal; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> menObservacion; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> plaDescripcion; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> tipPlaAdicional; ?></td>   
-                    <td><?php echo $listaDeOrden[$i]-> tipPlaBebida; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> tipPlaPostre; ?></td> 
-                    <td><a href="Controlador.php?ruta=actualizarLibro&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarLibro&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><?php echo $listarTipoPlato[$i]->tipPlaId; ?></td>  
+                    <td><?php echo $listarTipoPlato[$i]->tipPlaPlato; ?></td>  
+                    <td><?php echo $listarTipoPlato[$i]->tipPlaAdicional; ?></td>  
+                    <td><?php echo $listarTipoPlato[$i]->tipPlaBebida; ?></td>  
+                    <td><?php echo $listarTipoPlato[$i]->tipPlaPostre; ?></td>   
+                    <td><a href="Controlador.php?ruta=actualizarTipoPlato&idAct=<?php echo $listarTipoPlato[$i]->tipPlaId; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarLibro&idAct=<?php echo $listarTipoPlato[$i]->tipPlaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
             }
-            $listaDeOrden=null;
+            $listarTipoPlato=null;
             ?>
         </tbody>
     </table>
