@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="vendor/autoload.php" colors="true">
 <testsuite name="Test directory">
-<directory>./tests/testsRolDAO</directory>
+<directory>./tests/testRolDAO</directory>
 <directory>./tests/testHolaMundo</directory>
 <directory>./tests/testOperaciones</directory>
+<directory>./tests/testOrdenDAO</directory>
+<directory>./tests/testCalculadora</directory>
 </testsuite>
 </phpunit>

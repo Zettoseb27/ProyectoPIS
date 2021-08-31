@@ -143,9 +143,7 @@
             } catch (PDOException $pdoExc) {
                 return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
             }
-        
         }
-
     }
     use PHPUnit\Framework\TestCase;
     final class RolDAOTest extends TestCase{
@@ -156,27 +154,32 @@
         public function testSeleccionarTodos() {
             $this ->assertEmpty(!$this -> rol -> seleccionarTodos());
         }
-        public function testsSeleccionarID($dato = array(1)) {
+        public function testsSeleccionarID($dato = array(5)) {
             $realizado = $this -> rol -> seleccionarId($dato);
             $this->assertTrue(($realizado['exitoSeleccionId']));
         }
-        /* public function testInsertar($dato = array('rolId' => 10, 'rolNombre' => 'Proveedor', 'rolDescripcion'   => 'suministra los protuctos para el restaurante', 'rolEstado' => 1, 'rolUsuSesion'  => null,     'rol_created_at' => '2021-08-12 02:22:00', 'rol_updated_at' =>'2021-08-11 02:22:00')) {
+        public function testInsertar($dato = array('rolId' => 10, 'rolNombre' => 'Proveedor', 'rolDescripcion'   => 'suministra los protuctos para el restaurante', 'rolEstado' => 1, 'rolUsuSesion'  => null,     'rol_created_at' => '2021-08-12 02:22:00', 'rol_updated_at' =>'2021-08-11 02:22:00')) {
             $realizado =  $this -> rol -> insertar($dato);
             $this->assertTrue(($realizado["inserto"])); 
-        } */
+        } 
         public function testsActualizar($dato =array(array('rolId' => 9, 'rolNombre' => 'Proveedor', 'rolDescripcion'   => 'suministra los protuctos para el restaurante', 'rolEstado' => 1, 'rolUsuSesion'  => null,     'rol_created_at' =>'2021-09-12 03:22:00', 'rol_updated_at' =>'2021-09-10 04:25:00'))) {
         $realizado = $this->rol->actualizar($dato);
         $this->assertTrue(($realizado['actualizacion']));
         }
-        public function testEliminar($dato = array(1)) {
+        public function testEliminar($dato = array(10)) {
             $realizado = $this->rol->eliminar($dato);
             $this->assertTrue(($realizado['eliminar']));
         }
-
-
+        public function testEliminarLogico($dato = array(3)) {
+            $realizado = $this->rol->eliminadorLogico($dato);
+            $this->assertTrue(($realizado['actualizacion']));
+        }
+    
+        public function testHabilitar($dato = array(3)) {
+            $realizado = $this->rol->habilitar($dato);
+            $this->assertTrue(($realizado['actualizacion']));
+        }
     }
-
-
 ?> 
 
      
