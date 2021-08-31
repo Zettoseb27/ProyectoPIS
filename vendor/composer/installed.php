@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7a82bbed633dee69ff1f7edb8e2885f8d1303ab2',
+        'reference' => 'a0aff755a84456987059403f8eb584547ce66e47',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7a82bbed633dee69ff1f7edb8e2885f8d1303ab2',
+            'reference' => 'a0aff755a84456987059403f8eb584547ce66e47',
             'dev_requirement' => false,
         ),
         'doctrine/instantiator' => array(
@@ -149,12 +149,12 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-            'pretty_version' => '9.5.8',
-            'version' => '9.5.8.0',
+            'pretty_version' => '9.5.9',
+            'version' => '9.5.9.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
-            'reference' => '191768ccd5c85513b4068bdbe99bb6390c7d54fb',
+            'reference' => 'ea8c2dfb1065eb35a79b3681eee6e6fb0a6f273b',
             'dev_requirement' => true,
         ),
         'sebastian/cli-parser' => array(
