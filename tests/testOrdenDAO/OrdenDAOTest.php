@@ -103,9 +103,7 @@
                 } catch (PDOException $pdoExc) {
                     return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
                 }
-    
             }
-    
             public function eliminar($ordId = array()) {
                 $planConsulta = "delete from orden where ordId = :ordId;";
                 $eliminar = $this -> conexion -> prepare($planConsulta);
