@@ -148,7 +148,7 @@
     final class CocineroDAOTest extends TestCase{
         private $Cocinero;
         public function setUp(): void {
-            $this -> Cocinero = new RolDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+            $this -> Cocinero ;
         }
         public function testSeleccionarTodos() {
             $this ->assertEmpty(!$this -> Cocinero -> seleccionarTodos());
