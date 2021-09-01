@@ -157,7 +157,7 @@
             $realizado = $this -> Cocinero -> seleccionarId($dato);
             $this->assertTrue(($realizado['exitoSeleccionId']));
         }
-         /*public function testInsertar($dato = array('rolId' => 10, 'cocId' => 'Id', 'cocIdCocinero'   => 'Generar un codigo al mesero', 'cocEstado' => 1, 'cocCodigoCocinero'  => 550393,     'cocCreated_at' => '2021-08-12 02:22:00', 'cocUpdated_at' =>'2021-08-11 02:22:00')) {
+         /*public function testInsertar($dato = array('cocId' => 10, 'cocId' => 'Id', 'cocIdCocinero'   => 'Generar un codigo al mesero', 'cocEstado' => 1, 'cocCodigoCocinero'  => 550393,     'cocCreated_at' => '2021-08-12 02:22:00', 'cocUpdated_at' =>'2021-08-11 02:22:00')) {
             $realizado =  $this -> Cocinero -> insertar($dato);
             $this->assertTrue(($realizado["inserto"])); 
         }*/
