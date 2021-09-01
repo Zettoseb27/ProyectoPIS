@@ -40,8 +40,10 @@
                   
            }
            
-           public function seleccionarId($cocId) {
-                $consultar = "select cocId, cocIdCocinero, cocIdCodigoCocinero, cocCreated_at
+           public function seleccionarId ($cocId); {
+               
+            
+            $consultar = "select cocId, cocIdCocinero, cocIdCodigoCocinero, cocCreated_at
                 from cocinero where cocIdId = ?;";
                 $listar = $this -> conexion -> prepare($consultar);
                 $listar -> execute(array($cocId[0]));
@@ -58,7 +60,7 @@
            }
            public function insertar($registro) {
                 try {
-                    $consultar = "insert into rol values (:cocId, :cocIdCocinero, :cocIdCodigoCocinero, :cocEstado, :cocSesion, :cocCreated_at, :cocUsdated_at);";
+                    $consultar = "insert into Cocinero values (:cocId, :cocIdCocinero, :cocIdCodigoCocinero, :cocEstado, :cocSesion, :cocCreated_at, :cocUsdated_at);";
                     $insertar = $this -> conexion -> prepare($consultar);
                     $insertar -> bindParam("cocId", $registro['cocId']);
                     $insertar -> bindParam("cocIdCocinero", $registro['cocIdCocinero']);
