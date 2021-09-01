@@ -34,29 +34,31 @@
             public function seleccionarTodos(){
                $planConsulta = "select cocId, cocIdCocinero, cocIdCodigoCocinero, cocCreated_at
                from cocinero;";
-            
-             
-               }
-                  
-           }
-           
-           public function seleccionarId ($cocId); {
-               
-            
-            $consultar = "select cocId, cocIdCocinero, cocIdCodigoCocinero, cocCreated_at
-                from cocinero where cocIdId = ?;";
-                $listar = $this -> conexion -> prepare($consultar);
-                $listar -> execute(array($cocId[0]));
-                $registroEncontrado = array();
-                while ($registro = $listar -> fetch(PDO::FETCH_OBJ)) {
-                    $registroEncontrado[] = $registro;
-                }
+                $registroCocinero = $this->conexion->prepare($planConsulta);
+                $registroCocinero -> execute();
+                $listadoRegistroCocinero =array();
+                while ($registro = $registroCocinero->fetch(PDO::FETCH_OBJ)) {
+                $listadoRegistroCocinero[] = $registro;
+            }
                 $this->cierreBd();
-                if (!empty($registroEncontrado)) {
-                    return ['exitoSeleccionId' => true, 'registroEncontrado' => $registroEncontrado];
-                } else {
-                    return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
-                }
+                return $listadoRegistroCocinero;
+            }     
+           public function seleccionarId($cocId) {
+            $consulta = "select cocId, cocIdCodigoCocinero, cocCreated_at
+            from cocinero 
+            where cocId = ?;";
+            $listar = $this -> conexion -> prepare($consulta);
+            $listar -> execute(array($cocId[0]));
+            $registroEncontrado = array();
+            while ($registro = $listar -> fetch(PDO::FETCH_OBJ)) {
+                $registroEncontrado[] = $registro;
+            }
+            $this -> cierreBd();
+            if (!empty($registroEncontrado)) {
+                return ['exitoSeleccionId' => true, 'registroEncontrado' => $registroEncontrado];
+            } else {
+                return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
+            }
            }
            public function insertar($registro) {
                 try {
@@ -144,39 +146,34 @@
             }
         
         }
-
     }
-    use PHPUnit\Framework\TestCase;
-    final class CocineroDAOTest extends TestCase{
+        use PHPUnit\Framework\TestCase;
+        final class CocineroDAOtest extends TestCase{
         private $Cocinero;
         public function setUp(): void {
-            $this -> Cocinero ;
+            $this -> Cocinero = new CocineroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
         }
         public function testSeleccionarTodos() {
             $this ->assertEmpty(!$this -> Cocinero -> seleccionarTodos());
         }
-        public function testsSeleccionarID($dato = array(1)) {
+        public function testsSeleccionarID($dato = array(2)) {
             $realizado = $this -> Cocinero -> seleccionarId($dato);
             $this->assertTrue(($realizado['exitoSeleccionId']));
         }
-         /*public function testInsertar($dato = array('cocId' => 10, 'cocId' => 'Id', 'cocIdCocinero'   => 'Generar un codigo al mesero', 'cocEstado' => 1, 'cocCodigoCocinero'  => 550393,     'cocCreated_at' => '2021-08-12 02:22:00', 'cocUpdated_at' =>'2021-08-11 02:22:00')) {
+        /* public function testInsertar($dato = array('cocId' => 10, 'cocId' => 'Id', 'cocIdCocinero'   => 'Generar un codigo al mesero', 'cocEstado' => 1, 'cocCodigoCocinero'  => 550393,     'cocCreated_at' => '2021-08-12 02:22:00', 'cocUpdated_at' =>'2021-08-11 02:22:00')) {
             $realizado =  $this -> Cocinero -> insertar($dato);
             $this->assertTrue(($realizado["inserto"])); 
-        }*/
-        public function testsActualizar($dato =array(array('cocId' => 2, 'cocIdCocinero' => 'Generar un codigo al mesero', 'cocEstado'  => '1', 'cocCodigoCocinero' => 550393, 'cocCreated_at'  => '2021-08-12 02:22:00',   'cocUpdated_at' =>'2021-08-11 02:22:00))) {
+        } */
+        /*public function testsActualizar($dato =array(array('cocId' => 2, 'cocIdCocinero' => 'Generar un codigo al mesero', 'cocEstado'  => 1, 'cocCodigoCocinero' => 550393, 'cocCreated_at'  => '2021-08-12 02:22:00',   'cocUpdated_at' =>'2021-08-11 02:22:00'))) {
         $realizado = $this->Cocinero->actualizar($dato);
         $this->assertTrue(($realizado['actualizacion']));
-        }
+        } */
         public function testEliminar($dato = array(1)) {
             $realizado = $this->Cocinero->eliminar($dato);
             $this->assertTrue(($realizado['eliminar']));
         }
-
-
     }
-
-
-?> 
+?>
 
      
     

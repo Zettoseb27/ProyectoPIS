@@ -6,5 +6,6 @@
 <directory>./tests/testOperaciones</directory>
 <directory>./tests/testOrdenDAO</directory>
 <directory>./tests/testCalculadora</directory>
+<directory>./tests/testCocinero</directory>
 </testsuite>
 </phpunit>
