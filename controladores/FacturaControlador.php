@@ -1,5 +1,6 @@
 <?php
      include_once PATH.'modelos/modeloFactura/FacturaDAO.php'; 
+     include_once PATH.'modelos/modeloCodigoMesero/CodigoMeseroDAO.php'; 
      class FacturaControlador{
         private $datos;
         public function __construct($datos) {
@@ -11,6 +12,12 @@
                case 'listarFactura': // provisionalmente para trabajar con datatables
                    $this->listarFactura();
                    break;
+               case 'actualizarFactura':
+                     $this->actualizarFactura();
+                     break;
+               case 'confirmaActualizarFactura':
+                     $this->confirmaActualizarFactura();
+                     break;
            }
         }
         public function listarFactura() {
@@ -21,5 +28,26 @@
            $_SESSION['listarDeFactura'] = $registroFactura;
            header("location:principal.php?contenido=vistas/vistasFactura/listarDTRegistroFactura.php");
         }
+        public function actualizarFactura (){
+         $gestarFactura = new FacturaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+         $consultaDeFactura =$gestarFactura->seleccionarId(array($this->datos['idAct']));//Se consulta el libro para traer los datos.
+
+         $actualizarDatosFactura = $consultaDeFactura['registroEncontrado'][0];
+
+         /*                 * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
+         $gestarCodigoMesero = new CodigoMeseroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+         $registroCodigoMesero = $gestarCodigoMesero->seleccionarTodos();
+         /*                 * ************************************************************************* */
+         
+
+
+         session_start();
+         $_SESSION['actualizarDatosFactura'] = $actualizarDatosFactura;
+         $_SESSION['registroCodigoMesero'] = $registroCodigoMesero;
+
+
+         header("location:principal.php?contenido=vistas/vistasFactura/vistaActualizarFactura.php");	
+
+}
      }
 ?>

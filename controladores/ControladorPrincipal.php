@@ -7,7 +7,7 @@
      include_once PATH.'controladores/PersonaControlador.php'; 
      include_once PATH.'controladores/MesaControlador.php'; 
      include_once PATH.'controladores/CocinaControlador.php'; 
-    // include_once PATH. 'controladores/FacturaControlador.php'; 
+     include_once PATH. 'controladores/FacturaControlador.php'; 
 
      class ControladorPrincipal{
         private $datos = array();
@@ -100,7 +100,7 @@
                     $this->listarOrden();
                     break;
                 /* ---------  FACTURA -------------- */
-                /* case 'listarFactura':
+                case 'listarFactura':
                     $this->listarFactura();
                     break;
                 case 'actualizarFactura':
@@ -108,7 +108,7 @@
                     break;
                 case 'confirmaActualizarFactura':
                     $this->confirmaActualizarFactura();
-                    break; */
+                    break; 
                 /* ---------  COCINA -------------- */
                 case 'listarCocina':
                     $this->listarCocina();
@@ -198,7 +198,7 @@
             $OrdenControlador = new OrdenControlador ($this->datos);
         } 
         /* ------------------------- FACTURA ----------------------------- */
-       /* public function listarFactura() {
+        public function listarFactura() {
             $FacturaControlador = new FacturaControlador($this->datos); 
         }
         public function actualizarFactura() {
@@ -206,12 +206,12 @@
         }
         public function confirmaActualizarFactura() {
             $FacturaControlador = new FacturaControlador ($this->datos);
-        }    */
-        /* ------------------------- MESA ----------------------------- */
+        }    
+        /* ------------------------- COCINA ----------------------------- */
         public function listarCocina() {
             $CocinaControlador = new CocinaControlador($this->datos); 
         }
-        public function actualizarCocina() {
+        public function actualizarCocina() { 
             $CocinaControlador = new CocinaControlador ($this->datos);
         }
         public function confirmaActualizarCocina() {

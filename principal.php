@@ -27,11 +27,11 @@
             <a href="Controlador.php?ruta=mostrarInsertarPersona">Agregar Persona</a>
         </div>
         <!-- ------------------------------------- COCINA ------------------------------ -->
-        <div class="gestion">Menu de Operaciones de las Tablas Factura
+        <div class="gestion">Menu de Operaciones de las Tablas Cocina
             <br>
-            <a href="Controlador.php?ruta=listarCocina&pag=0">Listar Factura</a>
+            <a href="Controlador.php?ruta=listarCocina&pag=0">Listar Cocina</a>
             <br>
-            <a href="Controlador.php?ruta=mostrarInsertarCocina">Agregar Factura</a>
+            <a href="Controlador.php?ruta=mostrarInsertarCocina">Agregar Cocina</a>
         </div>
     <!-- ------------------------------------- TIPO DE PLATO ------------------------------ -->
         <div class="gestion">Menu de Operaciones de las Tablas Tipo de Plato
