@@ -43,9 +43,9 @@
          }
          public function confirmaActualizarRol() {
             $gestarRol = new RolDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
-            $actualizarRol = $gestarRol -> actualizar(array($this->datos));
+            $actualizarRol = $gestarRol -> actualizar(array($this->datos)); 
             session_start();
-            $_SESSION['mensaje'] = "Actualizacion realizada";
+            $_SESSION['mensaje'] = "Actualización realizada."; 
             header("location:Controlador.php?ruta=listarRol");
          }
          public function cancelarActualizarRol() {
@@ -56,7 +56,7 @@
          public function mostrarInsertarRol() {
             
             $gestarRol = new RolDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
-            $registroRol = $gestarRol -> seleccionarId();
+            $registroRol = $gestarRol -> seleccionarId(); 
             session_start();
             $_SESSION['registroRol'] = $registroRol;
             $registroRol = null;

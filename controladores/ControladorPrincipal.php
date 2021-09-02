@@ -8,6 +8,8 @@
      include_once PATH.'controladores/MesaControlador.php'; 
      include_once PATH.'controladores/CocinaControlador.php'; 
      include_once PATH. 'controladores/FacturaControlador.php'; 
+     include_once PATH. 'controladores/Usuario_sControlador.php'; 
+     
 
      class ControladorPrincipal{
         private $datos = array();
@@ -99,6 +101,12 @@
                 case 'listarOrden':
                     $this->listarOrden();
                     break;
+                case 'actualizarOrden':
+                    $this->actualizarOrden();
+                    break;
+                case 'confirmaActualizarOrden':
+                    $this->confirmaActualizarOrden();
+                    break;
                 /* ---------  FACTURA -------------- */
                 case 'listarFactura':
                     $this->listarFactura();
@@ -118,6 +126,13 @@
                     break;
                 case 'confirmaActualizarCocina':
                     $this->confirmaActualizarCocina();
+                    break;
+                /* ---------  ACCESO Y REGISTRO-------------- */
+                case 'gestionDeRegistro':
+                    $this->gestionDeRegistro();
+                    break;
+                case 'gestionDeAcceso':
+                    $this->gestionDeAcceso();
                     break;
             }
         }
@@ -196,7 +211,13 @@
          /* ------------------------- ORDEN ----------------------------- */
         public function listarOrden() {
             $OrdenControlador = new OrdenControlador ($this->datos);
-        } 
+        }
+        public function actualizarOrden() {
+            $OrdenControlador = new OrdenControlador ($this->datos);
+        }
+        public function confirmaActualizarOrden() {
+            $OrdenControlador = new OrdenControlador ($this->datos);
+        }
         /* ------------------------- FACTURA ----------------------------- */
         public function listarFactura() {
             $FacturaControlador = new FacturaControlador($this->datos); 
@@ -216,6 +237,13 @@
         }
         public function confirmaActualizarCocina() {
             $CocinaControlador = new CocinaControlador ($this->datos);
+        }
+        /* ------------------------- ACCESO Y REGISTRO  ----------------------------- */
+        public function gestionDeRegistro() {
+            $usuario_sControlador = new Usuario_sControlador($this->datos); 
+        }
+        public function gestionDeAcceso() { 
+            $usuario_sControlador = new Usuario_sControlador($this->datos);  
         }
      }
 ?>

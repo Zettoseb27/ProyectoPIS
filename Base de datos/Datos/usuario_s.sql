@@ -6,6 +6,8 @@ insert into usuario_s values (1,'zettoseb27@gmail.com','123456','null',1,'','201
 (3,'cvenus66@gmail.com','c123456','null',1,'','2018-05-29 11:48:38', '2018-06-08 15:18:53'),
 (4,'medejo@gmail.com','m123456','null',1,'','2018-05-29 11:48:38', '2018-06-08 15:18:53');
 
+insert into usuario_s values (15, 'cn@cn.com', 'd9840773233fa6b19fde8caf765402f5', NULL, 1, '', '2019-11-19 18:38:40', '2019-11-19 19:42:41');
+
 select usuId, usuLogin, usuPassword, usuUsuSesion,usuEstado from Usuario_s;
 
 INSERT INTO `usuario_s` (`usuId`, `usuLogin`, `usuPassword`, `usuUsuSesion`, `usuEstado`, `usuRemember_token`, `usu_created_at`, `usu_updated_at`) VALUES

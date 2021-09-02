@@ -1,3 +1,8 @@
+ <?php
+    echo "<pre>";
+    print_r($_SESSION['listaDeOrden']);
+    echo "</pre>"; 
+ ?>
 <!DOCTYPE html>
 <html>
     <head>

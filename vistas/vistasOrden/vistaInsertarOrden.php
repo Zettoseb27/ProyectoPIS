@@ -1,5 +1,5 @@
 <?php
-     echo "En construcción......";
-
-     header("location:principal.php?contenido=vistas/vistasOrden/listarDTRegistroOrden.php");
+     echo "<pre>";
+     print_r($_SESSION['registroCategoriasLibros']);
+     echo "</pre>"; 
 ?>
