@@ -26,6 +26,13 @@
             <br>
             <a href="Controlador.php?ruta=mostrarInsertarPersona">Agregar Persona</a>
         </div>
+        <!-- ------------------------------------- COCINA ------------------------------ -->
+        <div class="gestion">Menu de Operaciones de las Tablas Factura
+            <br>
+            <a href="Controlador.php?ruta=listarCocina&pag=0">Listar Factura</a>
+            <br>
+            <a href="Controlador.php?ruta=mostrarInsertarCocina">Agregar Factura</a>
+        </div>
     <!-- ------------------------------------- TIPO DE PLATO ------------------------------ -->
         <div class="gestion">Menu de Operaciones de las Tablas Tipo de Plato
             <br>
@@ -61,6 +68,13 @@
             <br>
             <a href="Controlador.php?ruta=mostrarInsertarOrden">Agregar Orden</a>
         </div>
+         <!-- ------------------------------------- FACTURA ------------------------------ -->
+        <div class="gestion">Menu de Operaciones de las Tablas Factura
+            <br>
+            <a href="Controlador.php?ruta=listarFactura&pag=0">Listar Factura</a>
+            <br>
+            <a href="Controlador.php?ruta=mostrarInsertarFactura">Agregar Factura</a>
+        </div>
         <div id="contenido">
             <br>
                 Zona de Resultados (Aqui la funcionalidad!!!)
@@ -75,4 +89,4 @@
         </div>
     </div>
 </body>
-</html> '
+</html> 

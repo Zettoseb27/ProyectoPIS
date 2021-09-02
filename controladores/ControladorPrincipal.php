@@ -6,6 +6,9 @@
      include_once PATH.'controladores/MenuControlador.php'; 
      include_once PATH.'controladores/PersonaControlador.php'; 
      include_once PATH.'controladores/MesaControlador.php'; 
+     include_once PATH.'controladores/CocinaControlador.php'; 
+    // include_once PATH. 'controladores/FacturaControlador.php'; 
+
      class ControladorPrincipal{
         private $datos = array();
         public function __construct() {
@@ -92,9 +95,29 @@
                 case 'confirmaActualizarMesa':
                     $this->confirmaActualizarMesa();
                     break;
-                /* ------------- TIPO DE ORDEN ------- */
+                /* ------------- ORDEN ------- */
                 case 'listarOrden':
                     $this->listarOrden();
+                    break;
+                /* ---------  FACTURA -------------- */
+                /* case 'listarFactura':
+                    $this->listarFactura();
+                    break;
+                case 'actualizarFactura':
+                    $this->actualizarFactura();
+                    break;
+                case 'confirmaActualizarFactura':
+                    $this->confirmaActualizarFactura();
+                    break; */
+                /* ---------  COCINA -------------- */
+                case 'listarCocina':
+                    $this->listarCocina();
+                    break;
+                case 'actualizarCocina':
+                    $this->actualizarCocina();
+                    break;
+                case 'confirmaActualizarCocina':
+                    $this->confirmaActualizarCocina();
                     break;
             }
         }
@@ -173,6 +196,26 @@
          /* ------------------------- ORDEN ----------------------------- */
         public function listarOrden() {
             $OrdenControlador = new OrdenControlador ($this->datos);
-        }    
+        } 
+        /* ------------------------- FACTURA ----------------------------- */
+       /* public function listarFactura() {
+            $FacturaControlador = new FacturaControlador($this->datos); 
+        }
+        public function actualizarFactura() {
+            $FacturaControlador = new FacturaControlador ($this->datos);
+        }
+        public function confirmaActualizarFactura() {
+            $FacturaControlador = new FacturaControlador ($this->datos);
+        }    */
+        /* ------------------------- MESA ----------------------------- */
+        public function listarCocina() {
+            $CocinaControlador = new CocinaControlador($this->datos); 
+        }
+        public function actualizarCocina() {
+            $CocinaControlador = new CocinaControlador ($this->datos);
+        }
+        public function confirmaActualizarCocina() {
+            $CocinaControlador = new CocinaControlador ($this->datos);
+        }
      }
 ?>
