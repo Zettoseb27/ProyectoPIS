@@ -97,12 +97,21 @@
                 case 'listarTipoPlato':
                     $this->listarTipoPlato();
                     break;
-                case 'actualizarTipoPlato':
-                    $this->actualizarTipoPlato();
+                case 'ActualizarTipoPlato':
+                    $this->ActualizarTipoPlato();   
                     break;
                 case 'confirmaActualizarTipoPlato':
                     $this->confirmaActualizarTipoPlato();
                     break;
+                case "cancelarActualizarTipoPlato":
+                $this->cancelarActualizarTipoPlato();  
+                    break;
+                case "mostrarInsertarTipoPlato":
+                $this->mostrarInsertarTipoPlato(); 
+                    break;
+                case "insertarTipoPlato":
+                $this->insertarTipoPlato(); 
+                    break;		
                 /* ------------- PLATO ------- */
                 case 'listarPlato':
                     $this->listarPlato();
@@ -188,7 +197,7 @@
                     $this->gestionDeRegistro();
                     break;
                 case 'gestionDeAcceso':
-                    $this->gestionDeAcceso();
+                    $this->gestionDeAcceso();  
                     break;
             }
         }
@@ -260,10 +269,19 @@
         public function listarTipoPlato() {
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
-        public function actualizarTipoPlato() {
+        public function ActualizarTipoPlato() {
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
         public function confirmaActualizarTipoPlato() {
+            $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
+        }
+        public function cancelarActualizarTipoPlato() {  
+            $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
+        }
+        public function mostrarInsertarTipoPlato() { 
+            $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
+        }
+        public function insertarTipoPlato() {  
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
          /* ------------------------- PLATO ----------------------------- */

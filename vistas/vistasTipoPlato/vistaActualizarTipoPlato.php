@@ -61,8 +61,8 @@ echo "<pre>"; */
                 </tr>              
                 <tr>            
                     <td>            
-                        <button type="submit" name="ruta" value="cancelarActualizarRol">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
-                        <button type="submit" name="ruta" value="confirmaActualizarRol">Actualizar Tipo Plato</button>
+                        <button type="submit" name="ruta" value="cancelarActualizarTipoPlato">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="confirmaActualizarTipoPlato">Actualizar Tipo Plato</button>
                     </td>
                 </tr>             
             </table>

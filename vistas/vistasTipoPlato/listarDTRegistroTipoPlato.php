@@ -1,3 +1,18 @@
+<?php
+    /*
+    echo "<pre>";
+    print_r($_SESSION['listarTipoPlato']);      
+    echo "</pre>"; 
+    */
+
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script languaje='javascript'>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -46,8 +61,8 @@ if(isset($_SESSION['listarTipoPlato'])){
                     <td><?php echo $listarTipoPlato[$i]->tipPlaAdicional; ?></td>  
                     <td><?php echo $listarTipoPlato[$i]->tipPlaBebida; ?></td>  
                     <td><?php echo $listarTipoPlato[$i]->tipPlaPostre; ?></td>   
-                    <td><a href="Controlador.php?ruta=actualizarTipoPlato&idAct=<?php echo $listarTipoPlato[$i]->tipPlaId; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarLibro&idAct=<?php echo $listarTipoPlato[$i]->tipPlaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><a href="Controlador.php?ruta=ActualizarTipoPlato&idAct=<?php echo $listarTipoPlato[$i]->tipPlaId; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarTipoPlato&idAct=<?php echo $listarTipoPlato[$i]->tipPlaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
