@@ -1,14 +1,18 @@
 <?php
-     include_once PATH.'controladores/RolControlador.php';
-     include_once PATH.'controladores/OrdenControlador.php'; 
-     include_once PATH.'controladores/TipoPlatoControlador.php'; 
-     include_once PATH.'controladores/PlatoControlador.php'; 
-     include_once PATH.'controladores/MenuControlador.php'; 
-     include_once PATH.'controladores/PersonaControlador.php'; 
-     include_once PATH.'controladores/MesaControlador.php'; 
-     include_once PATH.'controladores/CocinaControlador.php'; 
+     include_once PATH. 'controladores/RolControlador.php';
+     include_once PATH. 'controladores/OrdenControlador.php'; 
+     include_once PATH. 'controladores/TipoPlatoControlador.php'; 
+     include_once PATH. 'controladores/PlatoControlador.php'; 
+     include_once PATH. 'controladores/MenuControlador.php'; 
+     include_once PATH. 'controladores/PersonaControlador.php'; 
+     include_once PATH. 'controladores/MesaControlador.php'; 
+     include_once PATH. 'controladores/CocinaControlador.php'; 
      include_once PATH. 'controladores/FacturaControlador.php'; 
      include_once PATH. 'controladores/Usuario_sControlador.php'; 
+     include_once PATH. 'controladores/CodigoMeseroControlador.php';
+     include_once PATH. 'controladores/HorarioControlador.php'; 
+     include_once PATH. 'controladores/CocineroControlador.php'; 
+     include_once PATH. 'controladores/HorarioCocineroControlador.php'; 
      
 
      class ControladorPrincipal{
@@ -57,6 +61,38 @@
                case 'mostrarInsertarPersona':
                    $this->mostrarInsertarPersona();  
                    break;
+                /* ------------- CODIGO MESERO ------- */
+                case 'listarCodigoMesero':
+                    $this->listarCodigoMesero();
+                   break;
+               case 'actualizarCodigoMesero':
+                   $this->actualizarCodigoMesero();
+                   break;
+               case 'confirmaActualizarCodigoMesero':
+                   $this->confirmaActualizarCodigoMesero();
+                   break;
+               case 'cancelarActualizarCodigoMesero':
+                   $this->cancelarActualizarCodigoMesero();  
+                   break;
+               case 'mostrarInsertarCodigoMesero':
+                   $this->mostrarInsertarCodigoMesero();  
+                   break;
+                /* ------------- CODIGO MESERO ------- */
+                case 'listarHorario':
+                    $this->listarHorario();
+                   break;
+               case 'actualizarHorario':
+                   $this->actualizarHorario();
+                   break;
+               case 'confirmaActualizarHorario':
+                   $this->confirmaActualizarHorario();
+                   break;
+               case 'cancelarActualizarHorario':
+                   $this->cancelarActualizarHorario();  
+                   break;
+               case 'mostrarInsertarHorario':
+                   $this->mostrarInsertarHorario();  
+                   break;   
                 /* ------------- TIPO DE PLATO ------- */
                 case 'listarTipoPlato':
                     $this->listarTipoPlato();
@@ -117,6 +153,26 @@
                 case 'confirmaActualizarFactura':
                     $this->confirmaActualizarFactura();
                     break; 
+                /* ---------  COCINERO -------------- */
+                case 'listarCocinero':
+                    $this->listarCocinero();
+                    break;
+                case 'actualizarCocinero':
+                    $this->actualizarCocinero();
+                    break;
+                case 'confirmaActualizarCocinero':
+                    $this->confirmaActualizarCocinero();
+                    break;
+                /* ---------  HORARIO COCINERO -------------- */
+                case 'listarHorarioCocinero':
+                    $this->listarHorarioCocinero();
+                    break;
+                case 'actualizarHorarioCocinero':
+                    $this->actualizarHorarioCocinero();
+                    break;
+                case 'confirmaActualizarHorarioCocinero':
+                    $this->confirmaActualizarHorarioCocinero();
+                    break;
                 /* ---------  COCINA -------------- */
                 case 'listarCocina':
                     $this->listarCocina();
@@ -167,6 +223,38 @@
         }
         public function mostrarInsertarPersona() {
             $PersonaControlador = new PersonaControlador ($this->datos);
+        }
+        /* ------------------------- CODIGO MESERO  ----------------------------- */
+         public function listarCodigoMesero() {
+            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
+        }
+        public function actualizarCodigoMesero() {
+            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
+        }
+        public function confirmaActualizarCodigoMesero() {
+            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
+        }
+        public function cancelarActualizarCodigoMesero() {
+            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
+        }
+        public function mostrarInsertarCodigoMesero() {
+            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
+        }
+        /* ------------------------- HORARIO  ----------------------------- */
+         public function listarHorario() {
+            $HorarioControlador = new HorarioControlador ($this->datos);
+        }
+        public function actualizarHorario() {
+            $HorarioControlador = new HorarioControlador ($this->datos);
+        }
+        public function confirmaActualizarHorario() {
+            $HorarioControlador = new HorarioControlador ($this->datos);
+        }
+        public function cancelarActualizarHorario() {
+            $HorarioControlador = new HorarioControlador ($this->datos);
+        }
+        public function mostrarInsertarHorario() {
+            $HorarioControlador = new HorarioControlador ($this->datos);
         }
          /* ------------------------- TIPO DE PLATO ----------------------------- */
         public function listarTipoPlato() {
@@ -227,7 +315,27 @@
         }
         public function confirmaActualizarFactura() {
             $FacturaControlador = new FacturaControlador ($this->datos);
-        }    
+        }
+        /* ------------------------- HCOCINERO ----------------------------- */
+        public function listarCocinero() {
+            $CocineroControlador = new CocineroControlador($this->datos); 
+        }
+        public function actualizarCocinero() { 
+            $CocineroControlador = new CocineroControlador ($this->datos);
+        }
+        public function confirmaActualizarCocinero() {
+            $CocineroControlador = new CocineroControlador ($this->datos);
+        } 
+        /* ------------------------- HORARIO COCINERO ----------------------------- */
+        public function listarHorarioCocinero() {
+            $HorarioCocineroControlador = new HorarioCocineroControlador($this->datos); 
+        }
+        public function actualizarHorarioCocinero() { 
+            $HorarioCocineroControlador = new HorarioCocineroControlador ($this->datos);
+        }
+        public function confirmaActualizarHorarioCocinero() {
+            $HorarioCocineroControlador = new HorarioCocineroControlador ($this->datos);
+        }   
         /* ------------------------- COCINA ----------------------------- */
         public function listarCocina() {
             $CocinaControlador = new CocinaControlador($this->datos); 

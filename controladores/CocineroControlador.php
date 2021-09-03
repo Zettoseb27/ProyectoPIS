@@ -1,37 +1,37 @@
 <?php
-     include_once PATH.'modelos/modeloMesa/MesaDAO.php'; 
-     class MesaControlador{
+     include_once PATH.'modelos/modeloCocinero/CocineroDAO.php'; 
+     class CocineroControlador{
          private $datos;
          public function __construct($datos) {
             $this->datos = $datos;
-            $this->MesaControlador();
+            $this->CocineroControlador();
          }
-         public function MesaControlador() {
+         public function CocineroControlador() {
             switch ($this->datos['ruta']) {
-                case 'listarMesa':
-                    $this->listarMesa();
+                case 'listarCocinero':
+                    $this->listarCocinero();
                     break;
-                case 'actualizarMesa':
-                    $this->actualizarMesa();
+                case 'actualizarCocinero':
+                    $this->actualizarCocinero();
                     break;
-                case 'confirmaActualizarMesa':  
-                    $this->confirmaActualizarMesa();
+                case 'confirmaActualizarCocinero':  
+                    $this->confirmaActualizarCocinero();
                     break;
-                case 'cancelarActualizarMesa':  
-                    $this->cancelarActualizarMesa();
+                case 'cancelarActualizarCocinero':  
+                    $this->cancelarActualizarCocinero();
                     break;
-                case 'mostrarInsertarMesa':  
-                    $this->mostrarInsertarMesa();
+                case 'mostrarInsertarCocinero':  
+                    $this->mostrarInsertarCocinero();
                     break;
             }
          }
-         public function listarMesa() {
-            $gestarMesa = new MesaDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
-            $registroMesa = $gestarMesa -> seleccionarTodos();
+         public function listarCocinero() {
+            $gestarCocinero = new CocineroDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $registroCocinero = $gestarCocinero -> seleccionarTodos();
             session_start();
             //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS INPRINA O UTILICE //
-            $_SESSION['listarDeMesa'] = $registroMesa;
-            header("location:principal.php?contenido=vistas/vistasMesa/listarDTRegistroMesa.php");
+            $_SESSION['listarDeCocinero'] = $registroCocinero;
+            header("location:principal.php?contenido=vistas/vistasCocinero/listarDTRegistroCocinero.php");
          }
 
         }

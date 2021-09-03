@@ -26,6 +26,34 @@
             <br>
             <a href="Controlador.php?ruta=mostrarInsertarPersona">Agregar Persona</a>
         </div>
+         <!-- ------------------------------------- CODIGO MESERO ------------------------------ -->
+        <div class="gestion">Menu de Operaciones de las Tablas Codigo Mesero
+            <br>
+            <a href="Controlador.php?ruta=listarCodigoMesero&pag=0">Listar Codigo Mesero</a>
+            <br>
+            <a href="Controlador.php?ruta=mostrarInsertarCodigoMesero">Agregar Codigo Mesero</a>
+        </div>
+        <!-- ------------------------------------- HORARIO ------------------------------ -->
+        <div class="gestion">Menu de Operaciones de las Tablas Codigo Horario Mesero
+            <br>
+            <a href="Controlador.php?ruta=listarHorario&pag=0">Listar Horario Mesero</a>
+            <br>
+            <a href="Controlador.php?ruta=mostrarInsertarHorario">Agregar Horario Mesero</a>
+        </div>
+        <!-- ------------------------------------- COCINERO ------------------------------ -->
+        <div class="gestion">Menu de Operaciones de las Tablas Cocinero
+            <br>
+            <a href="Controlador.php?ruta=listarCocinero&pag=0">Listar Cocinero</a>
+            <br>
+            <a href="Controlador.php?ruta=mostrarInsertarCocinero">Agregar Cocinero</a>
+        </div>
+        <!-- ------------------------------------- HORARIO COCINERO ------------------------------ -->
+        <div class="gestion">Menu de Operaciones de las Tablas Horario Cocinero
+            <br>
+            <a href="Controlador.php?ruta=listarHorarioCocinero&pag=0">Listar Horario Cocinero</a>
+            <br>
+            <a href="Controlador.php?ruta=mostrarInsertarHorarioCocinero">Agregar Horario Cocinero</a>
+        </div>
         <!-- ------------------------------------- COCINA ------------------------------ -->
         <div class="gestion">Menu de Operaciones de las Tablas Cocina
             <br>

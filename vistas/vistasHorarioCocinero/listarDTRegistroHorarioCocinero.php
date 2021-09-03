@@ -1,10 +1,10 @@
- <?php
+<?php
     /*
     echo "<pre>";
-    print_r($_SESSION['listaDeOrden']);
-    echo "</pre>"; 
-    */
- ?>
+    print_r ($_SESSION['listarDeHorarioCocinero']);
+    echo "</pre>";
+   */ 
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,24 +23,19 @@
 	
 	<body>
 <?php
-if(isset($_SESSION['listaDeOrden'])){
+if(isset($_SESSION['listarDeHorarioCocinero'])){
 	
-	 $listaDeOrden=$_SESSION['listaDeOrden'];
-	 unset($_SESSION['listaDeOrden']);
-	
+	 $listarDeHorarioCocinero=$_SESSION['listarDeHorarioCocinero'];
+	 unset($_SESSION['listarDeHorarioCocinero']);
 }
 ?>
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Plato</th> 
-                <th>Valor Total</th> 
-                <th>Observacion</th> 
-                <th>Descripcion</th> 
-                <th>Adicional</th> 
-                <th>Bebida</th> 
-                <th>Postre</th> 
+                <th>Horario Inicio</th> 
+                <th>Horario Fin</th> 
+                <th>Fecha</th> 
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -48,29 +43,23 @@ if(isset($_SESSION['listaDeOrden'])){
         <tbody>
             <?php
             $i = 0;
-            foreach ($listaDeOrden as $key => $value) {
+            foreach ($listarDeHorarioCocinero as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeOrden[$i]-> ordId; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> tipPlaPlato; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> ordvalorTotal; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> menObservacion; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> plaDescripcion; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> tipPlaAdicional; ?></td>   
-                    <td><?php echo $listaDeOrden[$i]-> tipPlaBebida; ?></td>  
-                    <td><?php echo $listaDeOrden[$i]-> tipPlaPostre; ?></td> 
-                    <td><a href="Controlador.php?ruta=actualizarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><?php echo $listarDeHorarioCocinero[$i]-> horCocId; ?></td>  
+                    <td><?php echo $listarDeHorarioCocinero[$i]-> horCocHoraInicio; ?></td>  
+                    <td><?php echo $listarDeHorarioCocinero[$i]-> horCocHoraFin; ?></td>  
+                    <td><?php echo $listarDeHorarioCocinero[$i]-> horCocFecha; ?></td>  
+                    <td><a href="Controlador.php?ruta=actualizarCocina&idAct=<?php echo $listarDeHorarioCocinero[$i]->horCocId; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarCocina&idAct=<?php echo $listarDeHorarioCocinero[$i]->horCocId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
             }
-            $listaDeOrden=null;
+            $listarDeHorarioCocinero=null;
             ?>
         </tbody>
     </table>
-
-
     <!--**************************************** -->  
     <!--LAS siguientes lìneas se agregan con el propòsito de dar funcionalidad a un DataTable-->
     <!--**************************************** -->
@@ -86,8 +75,5 @@ if(isset($_SESSION['listaDeOrden'])){
     </script>     
     <!--**************************************** -->
     <!--**************************************** -->   
-
-
-
 </body>
 </html>
