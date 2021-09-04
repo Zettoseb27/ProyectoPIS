@@ -34,7 +34,9 @@ if(isset($_SESSION['listarDeCodigoMesero'])){
             <tr>
                 <th>Id</th>
                 <th>Codigo Mesero</th> 
-                <th>Created</th>  
+               <!-- <th>Nombre</th> 
+                <th>Apellido</th> -->
+                <th>Documento</th>  
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -47,11 +49,13 @@ if(isset($_SESSION['listarDeCodigoMesero'])){
                 <tr>
                     <td><?php echo $listarDeCodigoMesero[$i]-> codMesId; ?></td>  
                     <td><?php echo $listarDeCodigoMesero[$i]-> codMesCodigoMesero; ?></td>  
-                    <td><?php echo $listarDeCodigoMesero[$i]-> codMescreated_at; ?></td>  
+            <!--        <td><?php echo $listarDeCodigoMesero[$i]-> perNombre; ?></td>  
+                    <td><?php echo $listarDeCodigoMesero[$i]-> perApellido; ?></td>   -->
+                    <td><?php echo $listarDeCodigoMesero[$i]-> perDocumento; ?></td>  
                     <td><a href="Controlador.php?ruta=actualizarCodigoMesero&idAct=<?php echo $listarDeCodigoMesero[$i]->codMesId; ?>">Actualizar</a></td>  
                     <td><a href="Controlador.php?ruta=eliminarCodigoMesero&idAct=<?php echo $listarDeCodigoMesero[$i]->codMesId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
-                <?php
+                <?php  
                 $i++;
             }
             $listarDeCodigoMesero=null;

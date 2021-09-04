@@ -1,9 +1,9 @@
 <?php
-    /*
+    
     echo "<pre>";
     print_r ($_SESSION['listarDeFactura']);
     echo "</pre>";
-    */
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,7 +34,11 @@ if(isset($_SESSION['listarDeFactura'])){
             <tr>
                 <th>Id</th>
                 <th>Nombre Cliente</th> 
-                <th>Codigo Mesero</th>  
+                <th>Codigo Mesero</th>
+                <th>Adicional</th>
+                <th>Postre</th>
+                <th>Bebida</th>
+                <th>Valor Total a Pagar</th>
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -48,6 +52,10 @@ if(isset($_SESSION['listarDeFactura'])){
                     <td><?php echo $listarDeFactura[$i]-> facId; ?></td>  
                     <td><?php echo $listarDeFactura[$i]-> facNombreCliente; ?></td>  
                     <td><?php echo $listarDeFactura[$i]-> codMesCodigoMesero; ?></td>  
+                    <td><?php echo $listarDeFactura[$i]-> tipPlaPlato; ?></td>
+                    <td><?php echo $listarDeFactura[$i]-> tipPlaPostre; ?></td>
+                    <td><?php echo $listarDeFactura[$i]-> tipPlaBebida; ?></td>
+                    <td><?php echo $listarDeFactura[$i]-> ordvalorTotal; ?></td>
                     <td><a href="Controlador.php?ruta=actualizarFactura&idAct=<?php echo $listarDeFactura[$i]->facId; ?>">Actualizar</a></td>  
                     <td><a href="Controlador.php?ruta=eliminarFactura&idAct=<?php echo $listarDeFactura[$i]->facId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   

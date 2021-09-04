@@ -6,8 +6,10 @@
             parent::__construct($servidor, $base, $loginBD, $passwordBD);
      }
      public function seleccionarTodos() {
-        $constultar = "select codMesId, codMesCodigoMesero,codMescreated_at
-        from codigo_mesero;";
+        $constultar = "select codMesId, codMesCodigoMesero,
+        P.perNombre, P.perApellido, P.perDocumento
+        from codigo_mesero Cm
+        inner join persona P on Cm.codMesIdMesero = P.perId;";
         $registroCodigoMesero = $this -> conexion -> prepare($constultar);
         $registroCodigoMesero -> execute();
         $listaRegistroCodigoMesero = array();
@@ -18,8 +20,10 @@
         return $listaRegistroCodigoMesero;
      }
      public function seleccionarId($codMesId) {
-        $constultar = "select codMesId, codMesCodigoMesero,codMescreated_at
-        from codigo_mesero
+        $constultar = "select codMesId, codMesCodigoMesero,
+        P.perNombre, P.perApellido, P.perDocumento
+        from codigo_mesero Cm
+        inner join persona P on Cm.codMesIdMesero = P.perId
         where codMesId = ?;";
         $listar = $this -> conexion -> prepare($constultar);
         $listar -> execute(array($codMesId[0]));
