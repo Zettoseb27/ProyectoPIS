@@ -34,6 +34,8 @@ if(isset($_SESSION['listarDeHorario'])){
             <tr>
                 <th>Id</th>
                 <th>Codigo Mesero</th> 
+                <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Horario Inicio</th>  
                 <th>Horario Final</th>
                 <th>Fecha</th>
@@ -48,7 +50,9 @@ if(isset($_SESSION['listarDeHorario'])){
                 ?>
                 <tr>
                     <td><?php echo $listarDeHorario[$i]-> horId; ?></td>  
-                    <td><?php echo $listarDeHorario[$i]-> codMesCodigoMesero; ?></td>  
+                    <td><?php echo $listarDeHorario[$i]-> codMesCodigoMesero; ?></td> 
+                    <td><?php echo $listarDeHorario[$i]-> perNombre; ?></td>  
+                    <td><?php echo $listarDeHorario[$i]-> perApellido; ?></td>   
                     <td><?php echo $listarDeHorario[$i]-> horHoraInicio; ?></td>  
                     <td><?php echo $listarDeHorario[$i]-> horHoraFin; ?></td>  
                     <td><?php echo $listarDeHorario[$i]-> horFecha; ?></td>  

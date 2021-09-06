@@ -37,7 +37,7 @@
         } else {
             return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
         }
-     }
+     } 
      public function actualizar($registro) {
         try {
             $Persona = $registro[0]['conMesIdMesero'];
@@ -52,7 +52,7 @@
                 return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
             }
         } catch (PDOException $pdoExc) {
-            $this->cierreBd();
+            $this->cierreBd(); 
             return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
         }
      }

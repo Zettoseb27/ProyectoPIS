@@ -21,3 +21,6 @@ select codMesId, codMesCodigoMesero,
 from codigo_mesero Cm
 inner join persona P on Cm.codMesIdMesero = P.perId
 where codMesId = 1; 
+
+/* ------------------ ACTUALIZAR -----------------------*/
+update codigo_mesero set codMesIdMesero = 2, codMesEstado = 0, codMesCodigoMesero = 1112 where codMesId = 1;

@@ -3,10 +3,10 @@ if (isset($_SESSION['actualizarDatosCodigoMesero'])) {
     $actualizarDatosCodigoMesero = $_SESSION['actualizarDatosCodigoMesero'];   
     unset($_SESSION['actualizarCocina']); 
 }
-if (isset($_SESSION['registroPersona'])) { /* * ************************ */
+if (isset($_SESSION['registroPersona'])) { 
     $registroPersona = $_SESSION['registroPersona'];
     $Menu = count($registroPersona);
-}
+} 
 /* echo "<pre>";
 print_r($_SESSION);
 echo "<pre>"; */

@@ -16,8 +16,7 @@
                     $this->actualizarCodigoMesero();
                     break;
                 case 'confirmaActualizarCodigoMesero':  
-                    $this->confirmaActualizarCodigoMesero();
-                    break;
+                    $this->confirmaActualizarCodigoMesero(); 
                 case 'cancelarActualizarCodigoMesero':  
                     $this->cancelarActualizarCodigoMesero();
                     break;
