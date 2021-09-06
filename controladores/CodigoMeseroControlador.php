@@ -49,12 +49,19 @@
     
             header("location:principal.php?contenido=vistas/vistasCodigoMesero/vistaActualizarCodigoMesero.php");
          }
-         public function confirmaActualizarCodigoMesero() {
-            $gestarTipoPlato = new CodigoMeseroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
-            $ActualizarTipoPlato = $gestarTipoPlato->actualizar(array($this->datos));
+         public function confirmaActualizarCodigoMesero() {  
+             //echo _line_." "._file_."<br/"; exit;
+            $gestarCodigoMesero = new CodigoMeseroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+            $ActualizarCodigoMesero = $gestarCodigoMesero->actualizar(array($this->datos));
             session_start();
             $_SESSION['mensaje'] = "Actualización realizada."; 
-            header("location:Controlador.php?ruta=listarTipoPlato");
+            header("location:Controlador.php?ruta=listarCodigoMesero");
          }
+         public function cancelarActualizarCodigoMesero() {
+            session_start();
+            $_SESSION['mensaje'] = "Desistió de la actualización";
+            header("location:Controlador.php?ruta=listarCodigoMesero");
+            
         }
+    }
 ?>

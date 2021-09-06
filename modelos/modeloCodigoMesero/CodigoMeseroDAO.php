@@ -38,6 +38,24 @@
             return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
         }
      }
+     public function actualizar($registro) {
+        try {
+            $Persona = $registro[0]['conMesIdMesero'];
+            $CodigoMesero = $registro[0]['codMesCodigoMesero'];
+            $Estado = $registro[0]['codMesEstado'];
+            $Id = $registro[0]['codMesId'];
+            if (isset($Id)) {
+                $actualizar = "update codigo_mesero set codMesIdMesero = ?, codMesEstado = ?, codMesCodigoMesero = ? where codMesId = ?;";
+                $actualizacion = $this->conexion->prepare($actualizar);
+                $resultadoAct = $actualizacion->execute(array($Persona,$CodigoMesero,$Estado,$Id));
+                $this->cierreBd();
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
+            }
+        } catch (PDOException $pdoExc) {
+            $this->cierreBd();
+            return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+        }
+     }
      public function insertar($registro) {
         try {
             $constultar = "insert into codigo_mesero values (:codMesId, :codMesIdMesero, :codMesCodigoMesero, :codMesEstado, :codMesSesion, :codMescreated_at, :codMesupdated_at );";
