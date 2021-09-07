@@ -20,11 +20,7 @@
         return $listaRegistroCodigoMesero;
      }
      public function seleccionarId($codMesId) {
-        $constultar = "select codMesId, codMesCodigoMesero,
-        P.perNombre, P.perApellido, P.perDocumento
-        from codigo_mesero Cm
-        inner join persona P on Cm.codMesIdMesero = P.perId
-        where codMesId = ?;";
+        $constultar = "SELECT * FROM codigo_mesero WHERE codMesId = ?;";
         $listar = $this -> conexion -> prepare($constultar);
         $listar -> execute(array($codMesId[0]));
         $registroEncontrado = array();
@@ -40,20 +36,20 @@
      } 
      public function actualizar($registro) {
         try {
-            $Persona = $registro[0]['conMesIdMesero'];
-            $CodigoMesero = $registro[0]['codMesCodigoMesero'];
+            $Persona = $registro[0]['codMesIdMesero'];
             $Estado = $registro[0]['codMesEstado'];
+            $CodigoMesero = $registro[0]['codMesCodigoMesero'];
             $Id = $registro[0]['codMesId'];
             if (isset($Id)) {
-                $actualizar = "update codigo_mesero set codMesIdMesero = ?, codMesEstado = ?, codMesCodigoMesero = ? where codMesId = ?;";
+                $actualizar = "UPDATE codigo_mesero SET codMesIdMesero = ?, codMesEstado = ?, codMesCodigoMesero = ? WHERE codMesId = ?;";
                 $actualizacion = $this->conexion->prepare($actualizar);
-                $resultadoAct = $actualizacion->execute(array($Persona,$CodigoMesero,$Estado,$Id));
+                $resultadoAct = $actualizacion->execute(array($Persona,$Estado,$CodigoMesero,$Id));
                 $this->cierreBd();
                 return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
             }
         } catch (PDOException $pdoExc) {
-            $this->cierreBd(); 
-            return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+                $this->cierreBd(); 
+                return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
         }
      }
      public function insertar($registro) {

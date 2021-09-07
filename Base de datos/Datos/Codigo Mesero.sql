@@ -23,4 +23,6 @@ inner join persona P on Cm.codMesIdMesero = P.perId
 where codMesId = 1; 
 
 /* ------------------ ACTUALIZAR -----------------------*/
-update codigo_mesero set codMesIdMesero = 2, codMesEstado = 0, codMesCodigoMesero = 1112 where codMesId = 1;
+update codigo_mesero set codMesIdMesero = 1, codMesEstado = 1, codMesCodigoMesero = 111233 where codMesId = 1;
+
+SELECT * FROM codigo_mesero WHERE codMesId = 1;

@@ -1,12 +1,12 @@
 <?php
 if (isset($_SESSION['actualizarDatosCodigoMesero'])) {
-    $actualizarDatosCodigoMesero = $_SESSION['actualizarDatosCodigoMesero'];   
-    unset($_SESSION['actualizarCocina']); 
+    $actualizarDatosCodigoMesero = $_SESSION['actualizarDatosCodigoMesero'];    
+    unset($_SESSION['actualizarCodigoMesero']); 
 }
-if (isset($_SESSION['registroPersona'])) { 
+/*if (isset($_SESSION['registroPersona'])) { 
     $registroPersona = $_SESSION['registroPersona'];
     $Menu = count($registroPersona);
-} 
+} */
 /* echo "<pre>";
 print_r($_SESSION);
 echo "<pre>"; */
@@ -35,7 +35,7 @@ echo "<pre>"; */
 									if(isset($actualizarDatosCodigoMesero->codMesCodigoMesero)){ echo $actualizarDatosCodigoMesero->codMesCodigoMesero; }
 							   ?>">
                     </td>
-                </tr>
+              <!--  </tr>
                     <td> Documento 
                         <select id="categoriaPersona_Documento" name="categoriaPersona_Documento"> 
 							<?php
@@ -58,7 +58,7 @@ echo "<pre>"; */
 						</select> 
                         
                     </td>                       
-                </tr>           
+                </tr>       -->     
                 <tr>            
                     <td>            
                         <button type="submit" name="ruta" value="cancelarActualizarCodigoMesero">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
