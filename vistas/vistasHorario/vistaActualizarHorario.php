@@ -3,10 +3,10 @@ if (isset($_SESSION['actualizarDatosHorario'])) {
     $actualizarDatosHorario = $_SESSION['actualizarDatosHorario'];   
     unset($_SESSION['ActualizarHorario']);  
 }
-/*if (isset($_SESSION['registroCodigoMesero'])) { 
+if (isset($_SESSION['registroCodigoMesero'])) { 
     $registroCodigoMesero = $_SESSION['registroCodigoMesero'];
     $Menu = count($registroCodigoMesero);
-} */
+} 
 /* echo "<pre>";
 print_r($_SESSION);
 echo "<pre>"; */
