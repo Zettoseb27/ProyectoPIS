@@ -14,10 +14,9 @@ class PersonaDAO extends ConBdMySql {
 //
 //        $resultadoConsulta = FALSE;
 
-        $planConsulta = "select * from persona p join usuario_s u on p.perId=u.usuId ";
-        $planConsulta .= " where p.perDocumento= ? or u.usuLogin = ? ;";
+        $planConsulta = "SELECT * FROM persona  WHERE perId = ?; ";
         $listar = $this->conexion->prepare($planConsulta);
-        $listar->execute(array($sId[0], $sId[1]));
+        $listar->execute(array($sId[0]));
 
         $registroEncontrado = array();
         while ($registro = $listar->fetch(PDO::FETCH_OBJ)) {
@@ -50,6 +49,25 @@ class PersonaDAO extends ConBdMySql {
           return ['inserto' => FALSE, 'resultado' => $exc->getTraceAsString()];
           } */ catch (PDOException $pdoExc) {
             return ['inserto' => 0, 'resultado' => $pdoExc];
+        }
+    }
+
+    public function actualizar($registro) {
+        try {
+            $Documento = $registro[0]['perDocumento'];
+            $Nombre = $registro[0]['perNombre'];
+            $Apellido = $registro[0]['perApellido'];
+            $Creacion = $registro[0]['per_created_at'];
+            $Id = $registro[0]['perId'];
+            if (isset($Id)) {
+                $actualizar = "UPDATE persona SET perDocumento = ? , perNombre = ?, perApellido = ?, per_created_at = ? WHERE perId = ?";
+                $actualizacion = $this->conexion->prepare($actualizar);
+                $resultadoAct=$actualizacion->execute(array($Documento,$Nombre,$Apellido,$Creacion,$Id));
+                $this->cierreBd();
+            }
+        } catch (PDOException $pdoExc) {
+                $this->cierreBd();
+                return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
         }
     }
 

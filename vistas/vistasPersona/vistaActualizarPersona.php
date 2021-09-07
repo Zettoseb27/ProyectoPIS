@@ -1,11 +1,11 @@
 <?php
 if (isset($_SESSION['actualizarDatosPersona'])) {
     $actualizarDatosPersona = $_SESSION['actualizarDatosPersona'];
-    unset($_SESSION['actualizarRol']);
+    unset($_SESSION['actualizarPersona']);
 }
-/* echo "<pre>";
+/*echo "<pre>";
 print_r($_SESSION);
-echo "<pre>"; */
+echo "<pre>";*/ 
 
 ?>
 <div class="panel-heading">

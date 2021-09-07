@@ -1,4 +1,9 @@
 <?php
+
+if (isset($_SESSION['actualizarDatosPersona'])) {
+    $actualizarDatosPersona = $_SESSION['actualizarDatosPersona'];
+    unset($_SESSION['ActualizarLibro']);
+}
      /* 
      echo "<pre>";
      print_r($_SESSION['listarDePersona']);
