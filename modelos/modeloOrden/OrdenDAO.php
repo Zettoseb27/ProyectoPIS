@@ -8,12 +8,16 @@
         }
 
         public function seleccionarTodos(){ // Método: seleccionarTodos(), 
-            $planConsulta = "select  O.ordId,O.ordvalorTotal,Mn.menId,Mn.menObservacion,Ms.mesNumeroMesa,pl.plaDescripcion,
-            Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre,Tp.tipPlaPlato from orden O
-            join menu Mn on O.ordIdMenu= menId 
-            join plato Pl on O.ordIdMenu=plaId
-            join tipo_plato Tp on ordIdMenu=tipPlaId
-            join mesa Ms on O.ordIdMesa=Ms.mesId;";
+            $planConsulta = "select  O.ordId,O.ordvalorTotal,
+            Ms.mesCantidadComensales,Ms.mesNumeroMesa,
+            Mn.menObservacion,
+            Pl.plaDescripcion,
+            Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre, Tp.tipPlaPlato 
+    FROM orden O
+                inner join mesa Ms on O.ordIdMesa = Ms.mesId 
+                inner join menu Mn on O.ordIdMenu = Mn.menId 
+                inner join plato Pl on Mn.menIdPlato = Pl.plaId 
+                inner join tipo_plato Tp on Pl.plaIdTipoPlato= Tp.tipPlaId;";
 
             $registrosOrden = $this -> conexion -> prepare ($planConsulta);
             $registrosOrden -> execute();//ejecucion de la consulta

@@ -77,7 +77,7 @@
                case 'mostrarInsertarCodigoMesero':
                    $this->mostrarInsertarCodigoMesero();  
                    break;
-                /* ------------- CODIGO MESERO ------- */
+                /* ------------- HORARIO MESERO ------- */
                 case 'listarHorario':
                     $this->listarHorario();
                    break;

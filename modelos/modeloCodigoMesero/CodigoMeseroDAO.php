@@ -6,8 +6,10 @@
             parent::__construct($servidor, $base, $loginBD, $passwordBD);
      }
      public function seleccionarTodos() {
-        $constultar = "select codMesId, codMesCodigoMesero,codMescreated_at
-        from codigo_mesero;";
+        $constultar = "select codMesId, codMesCodigoMesero,
+        P.perNombre, P.perApellido, P.perDocumento
+        from codigo_mesero Cm
+        inner join persona P on Cm.codMesIdMesero = P.perId;";
         $registroCodigoMesero = $this -> conexion -> prepare($constultar);
         $registroCodigoMesero -> execute();
         $listaRegistroCodigoMesero = array();
@@ -18,9 +20,7 @@
         return $listaRegistroCodigoMesero;
      }
      public function seleccionarId($codMesId) {
-        $constultar = "select codMesId, codMesCodigoMesero,codMescreated_at
-        from codigo_mesero
-        where codMesId = ?;";
+        $constultar = "SELECT * FROM codigo_mesero WHERE codMesId = ?;";
         $listar = $this -> conexion -> prepare($constultar);
         $listar -> execute(array($codMesId[0]));
         $registroEncontrado = array();
@@ -32,6 +32,24 @@
             return ['exitoSeleccionId' => true, 'registroEncontrado' => $registroEncontrado];
         } else {
             return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
+        }
+     } 
+     public function actualizar($registro) {
+        try {
+            $Persona = $registro[0]['horIdCodigoMesero'];
+            $Estado = $registro[0]['codMesEstado'];
+            $CodigoMesero = $registro[0]['codMesCodigoMesero'];
+            $Id = $registro[0]['codMesId'];
+            if (isset($Id)) {
+                $actualizar = "UPDATE codigo_mesero SET horIdCodigoMesero = ?, codMesEstado = ?, codMesCodigoMesero = ? WHERE codMesId = ?;";
+                $actualizacion = $this->conexion->prepare($actualizar);
+                $resultadoAct = $actualizacion->execute(array($Persona,$Estado,$CodigoMesero,$Id));
+                $this->cierreBd();
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
+            }
+        } catch (PDOException $pdoExc) {
+                $this->cierreBd(); 
+                return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
         }
      }
      public function insertar($registro) {

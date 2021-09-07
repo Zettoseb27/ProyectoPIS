@@ -14,3 +14,15 @@ from codigo_mesero;
 select codMesId, codMesCodigoMesero,codMescreated_at
 from codigo_mesero
 where codMesId = 7;
+
+/* ----------------------------------------------------------- */
+select codMesId, codMesCodigoMesero,
+	P.perNombre, P.perApellido, P.perDocumento
+from codigo_mesero Cm
+inner join persona P on Cm.codMesIdMesero = P.perId
+where codMesId = 1; 
+
+/* ------------------ ACTUALIZAR -----------------------*/
+update codigo_mesero set codMesIdMesero = 1, codMesEstado = 1, codMesCodigoMesero = 111233 where codMesId = 1;
+
+SELECT * FROM codigo_mesero WHERE codMesId = 1;

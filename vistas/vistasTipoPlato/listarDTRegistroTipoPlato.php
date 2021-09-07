@@ -1,7 +1,7 @@
 <?php
     /*
     echo "<pre>";
-    print_r($_SESSION['listarTipoPlato']);      
+    print_r($_SESSION['listaTipoPlato']);      
     echo "</pre>"; 
     */
 
@@ -31,10 +31,10 @@ if (isset($_SESSION['mensaje'])) {
 	
 	<body>
 <?php
-if(isset($_SESSION['listarTipoPlato'])){
+if(isset($_SESSION['listaTipoPlato'])){
 	
-	 $listarTipoPlato=$_SESSION['listarTipoPlato'];
-	 unset($_SESSION['listarTipoPlato']);
+	 $listaTipoPlato=$_SESSION['listaTipoPlato'];
+	 unset($_SESSION['listaTipoPlato']);
 	
 }
 ?>
@@ -53,21 +53,21 @@ if(isset($_SESSION['listarTipoPlato'])){
         <tbody>
             <?php
             $i = 0;
-            foreach ($listarTipoPlato as $key => $value) {
+            foreach ($listaTipoPlato as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listarTipoPlato[$i]->tipPlaId; ?></td>  
-                    <td><?php echo $listarTipoPlato[$i]->tipPlaPlato; ?></td>  
-                    <td><?php echo $listarTipoPlato[$i]->tipPlaAdicional; ?></td>  
-                    <td><?php echo $listarTipoPlato[$i]->tipPlaBebida; ?></td>  
-                    <td><?php echo $listarTipoPlato[$i]->tipPlaPostre; ?></td>   
-                    <td><a href="Controlador.php?ruta=ActualizarTipoPlato&idAct=<?php echo $listarTipoPlato[$i]->tipPlaId; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarTipoPlato&idAct=<?php echo $listarTipoPlato[$i]->tipPlaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><?php echo $listaTipoPlato[$i]->tipPlaId; ?></td>  
+                    <td><?php echo $listaTipoPlato[$i]->tipPlaPlato; ?></td>  
+                    <td><?php echo $listaTipoPlato[$i]->tipPlaAdicional; ?></td>  
+                    <td><?php echo $listaTipoPlato[$i]->tipPlaBebida; ?></td>  
+                    <td><?php echo $listaTipoPlato[$i]->tipPlaPostre; ?></td>   
+                    <td><a href="Controlador.php?ruta=ActualizarTipoPlato&idAct=<?php echo $listaTipoPlato[$i]->tipPlaId; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarTipoPlato&idAct=<?php echo $listaTipoPlato[$i]->tipPlaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
             }
-            $listarTipoPlato=null;
+            $listaTipoPlato=null;
             ?>
         </tbody>
     </table>

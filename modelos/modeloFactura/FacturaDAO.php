@@ -6,9 +6,16 @@
             parent::__construct($servidor, $base, $loginBD, $passwordBD);
         }
         public function seleccionarTodos() {
-            $consultar = "select fa.facId,fa.facNombreCliente,fa.facIdOrden,cm.codMesCodigoMesero
-            from factura fa
-            join codigo_mesero cm on fa.facId = cm.codMesId; ";
+            $consultar = "select  fa.facId,fa.facNombreCliente,fa.facIdOrden,
+            cm.codMesCodigoMesero,
+            O.ordvalorTotal,
+            Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre, Tp.tipPlaPlato
+    from factura fa
+    inner join codigo_mesero cm on fa.facIdCodigoMesero = cm.codMesId
+    inner join orden O on fa.facIdOrden = O.ordId
+    inner join menu Mn on O.ordIdMenu = Mn.menId 
+            inner join plato Pl on Mn.menIdPlato = Pl.plaId 
+            inner join tipo_plato Tp on Pl.plaIdTipoPlato= Tp.tipPlaId;";
             $registroFactura = $this->conexion ->prepare($consultar);
             $registroFactura -> execute();
             $listadoRegistroMenu = array();
@@ -19,10 +26,17 @@
             return $listadoRegistroMenu;
         }
         public function seleccionarId($facId) {
-            $consultar = "select fa.facId,fa.facNombreCliente,fa.facIdOrden,cm.codMesCodigoMesero
-            from factura fa
-            join codigo_mesero cm on fa.facId = cm.codMesId
-            where fa.facId = ?; ";
+            $consultar = "select  fa.facId,fa.facNombreCliente,fa.facIdOrden,
+            cm.codMesCodigoMesero,
+            O.ordvalorTotal,
+            Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre, Tp.tipPlaPlato
+    from factura fa
+    inner join codigo_mesero cm on fa.facIdCodigoMesero = cm.codMesId
+    inner join orden O on fa.facIdOrden = O.ordId
+    inner join menu Mn on O.ordIdMenu = Mn.menId 
+            inner join plato Pl on Mn.menIdPlato = Pl.plaId 
+            inner join tipo_plato Tp on Pl.plaIdTipoPlato= Tp.tipPlaId
+            where facId = ?;";
             $listar = $this -> conexion -> prepare($consultar);
             $listar -> execute(array($facId[0]));
             $registroEncontrado = array();

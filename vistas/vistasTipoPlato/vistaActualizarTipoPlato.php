@@ -2,7 +2,7 @@
 
 if (isset($_SESSION['actualizarDatosTipoPlato'])) { 
     $actualizarDatosTipoPlato = $_SESSION['actualizarDatosTipoPlato'];
-    unset($_SESSION['actualizarTipoPlato']);
+    unset($_SESSION['actualizarTipoPlato']); 
 }
 
 
@@ -21,7 +21,7 @@ echo "<pre>"; */
             <table>
                 <tr>
                     <td>
-                        <input class="form-control" placeholder="Id" name="rolId" type="number" pattern="" required="required" autofocus readonly="readonly" 
+                        <input class="form-control" placeholder="Id" name="tipPlaId" type="number" pattern="" required="required" autofocus readonly="readonly" 
                                value="<?php 
 									if(isset($actualizarDatosTipoPlato->tipPlaId)){ echo $actualizarDatosTipoPlato->tipPlaId; }
 							   ?>">
@@ -29,7 +29,7 @@ echo "<pre>"; */
                 </tr>
                 <tr>
                     <td>                
-                        <input class="form-control" placeholder="Descripcion" name="Plato" type="text"   required="required" 
+                        <input class="form-control" placeholder="Descripcion" name="tipPlaPlato" type="text"   required="required" 
                                value="<?php 
 									if(isset($actualizarDatosTipoPlato->tipPlaPlato)){ echo $actualizarDatosTipoPlato->tipPlaPlato; }
 							   ?>">

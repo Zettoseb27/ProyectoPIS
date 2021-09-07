@@ -7,15 +7,16 @@ insert into orden values (1,1,1,12000,1,null,'2021-08-12 9:30:00','2021-08-12 9:
 (4,5,4,13000,1,null,'2021-08-12 9:38:00','2021-08-12 9:40:00');
 
 /* ---------------------------- Seleccionar Todo --------------------------- */
-
-select  O.ordId, O.ordvalorTotal,
-Tp.tipPlaPlato, Tp.tipPlaAdicional, Tp.tipPlaBebida, Tp.tipPlaPostre,
-Ms.mesNumeroMesa,
-Pl.plaDescripcion
-from orden O
-join tipo_plato Tp on ordId = Tp.tipPlaId
-join mesa Ms on O.ordId = Ms.mesId
-join plato Pl on ordId = Pl.plaId;
+select  O.ordId,O.ordvalorTotal,
+            Ms.mesCantidadComensales,Ms.mesNumeroMesa,
+            Mn.menObservacion,
+            Pl.plaDescripcion,
+            Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre, Tp.tipPlaPlato 
+FROM orden O
+		inner join mesa Ms on O.ordIdMesa = Ms.mesId 
+		inner join menu Mn on O.ordIdMenu = Mn.menId 
+		inner join plato Pl on Mn.menIdPlato = Pl.plaId 
+		inner join tipo_plato Tp on Pl.plaIdTipoPlato= Tp.tipPlaId;
 
 
 /* ------------------Borrar seleccionado ------------------------ */

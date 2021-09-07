@@ -1,7 +1,7 @@
 <?php
 
 
-
+require_once PATH . 'controladores/ManejoSesiones/ClaseSesion.php';
 require_once PATH . 'modelos/modeloUsuario_s/Usuario_sDAO.php';
 require_once PATH . 'modelos/modeloPersona/PersonaDAO.php';
 require_once PATH . 'modelos/modeloRol/RolDAO.php';
@@ -23,15 +23,10 @@ class Usuario_sControlador {
         switch ($this->datos["ruta"]) {
 
             case "gestionDeRegistro":
-
                 $this->gestionDeRegistro();
-
                 break;
-				
             case "gestionDeAcceso":
-
                 $this->gestionDeAcceso();
-
                 break;				
         }
     }
@@ -102,7 +97,8 @@ class Usuario_sControlador {
                     for ($i = 0; $i < $cantidadRoles; $i++) {
                         $rolesEnSesion[] = $rolesUsuario['registroEncontrado'][$i]->rolId;
                     }					
-					
+                    $sesionPermitida = new ClaseSesion(); // se abre la sesión					
+                    $sesionPermitida->crearSesion(array($existeUsuario_s['registroEncontrado'][0], "", $rolesEnSesion)); //Se envìa a la sesiòn los datos del usuario logeado	
 					
                     header("location:principal.php");					
 					

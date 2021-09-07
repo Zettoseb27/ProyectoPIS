@@ -21,3 +21,5 @@ insert INTO `persona` (`perId`, `perDocumento`, `perNombre`, `perApellido`, `per
 select perId ,perDocumento, perNombre, perApellido, per_created_at
 from persona
 where perId = 1 ;
+
+SELECT * FROM persona  WHERE perId = 1;

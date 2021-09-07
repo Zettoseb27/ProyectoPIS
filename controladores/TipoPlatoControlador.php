@@ -32,7 +32,7 @@
             $gestarTipoPlato = new tipoDePlatoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
             $registroTipoPlato = $gestarTipoPlato -> seleccionarTodos();
             session_start();
-            $_SESSION['listarTipoPlato'] = $registroTipoPlato;
+            $_SESSION['listaTipoPlato'] = $registroTipoPlato;
             header("location:principal.php?contenido=vistas/vistasTipoPlato/listarDTRegistroTipoPlato.php");
          }
          public function ActualizarTipoPlato() {
