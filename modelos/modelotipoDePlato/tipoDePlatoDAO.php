@@ -17,11 +17,14 @@
             }
             $this->cierreBd();
             return $listadoTipoPlato;
-        }
+        } 
         public function seleccionarId($tipPlaId) {
+            $consulta = "SELECT * FROM tipo_plato"; 
+            $consulta .= " WHERE tipPlaId = ?;";
+            /*
             $consulta = "select tipPlaId, tipPlaPlato, tipPlaAdicional, tipPlaBebida, tipPlaPostre
             from tipo_plato
-            where tipPlaId = ?;";
+            where tipPlaId = ?;";*/
             $listar = $this->conexion->prepare($consulta);
             $listar -> execute(array($tipPlaId[0]));
             $registroEncontrado = array();

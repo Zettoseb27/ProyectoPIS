@@ -15,3 +15,4 @@ inner join codigo_mesero cm on hr.horIdCodigoMesero = cm.codMesId
 inner join persona p on cm.codMesIdMesero = p.perId;
 
 /* ----------------- ACTUALIZAR --------------------------- */
+update horario set horIdCodigoMesero = 1, horHoraInicio = '8:00', horHoraFin = '2:00', horEstado = 0 where horId = 1;
