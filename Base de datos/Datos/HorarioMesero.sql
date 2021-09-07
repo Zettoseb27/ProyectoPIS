@@ -16,3 +16,14 @@ inner join persona p on cm.codMesIdMesero = p.perId;
 
 /* ----------------- ACTUALIZAR --------------------------- */
 update horario set horIdCodigoMesero = 1, horHoraInicio = '8:00', horHoraFin = '2:00', horEstado = 0 where horId = 1;
+
+UPDATE horario SET horIdCodigoMesero = 2, horHoraInicio = '9:00' , horHoraFin = '3:00' , horEstado = 1 WHERE horId = 1;
+
+
+select hr.horId,hr.horHoraFin,hr.horFecha,
+                cm.codMesCodigoMesero,hr.horHoraInicio,
+                p.perNombre, p.perApellido
+            from horario hr 
+            inner join codigo_mesero cm on hr.horIdCodigoMesero = cm.codMesId
+            inner join persona p on cm.codMesIdMesero = p.perId
+                where hr.horId = ;

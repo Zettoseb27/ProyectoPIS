@@ -1,12 +1,12 @@
 <?php
 if (isset($_SESSION['actualizarDatosHorario'])) {
     $actualizarDatosHorario = $_SESSION['actualizarDatosHorario'];   
-    unset($_SESSION['actualizarCocina']);  
+    unset($_SESSION['ActualizarHorario']);  
 }
-if (isset($_SESSION['registroCodigoMesero'])) { 
+/*if (isset($_SESSION['registroCodigoMesero'])) { 
     $registroCodigoMesero = $_SESSION['registroCodigoMesero'];
     $Menu = count($registroCodigoMesero);
-} 
+} */
 /* echo "<pre>";
 print_r($_SESSION);
 echo "<pre>"; */
@@ -43,7 +43,7 @@ echo "<pre>"; */
 									if(isset($actualizarDatosHorario->horHoraFin)){ echo $actualizarDatosHorario->horHoraFin; }
 							   ?>">
                     </td>
-                </tr>
+       <!--         </tr>
                     <td> Codigo Mesero 
                         <select id="categoriaPersona_Documento" name="categoriaPersona_Documento"> 
 							<?php
@@ -64,11 +64,11 @@ echo "<pre>"; */
 						</select> 
                         
                     </td>                       
-                </tr>           
+                </tr>   -->        
                 <tr>            
                     <td>            
-                        <button type="submit" name="ruta" value="cancelarActualizarHora">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
-                        <button type="submit" name="ruta" value="confirmaActualizarHora">Actualizar Codigo Mesero</button>
+                        <button type="submit" name="ruta" value="cancelarActualizarHorario">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="confirmaActualizarHorario">Actualizar Codigo Mesero</button>
                     </td>
                 </tr>             
             </table>

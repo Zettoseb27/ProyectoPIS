@@ -48,6 +48,14 @@
             $_SESSION['registroCodigoMesero'] = $registroCodigoMesero;
             header("location:principal.php?contenido=vistas/vistasHorario/vistaActualizarHorario.php");
          }
-
+         public function confirmaActualizarHorario() {
+            $gestarHorario = new HorarioDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+            $actualizarHorario = $gestarHorario->actualizar(array($this->datos)); //Se envía datos del libro para actualizar. 				
+    
+            session_start();
+            $_SESSION['mensaje'] = "Actualización realizada.";
+            header("location:Controlador.php?ruta=listarHorario");
         }
+
+    }
 ?>

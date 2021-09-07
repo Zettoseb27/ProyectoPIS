@@ -36,12 +36,12 @@
      } 
      public function actualizar($registro) {
         try {
-            $Persona = $registro[0]['codMesIdMesero'];
+            $Persona = $registro[0]['horIdCodigoMesero'];
             $Estado = $registro[0]['codMesEstado'];
             $CodigoMesero = $registro[0]['codMesCodigoMesero'];
             $Id = $registro[0]['codMesId'];
             if (isset($Id)) {
-                $actualizar = "UPDATE codigo_mesero SET codMesIdMesero = ?, codMesEstado = ?, codMesCodigoMesero = ? WHERE codMesId = ?;";
+                $actualizar = "UPDATE codigo_mesero SET horIdCodigoMesero = ?, codMesEstado = ?, codMesCodigoMesero = ? WHERE codMesId = ?;";
                 $actualizacion = $this->conexion->prepare($actualizar);
                 $resultadoAct = $actualizacion->execute(array($Persona,$Estado,$CodigoMesero,$Id));
                 $this->cierreBd();
