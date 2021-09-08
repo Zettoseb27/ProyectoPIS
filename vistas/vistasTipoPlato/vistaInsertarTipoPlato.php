@@ -1,8 +1,8 @@
 <?php
 
- echo "<pre>";
+ /*echo "<pre>";
 print_r($_SESSION['registroTipoPlato']);
-echo "</pre>"; 
+echo "</pre>"; */
 if (isset($_SESSION['mensaje'])) {
     $mensaje = $_SESSION['mensaje'];
     echo "<script languaje='javascript'>alert('$mensaje')</script>";

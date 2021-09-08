@@ -43,10 +43,11 @@ echo "<pre>"; */
 									if(isset($actualizarDatosHorario->horHoraFin)){ echo $actualizarDatosHorario->horHoraFin; }
 							   ?>">
                     </td>
-       <!--         </tr>
+             </tr>
                     <td> Codigo Mesero 
                         <select id="categoriaPersona_Documento" name="categoriaPersona_Documento"> 
 							<?php
+                            
 							for ($j=0; $j< $Menu; $j++) {
 							?>
 								<option value ="<?php echo $registroCodigoMesero[$j]->codMesCodigoMesero; ?>" 
@@ -60,15 +61,15 @@ echo "<pre>"; */
                             
 							<?php
 							}
+                            
 							?>
-						</select> 
-                        
+						</select>          
                     </td>                       
-                </tr>   -->        
+                </tr>         
                 <tr>            
                     <td>            
                         <button type="submit" name="ruta" value="cancelarActualizarHorario">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
-                        <button type="submit" name="ruta" value="confirmaActualizarHorario">Actualizar Codigo Mesero</button>
+                        <button type="submit" name="ruta" value="confirmaActualizarHorario">Actualizar Horario Mesero</button>
                     </td>
                 </tr>             
             </table>
