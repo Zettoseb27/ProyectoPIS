@@ -45,6 +45,9 @@
                case 'mostrarInsertarRol':
                    $this->mostrarInsertarRol();  
                    break;
+               case 'insertarRol':  
+                    $this->insertarRol();
+                    break;
                 /* ------------- PERSONA ------- */
                 case 'listarPersona':
                     $this->listarPersona();
@@ -215,6 +218,9 @@
             $RolControlador = new RolControlador ($this->datos);
         }
         public function mostrarInsertarRol() {
+            $RolControlador = new RolControlador ($this->datos);
+        }
+        public function insertarRol() {
             $RolControlador = new RolControlador ($this->datos);
         }
          /* ------------------------- PERSONA  ----------------------------- */
