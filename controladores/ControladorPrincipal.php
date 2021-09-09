@@ -48,6 +48,9 @@
                case 'insertarRol':  
                     $this->insertarRol();
                     break;
+               case "cancelarInsertarRol":
+                $this->cancelarInsertarRol(); 
+                    break;		
                 /* ------------- PERSONA ------- */
                 case 'listarPersona':
                     $this->listarPersona();
@@ -114,6 +117,9 @@
                     break;
                 case "insertarTipoPlato":
                 $this->insertarTipoPlato(); 
+                    break;
+                case "cancelarInsertarTipoPlato":
+                $this->cancelarInsertarTipoPlato(); 
                     break;		
                 /* ------------- PLATO ------- */
                 case 'listarPlato':
@@ -223,6 +229,9 @@
         public function insertarRol() {
             $RolControlador = new RolControlador ($this->datos);
         }
+        public function cancelarInsertarRol() {
+            $RolControlador = new RolControlador ($this->datos);
+        }
          /* ------------------------- PERSONA  ----------------------------- */
          public function listarPersona() {
             $PersonaControlador = new PersonaControlador ($this->datos);
@@ -288,6 +297,9 @@
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
         public function insertarTipoPlato() {  
+            $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
+        }
+        public function cancelarInsertarTipoPlato() {  
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
          /* ------------------------- PLATO ----------------------------- */

@@ -26,6 +26,9 @@
                 case 'insertarRol':  
                     $this->insertarRol();
                     break;
+               case "cancelarInsertarRol":
+                $this->cancelarInsertarRol(); 
+                    break;
             }
          }
          public function listarRol() {
@@ -91,6 +94,12 @@
             header("location:Controlador.php?ruta=mostrarInsertarRol");
         }
         }
+        public function cancelarInsertarRol() {
+         session_start();
+         $_SESSION['mensaje'] = "Desistió de la insercion";
+         header("location:Controlador.php?ruta=listarRol");
      }
+ 
+   }
 
 ?>

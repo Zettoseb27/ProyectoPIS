@@ -81,7 +81,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Platos
             </div>
              <!-- ROL -->
              <li class="nav-item">
@@ -143,6 +143,12 @@
                     </div>
                 </div>
             </li>
+
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Mesero
+            </div>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -167,7 +173,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Cocina
             </div>
 
             <!-- Nav Item - Pages Collapse Menu 

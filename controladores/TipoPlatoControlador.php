@@ -26,6 +26,9 @@
                 case 'insertarTipoPlato':  
                     $this->insertarTipoPlato();
                     break;
+                case "cancelarInsertarTipoPlato":
+                $this->cancelarInsertarTipoPlato(); 
+                    break;
             }
          }
          public function listarTipoPlato() {
@@ -76,7 +79,7 @@
             $resultadoInsercionTipoPlato = $insertoTipoPlato['resultado'];  //Traer el id con que quedó el libro de lo contrario la excepción o fallo  
 
             session_start();
-            $_SESSION['mensaje'] = "Registrado " . $this->datos['tipPlaId'] . " con éxito.  Agregado Nuevo Libro con " . $resultadoInsercionTipoPlato;
+            $_SESSION['mensaje'] = "Registrado " . $this->datos['tipPlaId'] . " con éxito.";
 
             header("location:Controlador.php?ruta=listarTipoPlato");
             } else {// Si existe se retornan los datos y se envía el mensaje correspondiente ****
@@ -90,6 +93,11 @@
 
             header("location:Controlador.php?ruta=mostrarInsertarTipoPlato");
         }
+        }
+        public function cancelarInsertarTipoPlato() {
+            session_start();
+            $_SESSION['mensaje'] = "Desistió de la Insercion";
+            header("location:Controlador.php?ruta=listarTipoPlato");
         }
      }
 ?>
