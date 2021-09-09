@@ -15,7 +15,9 @@ from plato pl
 join  tipo_plato tpl on pl.plaId = tpl.tipPlaId;
 
 /* --------------------------------------------------------------------------- */
+select Pl.plaId, Pl.plaDescripcion, Pl.plaPrecio, Pl.plaEstado, Tp.tipPlaPlato
+from plato Pl
+inner join tipo_plato Tp on Pl.plaIdTipoPlato = Tp.tipPlaId;
 
-select plaId, plaDescripcion ,plaPrecio, plaEstado
-from plato 
-where plaId = 1;
+/* ----------------------------- ACTUALIZAR ------------------------------ */
+update plato set plaDescripcion = 'arroz con pollo y papa a la francesa', plaPrecio = '13000', plaEstado = 0, plaIdTipoPlato = 2 where plaId = 1;
