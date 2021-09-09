@@ -131,6 +131,18 @@
                 case 'confirmaActualizarPlato':
                     $this->confirmaActualizarPlato();
                     break;
+                case "cancelarActualizarPlato":
+                $this->cancelarActualizarPlato();  
+                    break;
+                case "mostrarInsertarPlato":
+                $this->mostrarInsertarPlato(); 
+                    break;
+                case "insertarPlato":
+                $this->insertarPlato(); 
+                    break;
+                case "cancelarInsertarPlato": 
+                $this->cancelarInsertarPlato(); 
+                    break;	
                 /* ------------- MENU ------- */
                 case 'listarMenu':
                     $this->listarMenu();
@@ -148,8 +160,20 @@
                 case 'actualizarMesa':
                     $this->actualizarMesa();
                     break;
-                case 'confirmaActualizarMesa':
-                    $this->confirmaActualizarMesa();
+                case 'confirmaActualizarMesa': 
+                    $this->confirmaActualizarMesa();  
+                    break;
+                case "cancelarActualizarMesa":
+                $this->cancelarActualizarMesa();  
+                    break;
+                case "mostr arInsertarMesa":
+                $this->mostrarInsertarMesa();  
+                    break;
+                case "insertarMesa":
+                $this->insertarMesa();  
+                    break;
+                case 'cancelarInsertarMesa':  
+                    $this->cancelarInsertarMesa();
                     break;
                 /* ------------- ORDEN ------- */
                 case 'listarOrden':
@@ -307,10 +331,22 @@
             $PlatoControlador = new PlatoControlador($this->datos); 
         }
         public function actualizarPlato() {
-            $PlatoControlador = new PlatoControlador ($this->datos);
+            $PlatoControlador = new PlatoControlador ($this->datos); 
         }
         public function confirmaActualizarPlato() {
             $PlatoControlador = new PlatoControlador ($this->datos);
+        }
+        public function cancelarActualizarPlato() {
+            $PlatoControlador = new PlatoControlador ($this->datos);
+        }
+        public function mostrarInsertarPlato() { 
+            $PlatoControlador = new PlatoControlador($this->datos); 
+        }
+        public function insertarPlato() {  
+            $PlatoControlador = new PlatoControlador($this->datos); 
+        }
+        public function cancelarInsertarPlato() {  
+            $PlatoControlador = new PlatoControlador($this->datos); 
         }
          /* ------------------------- MENU ----------------------------- */
         public function listarMenu() {
@@ -330,6 +366,18 @@
             $MesaControlador = new MesaControlador ($this->datos);
         }
         public function confirmaActualizarMesa() {
+            $MesaControlador = new MesaControlador ($this->datos); 
+        }
+        public function cancelarActualizarMesa() {
+            $MesaControlador = new MesaControlador ($this->datos); 
+        }
+        public function mostrarInsertarMesa() {  
+            $MesaControlador = new MesaControlador ($this->datos);
+        }
+        public function insertarMesa() {
+            $MesaControlador = new MesaControlador ($this->datos);
+        }
+        public function cancelarInsertarMesa() {
             $MesaControlador = new MesaControlador ($this->datos);
         }
          /* ------------------------- ORDEN ----------------------------- */

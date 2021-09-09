@@ -49,7 +49,7 @@ if(isset($_SESSION['listaTipoPlato'])){
 }
 ?>
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    
 
 
                     <!-- DataTales Example -->

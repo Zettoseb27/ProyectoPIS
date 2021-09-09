@@ -36,7 +36,7 @@ if(isset($_SESSION['listarDeMesa'])){
                 <th>Id</th>
                 <th>Numero Mesa</th> 
                 <th>Cantidad Comensales</th> 
-                <th>Created</th> 
+
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -50,7 +50,6 @@ if(isset($_SESSION['listarDeMesa'])){
                     <td><?php echo $listarDeMesa[$i]-> mesId; ?></td>  
                     <td><?php echo $listarDeMesa[$i]-> mesNumeroMesa; ?></td>  
                     <td><?php echo $listarDeMesa[$i]-> mesCantidadComensales; ?></td>  
-                    <td><?php echo $listarDeMesa[$i]-> mesCreated_at; ?></td>  
                     <td><a href="Controlador.php?ruta=actualizarMesa&idAct=<?php echo $listarDeMesa[$i]->mesId; ?>">Actualizar</a></td>  
                     <td><a href="Controlador.php?ruta=eliminarMesa&idAct=<?php echo $listarDeMesa[$i]->mesId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
