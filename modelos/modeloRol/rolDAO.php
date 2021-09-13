@@ -41,8 +41,10 @@ class RolDAO extends ConBdMySql {
                $this->cierreBd();
                return $listadoRegistroOrden;
 
-       }public function seleccionarId($rolId) {
-            $consultar = "SELECT * FROM rol WHERE rolId = ?;";
+       }
+       public function seleccionarId($rolId) {
+            $consultar = "SELECT * FROM  rol"; 
+            $consultar .= " WHERE rolId = ?;";
             $listar = $this -> conexion -> prepare($consultar);
             $listar -> execute(array($rolId[0]));
             $registroEncontrado = array();
@@ -58,20 +60,21 @@ class RolDAO extends ConBdMySql {
        }
        public function insertar($registro) {
             try {
-                $consultar = "insert into rol values (:rolId, :rolNombre, :rolDescripcion, :rolEstado, :rolUsuSesion, :rol_created_at, :rol_updated_at);";
+                $consultar = "INSERT INTO rol (rolId,rolNombre,rolDescripcion) VALUES (:rolId, :rolNombre, :rolDescripcion);";
                 $insertar = $this -> conexion -> prepare($consultar);
                 $insertar -> bindParam("rolId", $registro['rolId']);
                 $insertar -> bindParam("rolNombre", $registro['rolNombre']);
                 $insertar -> bindParam("rolDescripcion", $registro['rolDescripcion']);
-                $insertar -> bindParam("rolEstado", $registro['rolEstado']);
+                /*$insertar -> bindParam("rolEstado", $registro['rolEstado']);
                 $insertar -> bindParam("rolUsuSesion", $registro['rolUsuSesion']);
                 $insertar -> bindParam("rol_created_at", $registro['rol_created_at']);
-                $insertar -> bindParam("rol_updated_at", $registro['rol_updated_at']);
+                $insertar -> bindParam("rol_updated_at", $registro['rol_updated_at']);*/
+                $insercion = $insertar -> execute();
                 $clavePrimaria = $this -> conexion -> lastInsertId();
-                return ['inserto' => 1, 'resultado' => $clavePrimaria];
+                return ['inserto' => $insercion, 'resultado' => $clavePrimaria];
                 $this -> cierreBd();
             } catch (PDOException $pdoExc) {
-                return['inserto' > 0, $pdoExc -> errorInfo[2]];
+                return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
             }
        }
        public function eliminar($rolId = array()) {

@@ -45,6 +45,12 @@
                case 'mostrarInsertarRol':
                    $this->mostrarInsertarRol();  
                    break;
+               case 'insertarRol':  
+                    $this->insertarRol();
+                    break;
+               case "cancelarInsertarRol":
+                $this->cancelarInsertarRol(); 
+                    break;		
                 /* ------------- PERSONA ------- */
                 case 'listarPersona':
                     $this->listarPersona();
@@ -111,6 +117,9 @@
                     break;
                 case "insertarTipoPlato":
                 $this->insertarTipoPlato(); 
+                    break;
+                case "cancelarInsertarTipoPlato":
+                $this->cancelarInsertarTipoPlato(); 
                     break;		
                 /* ------------- PLATO ------- */
                 case 'listarPlato':
@@ -122,6 +131,18 @@
                 case 'confirmaActualizarPlato':
                     $this->confirmaActualizarPlato();
                     break;
+                case "cancelarActualizarPlato":
+                $this->cancelarActualizarPlato();  
+                    break;
+                case "mostrarInsertarPlato":
+                $this->mostrarInsertarPlato(); 
+                    break;
+                case "insertarPlato":
+                $this->insertarPlato(); 
+                    break;
+                case "cancelarInsertarPlato": 
+                $this->cancelarInsertarPlato(); 
+                    break;	
                 /* ------------- MENU ------- */
                 case 'listarMenu':
                     $this->listarMenu();
@@ -217,6 +238,12 @@
         public function mostrarInsertarRol() {
             $RolControlador = new RolControlador ($this->datos);
         }
+        public function insertarRol() {
+            $RolControlador = new RolControlador ($this->datos);
+        }
+        public function cancelarInsertarRol() {
+            $RolControlador = new RolControlador ($this->datos);
+        }
          /* ------------------------- PERSONA  ----------------------------- */
          public function listarPersona() {
             $PersonaControlador = new PersonaControlador ($this->datos);
@@ -284,15 +311,30 @@
         public function insertarTipoPlato() {  
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
+        public function cancelarInsertarTipoPlato() {  
+            $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
+        }
          /* ------------------------- PLATO ----------------------------- */
         public function listarPlato() {
             $PlatoControlador = new PlatoControlador($this->datos); 
         }
         public function actualizarPlato() {
-            $PlatoControlador = new PlatoControlador ($this->datos);
+            $PlatoControlador = new PlatoControlador ($this->datos); 
         }
         public function confirmaActualizarPlato() {
             $PlatoControlador = new PlatoControlador ($this->datos);
+        }
+        public function cancelarActualizarPlato() {
+            $PlatoControlador = new PlatoControlador ($this->datos);
+        }
+        public function mostrarInsertarPlato() { 
+            $PlatoControlador = new PlatoControlador($this->datos); 
+        }
+        public function insertarPlato() {  
+            $PlatoControlador = new PlatoControlador($this->datos); 
+        }
+        public function cancelarInsertarPlato() {  
+            $PlatoControlador = new PlatoControlador($this->datos); 
         }
          /* ------------------------- MENU ----------------------------- */
         public function listarMenu() {

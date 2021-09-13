@@ -10,10 +10,6 @@
     $registro['plaDescripcion'] = "pescado frito con papas francesas y ensalada";
      $registro['plaPrecio'] = 12000;
     $registro['plaEstado'] = 1;
-    $registro['plaSesion'] = null;
-    $registro['placreated_at'] = "2021-10-09 15:10:14";
-    $registro['plaupdate_at'] = "2021-10-09 15:10:14";
-
 
     $plato = new PlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 

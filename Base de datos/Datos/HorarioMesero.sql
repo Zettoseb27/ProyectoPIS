@@ -26,4 +26,4 @@ select hr.horId,hr.horHoraFin,hr.horFecha,
             from horario hr 
             inner join codigo_mesero cm on hr.horIdCodigoMesero = cm.codMesId
             inner join persona p on cm.codMesIdMesero = p.perId
-                where hr.horId = ;
+                where hr.horId = 1;
