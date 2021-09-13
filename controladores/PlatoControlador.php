@@ -107,6 +107,14 @@
                 header("location:Controlador.php?ruta=mostrarInsertarPlato");
             }
         }
+<<<<<<< HEAD
+=======
+        public function cancelarInsertarPlato() {
+            session_start();
+            $_SESSION['mensaje'] = "Desistió de la insercion";
+            header("location:Controlador.php?ruta=listarPlato");
+        }
+>>>>>>> develop
     
     } 
 ?>

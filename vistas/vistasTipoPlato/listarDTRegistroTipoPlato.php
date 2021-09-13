@@ -117,7 +117,7 @@ if(isset($_SESSION['listaTipoPlato'])){
     <script src="js/demo/datatables-demo.js"></script>
 =======
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    
 
 
                     <!-- DataTales Example -->

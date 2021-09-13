@@ -160,8 +160,20 @@
                 case 'actualizarMesa':
                     $this->actualizarMesa();
                     break;
-                case 'confirmaActualizarMesa':
-                    $this->confirmaActualizarMesa();
+                case 'confirmaActualizarMesa': 
+                    $this->confirmaActualizarMesa();  
+                    break;
+                case "cancelarActualizarMesa":
+                $this->cancelarActualizarMesa();  
+                    break;
+                case "mostr arInsertarMesa":
+                $this->mostrarInsertarMesa();  
+                    break;
+                case "insertarMesa":
+                $this->insertarMesa();  
+                    break;
+                case 'cancelarInsertarMesa':  
+                    $this->cancelarInsertarMesa();
                     break;
                 /* ------------- ORDEN ------- */
                 case 'listarOrden':
@@ -354,6 +366,18 @@
             $MesaControlador = new MesaControlador ($this->datos);
         }
         public function confirmaActualizarMesa() {
+            $MesaControlador = new MesaControlador ($this->datos); 
+        }
+        public function cancelarActualizarMesa() {
+            $MesaControlador = new MesaControlador ($this->datos); 
+        }
+        public function mostrarInsertarMesa() {  
+            $MesaControlador = new MesaControlador ($this->datos);
+        }
+        public function insertarMesa() {
+            $MesaControlador = new MesaControlador ($this->datos);
+        }
+        public function cancelarInsertarMesa() {
             $MesaControlador = new MesaControlador ($this->datos);
         }
          /* ------------------------- ORDEN ----------------------------- */
