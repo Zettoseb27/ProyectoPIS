@@ -87,7 +87,7 @@
             }	
         }
         public function eliminar($Id = array()) {
-            $planConsulta = "DELETE FROM orden ";
+            $planConsulta = "SET FOREIGN_KEY_CHECKS=0; DELETE FROM orden ";
             $planConsulta.= "WHERE ordId = :ordId;";
             $eliminar = $this -> conexion -> prepare($planConsulta);
             $eliminar -> bindParam(':ordId', $Id[0], PDO::PARAM_INT);    

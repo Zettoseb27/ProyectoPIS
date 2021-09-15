@@ -36,14 +36,14 @@
      } 
      public function actualizar($registro) {
         try {
-            $Persona = $registro[0]['horIdCodigoMesero'];
-            $Estado = $registro[0]['codMesEstado'];
+            //$Persona = $registro[0]['horIdCodigoMesero'];
+            //$Estado = $registro[0]['codMesEstado'];
             $CodigoMesero = $registro[0]['codMesCodigoMesero'];
             $Id = $registro[0]['codMesId'];
             if (isset($Id)) {
-                $actualizar = "UPDATE codigo_mesero SET horIdCodigoMesero = ?, codMesEstado = ?, codMesCodigoMesero = ? WHERE codMesId = ?;";
+                $actualizar = "UPDATE codigo_mesero SET codMesCodigoMesero = ? WHERE codMesId = ?;";
                 $actualizacion = $this->conexion->prepare($actualizar);
-                $resultadoAct = $actualizacion->execute(array($Persona,$Estado,$CodigoMesero,$Id));
+                $resultadoAct = $actualizacion->execute(array(/*$Persona,$Estado,*/$CodigoMesero,$Id));
                 $this->cierreBd();
                 return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
             }
@@ -72,7 +72,7 @@
         }
      }
      public function eliminar($codMesId = array()) {
-        $planConsulta = "delete from codigo_mesero where codMesId = :codMesId;";
+        $planConsulta = "SET FOREIGN_KEY_CHECKS=0; delete from codigo_mesero where codMesId = :codMesId;";
         $eliminar = $this -> conexion -> prepare($planConsulta);
         $eliminar -> bindParam(':codMesId', $codMesId[0], PDO:: PARAM_INT);    
         $resultado = $eliminar->execute();

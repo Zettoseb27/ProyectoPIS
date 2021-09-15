@@ -83,7 +83,7 @@
         }	
     }
     public function eliminar($plaId = array()) {
-        $planConsulta = "delete from plato where plaId = ?;";
+        $planConsulta = "delete from plato where plaId = :plaId;";
         $eliminar = $this -> conexion -> prepare($planConsulta);
         $eliminar -> bindParam(':plaId', $plaId[0], PDO:: PARAM_INT);    
         $resultado = $eliminar->execute();

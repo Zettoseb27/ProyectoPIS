@@ -11,9 +11,9 @@
                 case 'listarRol':
                     $this->listarRol();
                     break;
-                case 'eliminarRol':
-                   $this->eliminarRol();
-                   break;
+               case 'eliminarOrden':
+                    $this->eliminarOrden();
+                    break;
                 case 'actualizarRol':
                     $this->actualizarRol();
                     break;

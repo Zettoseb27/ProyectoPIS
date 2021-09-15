@@ -70,9 +70,12 @@
                case 'mostrarInsertarPersona':
                    $this->mostrarInsertarPersona();  
                    break;
-                /* ------------- CODIGO MESERO ------- */
+                /* ------------- CODIGO MESERO ------- */  
                 case 'listarCodigoMesero':
                     $this->listarCodigoMesero();
+                   break;
+                case 'eliminarCodigoMesero':
+                    $this->eliminarCodigoMesero();
                    break;
                case 'actualizarCodigoMesero':
                    $this->actualizarCodigoMesero();
@@ -127,9 +130,12 @@
                 case "cancelarInsertarTipoPlato":
                 $this->cancelarInsertarTipoPlato(); 
                     break;		
-                /* ------------- PLATO ------- */
+                /* ------------- PLATO ------- */ 
                 case 'listarPlato':
-                    $this->listarPlato();
+                    $this->listarPlato();  
+                    break;
+                case 'eliminarPlato':
+                    $this->eliminarPlato();
                     break;
                 case 'actualizarPlato':
                     $this->actualizarPlato();
@@ -159,9 +165,12 @@
                 case 'confirmaActualizarMenu':
                     $this->confirmaActualizarMenu();
                     break;
-                /* ---------  MESA -------------- */
+                /* ---------  MESA -------------- */ 
                 case 'listarMesa':
                     $this->listarMesa();
+                    break;
+                case 'eliminarMesa':
+                    $this->eliminarMesa();
                     break;
                 case 'actualizarMesa':
                     $this->actualizarMesa();
@@ -182,9 +191,12 @@
                     $this->cancelarInsertarMesa();
                     break;
      
-                /* ------------- ORDEN ------- */
+                /* ------------- ORDEN ------- */ 
                 case 'listarOrden':
                     $this->listarOrden();
+                    break;
+                case 'eliminarOrden':
+                    $this->eliminarOrden();
                     break;
                 case 'actualizarOrden':
                     $this->actualizarOrden();
@@ -285,8 +297,11 @@
         public function mostrarInsertarPersona() {
             $PersonaControlador = new PersonaControlador ($this->datos);
         }
-        /* ------------------------- CODIGO MESERO  ----------------------------- */
+        /* ------------------------- CODIGO MESERO  ----------------------------- */ 
          public function listarCodigoMesero() {
+            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
+        }
+        public function eliminarCodigoMesero() {
             $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
         }
         public function actualizarCodigoMesero() {
@@ -342,8 +357,11 @@
         public function cancelarInsertarTipoPlato() {  
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
-         /* ------------------------- PLATO ----------------------------- */
+         /* ------------------------- PLATO ----------------------------- */ 
         public function listarPlato() {
+            $PlatoControlador = new PlatoControlador($this->datos); 
+        }
+        public function eliminarPlato() {
             $PlatoControlador = new PlatoControlador($this->datos); 
         }
         public function actualizarPlato() {
@@ -376,7 +394,10 @@
         }
         /* ------------------------- MESA ----------------------------- */
         public function listarMesa() {
-            $MesaControlador = new MesaControlador($this->datos); 
+            $MesaControlador = new MesaControlador($this->datos);  
+        }
+        public function eliminarMesa() {
+            $MesaControlador = new MesaControlador ($this->datos);
         }
         public function actualizarMesa() {
             $MesaControlador = new MesaControlador ($this->datos);
@@ -396,8 +417,11 @@
         public function cancelarInsertarMesa() {
             $MesaControlador = new MesaControlador ($this->datos);
         }
-         /* ------------------------- ORDEN ----------------------------- */
+         /* ------------------------- ORDEN ----------------------------- */ 
         public function listarOrden() {
+            $OrdenControlador = new OrdenControlador ($this->datos);
+        }
+        public function eliminarOrden() {
             $OrdenControlador = new OrdenControlador ($this->datos);
         }
         public function actualizarOrden() {

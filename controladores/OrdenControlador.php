@@ -12,9 +12,12 @@
          }
          public function OrdenControlador() {
             switch ($this->datos['ruta']) {
-                case 'listarOrden': // provisionalmente para trabajar con datatables
+               case 'listarOrden': // provisionalmente para trabajar con datatables
                     $this->listarOrden();
                      break;
+               case 'eliminarOrden':
+                    $this->eliminarOrden();
+                    break;
                case "actualizarOrden": //provisionalmente para trabajar con datatables
                   $this->actualizarOrden();
                   break;
@@ -42,6 +45,14 @@
             //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS INPRINA O UTILICE //
             $_SESSION['listaDeOrden'] = $registroOrden;
             header("location:principal.php?contenido=vistas/vistasOrden/listarDTRegistroOrden.php");
+         }
+         public function eliminarOrden() {
+            $EliminarRol = new OrdenDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $EliminarDeRol = $EliminarRol -> Eliminar(array($this->datos['idAct'])); // Se consulta el libro para modificar los datos
+            $actualizarDatosRol = $EliminarDeRol['registroEncontrado'][0];
+            session_start();
+            $_SESSION['mensaje'] = "Eliminación realizada."; 
+            header("location:Controlador.php?ruta=listarOrden");
          }
          public function actualizarOrden() {
             $gestarOrden = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);

@@ -12,6 +12,9 @@
                 case 'listarPlato':
                     $this->listarPlato();
                     break;
+                case 'eliminarPlato':
+                    $this->eliminarPlato();
+                    break;
                 case 'actualizarPlato':
                     $this->actualizarPlato();
                     break;
@@ -36,8 +39,16 @@
             $gestarPlato = new PlatoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
             $registroPlato = $gestarPlato -> seleccionarTodos();
             session_start();
-            $_SESSION['listaDePlato'] = $registroPlato;
+            $_SESSION['listaPlato'] = $registroPlato;
             header("location:principal.php?contenido=vistas/vistasPlato/listarDTRegistroPlato.php");
+         }
+         public function eliminarPlato() {
+            $EliminarPlato = new PlatoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $EliminarDeRol = $EliminarPlato -> eliminar(array($this->datos['idAct'])); // Se consulta el libro para modificar los datos
+            $actualizarDatosRol = $EliminarDeRol['registroEncontrado'][0];
+            session_start();
+            $_SESSION['mensaje'] = "Eliminación realizada."; 
+            header("location:Controlador.php?ruta=listarPlato");
          }
          public function actualizarPlato() {
             $gestarPlato = new PlatoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);

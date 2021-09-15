@@ -23,3 +23,5 @@ from persona
 where perId = 1 ;
 
 SELECT * FROM persona  WHERE perId = 1;
+SET FOREIGN_KEY_CHECKS=0;
+delete from persona where perId = 8;
