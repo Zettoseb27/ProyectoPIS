@@ -55,3 +55,5 @@ where ordId = 1;
 
 /* ------------------------------ Actualizar --------------------------- */
 update orden set ordIdMesa = 3, ordValorTotal = 5000, ordIdMenu = 2 where ordId = 2;
+
+DELETE FROM orden WHERE ordId = 5;

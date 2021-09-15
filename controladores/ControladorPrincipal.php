@@ -106,6 +106,9 @@
                 case 'listarTipoPlato':
                     $this->listarTipoPlato();
                     break;
+                case 'eliminarTipoPlato':
+                   $this->eliminarTipoPlato();
+                   break;
                 case 'ActualizarTipoPlato':
                     $this->ActualizarTipoPlato();   
                     break;
@@ -318,6 +321,9 @@
         public function listarTipoPlato() {
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
+        public function eliminarTipoPlato() {
+            $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
+        }
         public function ActualizarTipoPlato() {
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
@@ -325,7 +331,7 @@
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
         public function cancelarActualizarTipoPlato() {  
-            $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
+            $TipoPlatoControlador = new TipoPlatoControlador($this->datos);  
         }
         public function mostrarInsertarTipoPlato() { 
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 

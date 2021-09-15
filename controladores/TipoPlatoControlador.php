@@ -11,6 +11,9 @@
                 case 'listarTipoPlato':
                     $this->listarTipoPlato();
                     break;
+                case 'eliminarTipoPlato':
+                   $this->eliminarTipoPlato();
+                   break;
                 case 'ActualizarTipoPlato':  
                     $this->ActualizarTipoPlato(); 
                     break;
@@ -37,6 +40,14 @@
             session_start();
             $_SESSION['listaTipoPlato'] = $registroTipoPlato;
             header("location:principal.php?contenido=vistas/vistasTipoPlato/listarDTRegistroTipoPlato.php");
+         }
+         public function eliminarTipoPlato() {
+            $EliminarRol = new tipoDePlatoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $EliminarDeRol = $EliminarRol -> Eliminar(array($this->datos['idAct'])); // Se consulta el libro para modificar los datos
+            $actualizarDatosRol = $EliminarDeRol['registroEncontrado'][0];
+            session_start();
+            $_SESSION['mensaje'] = "Eliminación realizada."; 
+            header("location:Controlador.php?ruta=listarTipoPlato");
          }
          public function ActualizarTipoPlato() {
             $gestarTipoPlato = new tipoDePlatoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
