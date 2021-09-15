@@ -1,9 +1,9 @@
 <?php
      include_once PATH. 'modelos/modeloOrden/OrdenDAO.php';
-     include_once PATH. 'modelos/modeloMenu/MenuDAO.php'; 
+     //include_once PATH. 'modelos/modeloMenu/MenuDAO.php'; 
      include_once PATH. 'modelos/modeloMesa/MesaDAO.php'; 
-     include_once PATH. 'modelos/modeloPlato/PlatoDAO.php'; 
-     include_once PATH. 'modelos/modelotipoDePlato/tipoDePlatoDAO.php'; 
+     /*include_once PATH. 'modelos/modeloPlato/PlatoDAO.php'; 
+     include_once PATH. 'modelos/modelotipoDePlato/tipoDePlatoDAO.php'; */
      class OrdenControlador {
          private $datos;
          public function __construct($datos) {
@@ -12,9 +12,12 @@
          }
          public function OrdenControlador() {
             switch ($this->datos['ruta']) {
-                case 'listarOrden': // provisionalmente para trabajar con datatables
+               case 'listarOrden': // provisionalmente para trabajar con datatables
                     $this->listarOrden();
                      break;
+               case 'eliminarOrden':
+                    $this->eliminarOrden();
+                    break;
                case "actualizarOrden": //provisionalmente para trabajar con datatables
                   $this->actualizarOrden();
                   break;
@@ -43,31 +46,46 @@
             $_SESSION['listaDeOrden'] = $registroOrden;
             header("location:principal.php?contenido=vistas/vistasOrden/listarDTRegistroOrden.php");
          }
+         public function eliminarOrden() {
+            $EliminarRol = new OrdenDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $EliminarDeRol = $EliminarRol -> Eliminar(array($this->datos['idAct'])); // Se consulta el libro para modificar los datos
+            $actualizarDatosRol = $EliminarDeRol['registroEncontrado'][0];
+            session_start();
+            $_SESSION['mensaje'] = "Eliminación realizada."; 
+            header("location:Controlador.php?ruta=listarOrden");
+         }
          public function actualizarOrden() {
             $gestarOrden = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
             $consultaDeOrden = $gestarOrden->seleccionarId(array($this->datos['idAct']));
             $actualizarDatosOrden = $consultaDeOrden['registroEncontrado'][0]; 
 
-            $gestarMenu = new MenuDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
-            $registroMenu = $gestarMenu->seleccionarTodos();
+
 
             $gestarMesa = new MesaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
             $registroMesa = $gestarMesa->seleccionarTodos();
 
-            $gestarPlato = new PlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
-            $registroPlato = $gestarPlato->seleccionarTodos();
+            /*$gestarMesa = new PlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
+            $registroPlato = $gestarMesa->seleccionarTodos();
 
             $gestarTipoDePlato = new tipoDePlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
-            $registroTipoDePlato = $gestarTipoDePlato->seleccionarTodos();
+            $registroTipoDePlato = $gestarTipoDePlato->seleccionarTodos();*/
 
             session_start();
             $_SESSION['actualizarDatosOrden'] = $actualizarDatosOrden;
-            $_SESSION['actualizarDatosMenu'] = $registroMenu;
-            $_SESSION['actualizarDatosMesa'] = $registroMesa;
-            $_SESSION['actualizarDatosPlato'] = $registroPlato;
-            $_SESSION['actualizarDatosTipoDePlato'] = $registroTipoDePlato;
+            $_SESSION['registroMesa'] = $registroMesa;
+            /*$_SESSION['actualizarDatosPlato'] = $registroPlato;
+            $_SESSION['actualizarDatosTipoDePlato'] = $registroTipoDePlato;*/
 
-            header("location:principal.php?contenido=vistas/vistasOrden/vistaActualizaOrden.php");
-         } 
+            header("location:principal.php?contenido=vistas/vistasOrden/vistaActualizarOrden.php");
+         }
+         public function confirmaActualizarOrden() { 
+            //echo line;
+            $gestarOrden = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+            $actualizarOrden = $gestarOrden->actualizar(array($this->datos)); //Se envía datos del libro para actualizar. 				
+    
+            session_start();
+            $_SESSION['mensaje'] = "Actualización realizada.";
+            header("location:Controlador.php?ruta=listarOrden");
+        } 
      }
 ?>

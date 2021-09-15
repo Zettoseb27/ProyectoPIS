@@ -11,6 +11,9 @@
                 case 'listarMesa':
                     $this->listarMesa();
                     break;
+                case 'eliminarMesa':
+                    $this->eliminarMesa();
+                    break;
                 case 'actualizarMesa': 
                     $this->actualizarMesa();
                     break;
@@ -38,6 +41,14 @@
             //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS INPRINA O UTILICE //
             $_SESSION['listarDeMesa'] = $registroMesa;
             header("location:principal.php?contenido=vistas/vistasMesa/listarDTRegistroMesa.php");
+         }
+         public function eliminarMesa() {
+            $EliminarRol = new MesaDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $EliminarDeRol = $EliminarRol -> Eliminar(array($this->datos['idAct'])); // Se consulta el libro para modificar los datos
+            $actualizarDatosRol = $EliminarDeRol['registroEncontrado'][0];
+            session_start();
+            $_SESSION['mensaje'] = "Eliminación realizada."; 
+            header("location:Controlador.php?ruta=listarMesa");
          }
          public function actualizarMesa() {
             $gestarMesa = new MesaDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);

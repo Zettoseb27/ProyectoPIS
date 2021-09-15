@@ -95,11 +95,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseone"
                     aria-expanded="true" aria-controls="collapseone">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Gestion Rol</span>
+                    <span>Rol</span>
                 </a>
                 <div id="collapseone" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                        <h6 class="collapse-header">Gestion Rol:</h6>
                         <a class="collapse-item" href="Controlador.php?ruta=listarRol&pag=0">Listar</a>
                         <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarRol">Agregar</a>
                     </div>
@@ -110,11 +110,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Gestion Tipo Plato</span>
+                    <span>Tipo Plato</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                        <h6 class="collapse-header">Gestion Tipo Plato:</h6>
                         <a class="collapse-item" href="Controlador.php?ruta=listarTipoPlato&pag=0">Listar</a>
                         <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarTipoPlato">Agregar</a>
                     </div>
@@ -125,11 +125,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsethree"
                     aria-expanded="true" aria-controls="collapsethree">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Gestion Plato</span>
+                    <span>Plato</span>
                 </a>
                 <div id="collapsethree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                        <h6 class="collapse-header">Gestion Plato:</h6>
                         <a class="collapse-item" href="Controlador.php?ruta=listarPlato&pag=0">Listar</a>
                         <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarPlato">Agregar</a>
                     </div>
@@ -139,16 +139,46 @@
 =======
             <!-- MESA -->
              <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse4"
-                    aria-expanded="true" aria-controls="collapse4">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5"
+                    aria-expanded="true" aria-controls="collapse5">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Gestion Mesa</span>
+                    <span>Mesa</span>
                 </a>
-                <div id="collapse4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                        <h6 class="collapse-header">Gestion Mesa:</h6>
                         <a class="collapse-item" href="Controlador.php?ruta=listarMesa&pag=0">Listar</a>
                         <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarMesa">Agregar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- MENU 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse6"
+                    aria-expanded="true" aria-controls="collapse6">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Gestion Menu</span>
+                </a>
+                <div id="collapse6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="Controlador.php?ruta=listarMenu&pag=0">Listar</a>
+                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarMenu">Agregar</a>
+                    </div>
+                </div>
+            </li> -->
+            <!-- ORDEN -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse7"
+                    aria-expanded="true" aria-controls="collapse7">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Orden</span>
+                </a>
+                <div id="collapse7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Gestion Orden:</h6>
+                        <a class="collapse-item" href="Controlador.php?ruta=listarOrden&pag=0">Listar</a>
+                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarOrden">Agregar</a>
                     </div>
                 </div>
             </li>
@@ -158,22 +188,23 @@
             <div class="sidebar-heading">
                 Mesero
             </div>
+<<<<<<< HEAD
 >>>>>>> develop
             <!-- Nav Item - Utilities Collapse Menu -->
+=======
+            <!-- CODIGO MESERO -->
+>>>>>>> develop
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse8"
+                    aria-expanded="true" aria-controls="collapse8">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Codigo Mesero</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
+                <div id="collapse8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <h6 class="collapse-header">Gestion Codigo Mesero:</h6>
+                        <a class="collapse-item" href="Controlador.php?ruta=listarCodigoMesero&pag=0">Listar</a>
+                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarCodigoMesero">Agregar</a>
                     </div>
                 </div>
             </li>

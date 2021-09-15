@@ -3,7 +3,7 @@
      include_once PATH. 'modelos/ConBdMysql.php';
      include_once PATH. 'modelos/modeloOrden/OrdenDAO.php';
 
-     $ordId=array(1);
+     $ordId=array(2);
 
      $orden = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 

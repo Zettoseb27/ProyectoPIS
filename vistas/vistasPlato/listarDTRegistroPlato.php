@@ -1,5 +1,19 @@
+<?php
+    /*
+    echo "<pre>";
+    print_r($_SESSION['listaPlato']);      
+    echo "</pre>"; 
+    */
+
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script languaje='javascript'>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -48,13 +62,14 @@
 </head>
 
 <body id="page-top">
-
 <?php
-     if (isset($_SESSION['listaDePlato'])) {
-         $listaDePlato = $_SESSION['listaDePlato'];
-         unset($_SESSION['listaDePlato']);
+     if (isset($_SESSION['listaPlato'])) {
+         $listaPlato = $_SESSION['listaPlato'];
+         unset($_SESSION['listaPlato']);
      }
     ?>
+    <!-- Page Wrapper -->
+    
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -94,7 +109,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">Plato</h4>
+                            <h4 class="m-0 font-weight-bold text-primary">Tipo de Plato</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -104,7 +119,6 @@
                                             <th>Id</th> 
                                             <th>Descripcion</th> 
                                             <th>Precion</th> 
-                                            <th>Plato</th>
                                             <th>Estado</th> 
                                             <th>Edit</th> 
                                             <th>Delete</th> 
@@ -114,33 +128,31 @@
                                         <tr>
                                             <th>Id</th> 
                                             <th>Descripcion</th> 
-                                            <th>Precion</th>
-                                            <th>Plato</th> 
+                                            <th>Precion</th> 
                                             <th>Estado</th> 
                                             <th>Edit</th> 
                                             <th>Delete</th> 
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                            <?php
-                                            $i = 0;
-                                            foreach ($listaDePlato as $key => $value){
-                                                ?>                       
-                                                <tr>
-                                                    <td><?php echo $listaDePlato[$i] -> plaId; ?></td>  
-                                                    <td><?php echo $listaDePlato[$i] -> plaDescripcion; ?></td> 
-                                                    <td><?php echo $listaDePlato[$i] -> plaPrecio; ?></td> 
-                                                    <td><?php echo $listaDePlato[$i] -> tipPlaPlato; ?></td>  
-                                                    <td><?php echo $listaDePlato[$i] -> plaEstado; ?></td>  
-                                                
-                                                    <td><a href="Controlador.php?ruta=actualizarPlato&idAct=<?php echo $listaDePlato[$i] -> plaId; ?>">Actualizar</a></td>  
-                                                    <td><a href="Controlador.php?ruta=eliminarPlato&idAct=<?php echo $listaDePlato[$i] -> plaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                    <?php
+                                        $i = 0;
+                                        foreach ($listaPlato as $key => $value){
+                                            ?>                       
+                                            <tr>
+                                                <td><?php echo $listaPlato[$i] -> plaId; ?></td>  
+                                                <td><?php echo $listaPlato[$i] -> plaDescripcion; ?></td>  
+                                                <td><?php echo $listaPlato[$i] -> plaPrecio; ?></td>  
+                                                <td><?php echo $listaPlato[$i] -> plaEstado; ?></td>  
+                                            
+                                                <td><a href="Controlador.php?ruta=ActualizarPlato&idAct=<?php echo $listaPlato[$i]->plaId; ?>">Actualizar</a></td>  
+                                                <td><a href="Controlador.php?ruta=eliminarPlato&idAct=<?php echo $listaPlato[$i]->plaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>
                                                 </tr>             
-                                            <?php 
-                                            $i++;
-                                            }
-                                            $listaDePlato = null;
-                                                ?>
+                                        <?php 
+                                        $i++;
+                                        }
+                                        $listaPlato = null;
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

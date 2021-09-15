@@ -1,6 +1,6 @@
 <?php
      include_once PATH.'modelos/modeloCodigoMesero/CodigoMeseroDAO.php'; 
-     include_once PATH.'modelos/modeloPersona/PersonaDAO.php'; 
+     //include_once PATH.'modelos/modeloPersona/PersonaDAO.php'; 
      class CodigoMeseroControlador{
          private $datos;
          public function __construct($datos) {
@@ -11,7 +11,10 @@
             switch ($this->datos['ruta']) {
                 case 'listarCodigoMesero':
                     $this->listarCodigoMesero();
-                    break; 
+                    break;
+                case 'eliminarCodigoMesero':
+                    $this->eliminarCodigoMesero();
+                   break; 
                 case 'actualizarCodigoMesero':
                     $this->actualizarCodigoMesero();
                     break;
@@ -33,14 +36,22 @@
             $_SESSION['listarDeCodigoMesero'] = $registroCodigoMesero;
             header("location:principal.php?contenido=vistas/vistasCodigoMesero/listarDTRegistroCodigoMesero.php");
          }
+         public function eliminarCodigoMesero() {
+            $EliminarRol = new CodigoMeseroDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $EliminarDeRol = $EliminarRol -> Eliminar(array($this->datos['idAct'])); // Se consulta el libro para modificar los datos
+            $actualizarDatosRol = $EliminarDeRol['registroEncontrado'][0];
+            session_start();
+            $_SESSION['mensaje'] = "Eliminación realizada."; 
+            header("location:Controlador.php?ruta=listarCodigoMesero");
+         }
          public function actualizarCodigoMesero() {
-            // echo _line_." "._file_."<br/"; exit;
+            //echo _line_." "._file_."<br/"; exit;
             $gestarCodigoMesero = new CodigoMeseroDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
             $consultaDeCodigoMesero = $gestarCodigoMesero -> seleccionarId(array($this->datos['idAct']));
             $actualizarDatosCodigoMesero = $consultaDeCodigoMesero['registroEncontrado'][0];
             /*         * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
-            $gestarCategoriaLibros = new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
-            $registroPersona = $gestarCategoriaLibros->seleccionarTodos();
+            //$gestarCategoriaLibros = new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+            //$registroPersona = $gestarCategoriaLibros->seleccionarTodos();
             /*         * ************************************************************************* */
             session_start(); 
             $_SESSION['actualizarDatosCodigoMesero'] = $actualizarDatosCodigoMesero;

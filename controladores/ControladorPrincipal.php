@@ -33,6 +33,9 @@
                 case 'listarRol':
                     $this->listarRol();
                    break;
+                case 'eliminarRol':
+                   $this->eliminarRol();
+                   break;
                case 'actualizarRol':
                    $this->actualizarRol();
                    break;
@@ -40,7 +43,7 @@
                    $this->confirmaActualizarRol();
                    break;
                case 'cancelarActualizarRol':
-                   $this->cancelarActualizarRol();  
+                   $this->cancelarActualizarRol();   
                    break;
                case 'mostrarInsertarRol':
                    $this->mostrarInsertarRol();  
@@ -67,9 +70,12 @@
                case 'mostrarInsertarPersona':
                    $this->mostrarInsertarPersona();  
                    break;
-                /* ------------- CODIGO MESERO ------- */
+                /* ------------- CODIGO MESERO ------- */  
                 case 'listarCodigoMesero':
                     $this->listarCodigoMesero();
+                   break;
+                case 'eliminarCodigoMesero':
+                    $this->eliminarCodigoMesero();
                    break;
                case 'actualizarCodigoMesero':
                    $this->actualizarCodigoMesero();
@@ -103,6 +109,9 @@
                 case 'listarTipoPlato':
                     $this->listarTipoPlato();
                     break;
+                case 'eliminarTipoPlato':
+                   $this->eliminarTipoPlato();
+                   break;
                 case 'ActualizarTipoPlato':
                     $this->ActualizarTipoPlato();   
                     break;
@@ -121,9 +130,12 @@
                 case "cancelarInsertarTipoPlato":
                 $this->cancelarInsertarTipoPlato(); 
                     break;		
-                /* ------------- PLATO ------- */
+                /* ------------- PLATO ------- */ 
                 case 'listarPlato':
-                    $this->listarPlato();
+                    $this->listarPlato();  
+                    break;
+                case 'eliminarPlato':
+                    $this->eliminarPlato();
                     break;
                 case 'actualizarPlato':
                     $this->actualizarPlato();
@@ -153,9 +165,12 @@
                 case 'confirmaActualizarMenu':
                     $this->confirmaActualizarMenu();
                     break;
-                /* ---------  MESA -------------- */
+                /* ---------  MESA -------------- */ 
                 case 'listarMesa':
                     $this->listarMesa();
+                    break;
+                case 'eliminarMesa':
+                    $this->eliminarMesa();
                     break;
                 case 'actualizarMesa':
                     $this->actualizarMesa();
@@ -175,15 +190,22 @@
                 case 'cancelarInsertarMesa':  
                     $this->cancelarInsertarMesa();
                     break;
-                /* ------------- ORDEN ------- */
+     
+                /* ------------- ORDEN ------- */ 
                 case 'listarOrden':
                     $this->listarOrden();
+                    break;
+                case 'eliminarOrden':
+                    $this->eliminarOrden();
                     break;
                 case 'actualizarOrden':
                     $this->actualizarOrden();
                     break;
                 case 'confirmaActualizarOrden':
                     $this->confirmaActualizarOrden();
+                    break;
+                case "cancelarActualizarOrden":
+                $this->cancelarActualizarOrden();  
                     break;
                 /* ---------  FACTURA -------------- */
                 case 'listarFactura':
@@ -238,8 +260,11 @@
          public function listarRol() {
             $RolControlador = new RolControlador ($this->datos);
         }
-        public function actualizarRol() {
+        public function eliminarRol() {
             $RolControlador = new RolControlador ($this->datos);
+        }
+        public function actualizarRol() {
+            $RolControlador = new RolControlador ($this->datos); 
         }
         public function confirmaActualizarRol() {
             $RolControlador = new RolControlador ($this->datos);
@@ -248,7 +273,7 @@
             $RolControlador = new RolControlador ($this->datos);
         }
         public function mostrarInsertarRol() {
-            $RolControlador = new RolControlador ($this->datos);
+            $RolControlador = new RolControlador ($this->datos); 
         }
         public function insertarRol() {
             $RolControlador = new RolControlador ($this->datos);
@@ -272,8 +297,11 @@
         public function mostrarInsertarPersona() {
             $PersonaControlador = new PersonaControlador ($this->datos);
         }
-        /* ------------------------- CODIGO MESERO  ----------------------------- */
+        /* ------------------------- CODIGO MESERO  ----------------------------- */ 
          public function listarCodigoMesero() {
+            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
+        }
+        public function eliminarCodigoMesero() {
             $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
         }
         public function actualizarCodigoMesero() {
@@ -308,6 +336,9 @@
         public function listarTipoPlato() {
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
+        public function eliminarTipoPlato() {
+            $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
+        }
         public function ActualizarTipoPlato() {
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
@@ -315,7 +346,7 @@
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
         public function cancelarActualizarTipoPlato() {  
-            $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
+            $TipoPlatoControlador = new TipoPlatoControlador($this->datos);  
         }
         public function mostrarInsertarTipoPlato() { 
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
@@ -326,8 +357,11 @@
         public function cancelarInsertarTipoPlato() {  
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
-         /* ------------------------- PLATO ----------------------------- */
+         /* ------------------------- PLATO ----------------------------- */ 
         public function listarPlato() {
+            $PlatoControlador = new PlatoControlador($this->datos); 
+        }
+        public function eliminarPlato() {
             $PlatoControlador = new PlatoControlador($this->datos); 
         }
         public function actualizarPlato() {
@@ -360,7 +394,10 @@
         }
         /* ------------------------- MESA ----------------------------- */
         public function listarMesa() {
-            $MesaControlador = new MesaControlador($this->datos); 
+            $MesaControlador = new MesaControlador($this->datos);  
+        }
+        public function eliminarMesa() {
+            $MesaControlador = new MesaControlador ($this->datos);
         }
         public function actualizarMesa() {
             $MesaControlador = new MesaControlador ($this->datos);
@@ -380,8 +417,11 @@
         public function cancelarInsertarMesa() {
             $MesaControlador = new MesaControlador ($this->datos);
         }
-         /* ------------------------- ORDEN ----------------------------- */
+         /* ------------------------- ORDEN ----------------------------- */ 
         public function listarOrden() {
+            $OrdenControlador = new OrdenControlador ($this->datos);
+        }
+        public function eliminarOrden() {
             $OrdenControlador = new OrdenControlador ($this->datos);
         }
         public function actualizarOrden() {
@@ -389,6 +429,9 @@
         }
         public function confirmaActualizarOrden() {
             $OrdenControlador = new OrdenControlador ($this->datos);
+        }
+        public function cancelarActualizarOrden() {
+            $OrdenControlador = new OrdenControlador ($this->datos); 
         }
         /* ------------------------- FACTURA ----------------------------- */
         public function listarFactura() {
