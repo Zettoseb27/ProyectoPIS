@@ -340,6 +340,7 @@
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
         public function ActualizarTipoPlato() {
+            
             $TipoPlatoControlador = new TipoPlatoControlador($this->datos); 
         }
         public function confirmaActualizarTipoPlato() {

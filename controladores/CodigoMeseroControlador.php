@@ -50,8 +50,8 @@
             $consultaDeCodigoMesero = $gestarCodigoMesero -> seleccionarId(array($this->datos['idAct']));
             $actualizarDatosCodigoMesero = $consultaDeCodigoMesero['registroEncontrado'][0];
             /*         * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
-            //$gestarCategoriaLibros = new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
-            //$registroPersona = $gestarCategoriaLibros->seleccionarTodos();
+            $gestarCategoriaPersona = new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+            $registroPersona = $gestarCategoriaPersona->seleccionarTodos();
             /*         * ************************************************************************* */
             session_start(); 
             $_SESSION['actualizarDatosCodigoMesero'] = $actualizarDatosCodigoMesero;

@@ -89,7 +89,7 @@ if (isset($_SESSION['mensaje'])) {
                                                 <td><?php echo $listaPlato[$i] -> plaPrecio; ?></td>  
                                                 <td><?php echo $listaPlato[$i] -> plaEstado; ?></td>  
                                             
-                                                <td><a href="Controlador.php?ruta=ActualizarPlato&idAct=<?php echo $listaPlato[$i]->plaId; ?>">Actualizar</a></td>  
+                                                <td><a href="Controlador.php?ruta=actualizarPlato&idAct=<?php echo $listaPlato[$i]->plaId; ?>">Actualizar</a></td>  
                                                 <td><a href="Controlador.php?ruta=eliminarPlato&idAct=<?php echo $listaPlato[$i]->plaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>
                                                 </tr>             
                                         <?php 
