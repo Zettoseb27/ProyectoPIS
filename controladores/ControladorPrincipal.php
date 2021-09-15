@@ -84,11 +84,18 @@
                    $this->confirmaActualizarCodigoMesero();
                    break;
                case 'cancelarActualizarCodigoMesero':
-                   $this->cancelarActualizarCodigoMesero();  
-                   break;
+                   $this->cancelarActualizarCodigoMesero();   
+                   
+                   break; 
                case 'mostrarInsertarCodigoMesero':
                    $this->mostrarInsertarCodigoMesero();  
                    break;
+                case 'insertarCodigoMesero':  
+                    $this->insertarCodigoMesero();
+                    break;
+               case "cancelarInsertarCodigoMesero":
+                $this->cancelarInsertarCodigoMesero(); 
+                    break;
                 /* ------------- HORARIO MESERO ------- */
                 case 'listarHorario':
                     $this->listarHorario();
@@ -314,6 +321,12 @@
             $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
         }
         public function mostrarInsertarCodigoMesero() {
+            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
+        }
+        public function insertarCodigoMesero() {
+            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
+        }
+        public function cancelarInsertarCodigoMesero() {
             $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
         }
         /* ------------------------- HORARIO  ----------------------------- */

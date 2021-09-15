@@ -26,6 +26,12 @@
                 case 'mostrarInsertarCodigoMesero':  
                     $this->mostrarInsertarCodigoMesero();
                     break;
+                case 'insertarCodigoMesero':  
+                    $this->insertarCodigoMesero();
+                    break;
+               case "cancelarInsertarCodigoMesero":
+                $this->cancelarInsertarCodigoMesero(); 
+                    break;
             }
          }
          public function listarCodigoMesero() {
@@ -72,6 +78,46 @@
             $_SESSION['mensaje'] = "Desistió de la actualización";
             header("location:Controlador.php?ruta=listarCodigoMesero");
             
+        }
+        public function mostrarInsertarCodigoMesero() {
+            /*         * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
+            $gestarCategoriaLibros = new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+            $registroCodigoMesero = $gestarCategoriaLibros->seleccionarTodos();
+            /*         * ************************************************************************* */
+    
+            session_start();
+            $_SESSION['registroCodigoMesero'] = $registroCodigoMesero;
+            $registroCodigoMesero = null;
+    
+            header("Location: principal.php?contenido=vistas/vistasCodigoMesero/vistaInsertarCodigoMesero.php");
+        }
+        public function insertarCodigoMesero() {
+
+            //Se instancia CodigoMeseroDAO para insertar
+            $buscarCodigoMesero = new CodigoMeseroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+            //Se consulta si existe ya el registro
+            $PlatoHallado = $buscarCodigoMesero->seleccionarId(array($this->datos['codMesId']));
+            //Si no existe el libro en la base se procede a insertar ****  		
+            if (!$PlatoHallado['exitoSeleccionId']) {
+                $insertarPlato = new CodigoMeseroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+                $insertoPlato = $insertarPlato->insertar($this->datos);  //inserción de los campos en la tabla libros 
+    
+                $resultadoInsercionCodigoMesero = $insertoPlato['resultado'];  //Traer el id con que quedó el libro de lo contrario la excepción o fallo  
+    
+                session_start();
+                $_SESSION['mensaje'] = "Registrado " . $this->datos['codMesId'] . " con éxito.";
+    
+                header("location:Controlador.php?ruta=listarCodigoMesero");
+            } else {// Si existe se retornan los datos y se envía el mensaje correspondiente ****
+                session_start();
+                $_SESSION['codMesId'] = $this->datos['codMesId'];
+                $_SESSION['codMesIdMesero'] = $this->datos['codMesIdMesero'];
+                $_SESSION['codMesCodigoMesero'] = $this->datos['codMesCodigoMesero'];
+    
+                $_SESSION['mensaje'] = "   El código " . $this->datos['codMesId'] . " ya existe en el sistema.";
+    
+                header("location:Controlador.php?ruta=mostrarInsertarCodigoMesero");
+            }
         }
     }
 ?>

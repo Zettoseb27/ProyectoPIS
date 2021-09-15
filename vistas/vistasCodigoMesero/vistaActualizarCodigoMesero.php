@@ -34,10 +34,11 @@ echo "<pre>"; */
                                value="<?php 
 									if(isset($actualizarDatosCodigoMesero->codMesCodigoMesero)){ echo $actualizarDatosCodigoMesero->codMesCodigoMesero; }
 							   ?>">
+                               <hr>
                     </td>
                 </tr>
-                    <td> Documento 
-                        <select id="codMesIdMesero" name="codMesIdMesero">  codMesIdMesero
+                    <td>  Documento 
+                        <br> <select class="form-control" id="codMesIdMesero" name="codMesIdMesero">  
 							<?php
 							for ($j=0; $j< $Menu; $j++) {
 							?>
@@ -55,7 +56,7 @@ echo "<pre>"; */
 							}
 							?>
 						</select> 
-                        
+                        <br>
                     </td>                       
                 </tr>           
                 <tr>            

@@ -5,7 +5,7 @@ if (isset($_SESSION['actualizarDatosHorario'])) {
 }
 if (isset($_SESSION['registroCodigoMesero'])) { 
     $registroCodigoMesero = $_SESSION['registroCodigoMesero'];
-    $Menu = count($registroCodigoMesero);
+    $Horario = count($registroCodigoMesero);
 } 
 /* echo "<pre>";
 print_r($_SESSION);
@@ -42,18 +42,19 @@ echo "<pre>"; */
                                value="<?php 
 									if(isset($actualizarDatosHorario->horHoraFin)){ echo $actualizarDatosHorario->horHoraFin; }
 							   ?>">
+                               <hr>
                     </td>
              </tr>
                     <td> Codigo Mesero 
-                        <select id="categoriaPersona_Documento" name="categoriaPersona_Documento"> 
+                        <br> <select  class="form-control" id="horIdCodigoMesero" name="horIdCodigoMesero"> 
 							<?php
                             
-							for ($j=0; $j< $Menu; $j++) {
+							for ($j=0; $j< $Horario; $j++) {
 							?>
-								<option value ="<?php echo $registroCodigoMesero[$j]->codMesCodigoMesero; ?>" 
+								<option value ="<?php echo $registroCodigoMesero[$j]->codMesId; ?>" 
 								
                                            <?php
-                                if (isset($registroCodigoMesero[$j]->codMesCodigoMesero) && isset($actualizarDatosHorario->categoriaPersona_Documento) && ($registroCodigoMesero[$j]->codMesCodigoMesero == $actualizarDatosHorario->categoriaPersona_Documento)) {
+                                if (isset($registroCodigoMesero[$j]->codMesId) && isset($actualizarDatosHorario->horIdCodigoMesero) && ($registroCodigoMesero[$j]->codMesId == $actualizarDatosHorario->horIdCodigoMesero)) {
                                     echo "selected";
                                 }
                                 ?>> 
@@ -63,7 +64,8 @@ echo "<pre>"; */
 							}
                             
 							?>
-						</select>          
+						</select>   
+                        <br>       
                     </td>                       
                 </tr>         
                 <tr>            

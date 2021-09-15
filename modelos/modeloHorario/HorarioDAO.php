@@ -22,8 +22,7 @@
                 return $listaRegistro;
              }
              public function seleccionarId($hoRId) {
-                $consultar = "select * from horario
-                where horId = ?;";
+                $consultar = "SELECT * FROM horario WHERE horId = ?;";
                 $listar = $this -> conexion -> prepare($consultar);
                 $listar -> execute(array($hoRId[0]));
                 $registroEncontrado = array();
@@ -39,15 +38,15 @@
             }
             public function actualizar($registro) {
                 try {
-                    $CodigoMesero = $registro[0]['horIdCodigoMesero'];
                     $HoraInicio = $registro[0]['horHoraInicio'];
                     $HoraFin = $registro[0]['horHoraFin'];
                     $Fecha = $registro[0]['horFecha'];
+                    $CodigoMesero = $registro[0]['horIdCodigoMesero'];
                     $Id = $registro[0]['horId'];
                     if (isset($Id)) {
-                        $actualizar = "update horario set horIdCodigoMesero = ?, horHoraInicio = ?, horHoraFin = ?, horFecha = ? where horId = ?;"; 
+                        $actualizar = "update horario set  horHoraInicio = ?, horHoraFin = ?, horFecha = ?, horIdCodigoMesero = ? where horId = ?;"; 
                         $actualizacion = $this->conexion->prepare($actualizar);
-                        $resultadoAct = $actualizacion->execute(array($CodigoMesero,$HoraInicio,$HoraFin,$Fecha,$Id));
+                        $resultadoAct = $actualizacion->execute(array($HoraInicio,$HoraFin,$Fecha,$CodigoMesero,$Id));
                         $this->cierreBd();
                         return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
                     }

@@ -55,21 +55,17 @@
      }
      public function insertar($registro) {
         try {
-            $constultar = "insert into codigo_mesero values (:codMesId, :codMesIdMesero, :codMesCodigoMesero, :codMesEstado, :codMesSesion, :codMescreated_at, :codMesupdated_at );";
+            $constultar = "INSERT INTO codigo_mesero  (codMesId, codMesIdMesero, codMesCodigoMesero) VALUES (:codMesId, :codMesIdMesero, :codMesCodigoMesero);";
             $insertar = $this -> conexion -> prepare($constultar);
             $insertar -> bindParam("codMesId", $registro['codMesId']);
             $insertar -> bindParam("codMesIdMesero", $registro['codMesIdMesero']);
             $insertar -> bindParam("codMesCodigoMesero", $registro['codMesCodigoMesero']);
-            $insertar -> bindParam("codMesEstado", $registro['codMesEstado']);
-            $insertar -> bindParam("codMesSesion", $registro['codMesSesion']);
-            $insertar -> bindParam("codMescreated_at", $registro['codMescreated_at']);
-            $insertar -> bindParam("codMesupdated_at", $registro['codMesupdated_at']);
             $insercion = $insertar -> execute();
             $clavePrimaria = $this -> conexion -> lastInsertId();
-            return ['inserto' => 1, 'resultado' => $clavePrimaria];
+            return ['inserto' => $insercion, 'resultado' => $clavePrimaria];
             $this -> cierreBd();
         } catch (PDOException $pdoExc) {
-            return['inserto' > 0, $pdoExc -> errorInfo[2]];
+            return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
         }
      }
      public function eliminar($codMesId = array()) {
