@@ -175,6 +175,7 @@
                 case 'cancelarInsertarMesa':  
                     $this->cancelarInsertarMesa();
                     break;
+     
                 /* ------------- ORDEN ------- */
                 case 'listarOrden':
                     $this->listarOrden();
@@ -184,6 +185,9 @@
                     break;
                 case 'confirmaActualizarOrden':
                     $this->confirmaActualizarOrden();
+                    break;
+                case "cancelarActualizarOrden":
+                $this->cancelarActualizarOrden();  
                     break;
                 /* ---------  FACTURA -------------- */
                 case 'listarFactura':
@@ -389,6 +393,9 @@
         }
         public function confirmaActualizarOrden() {
             $OrdenControlador = new OrdenControlador ($this->datos);
+        }
+        public function cancelarActualizarOrden() {
+            $OrdenControlador = new OrdenControlador ($this->datos); 
         }
         /* ------------------------- FACTURA ----------------------------- */
         public function listarFactura() {

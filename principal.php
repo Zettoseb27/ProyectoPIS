@@ -130,16 +130,46 @@
             </li>
             <!-- MESA -->
              <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse4"
-                    aria-expanded="true" aria-controls="collapse4">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5"
+                    aria-expanded="true" aria-controls="collapse5">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Gestion Mesa</span>
                 </a>
-                <div id="collapse4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="Controlador.php?ruta=listarMesa&pag=0">Listar</a>
                         <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarMesa">Agregar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- MENU 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse6"
+                    aria-expanded="true" aria-controls="collapse6">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Gestion Menu</span>
+                </a>
+                <div id="collapse6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="Controlador.php?ruta=listarMenu&pag=0">Listar</a>
+                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarMenu">Agregar</a>
+                    </div>
+                </div>
+            </li> -->
+            <!-- ORDEN -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse7"
+                    aria-expanded="true" aria-controls="collapse7">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Gestion Orden</span>
+                </a>
+                <div id="collapse7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="Controlador.php?ruta=listarOrden&pag=0">Listar</a>
+                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarOrden">Agregar</a>
                     </div>
                 </div>
             </li>

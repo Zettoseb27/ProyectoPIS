@@ -1,29 +1,21 @@
 <?php
      
-if (isset($_SESSION['actualizarDatosOrden'])) {
+if  (isset($_SESSION['actualizarDatosOrden'])) {
     $actualizarDatosOrden = $_SESSION['actualizarDatosOrden'];
     unset($_SESSION['actualizarLibro']);
 }
-if (isset($_SESSION['registroDatosMenu'])) { 
-    $registroDatosMenu = $_SESSION['registroDatosMenu']; 
-    $Menu = count($registroDatosMenu); 
+
+if  (isset($_SESSION['registroMesa'])) { 
+    $registroMesa = $_SESSION['registroMesa']; 
+    $Mesa = count($registroMesa); 
 } 
-if (isset($_SESSION['registroDatosMesa'])) { 
-    $registroDatosMesa = $_SESSION['registroDatosMesa']; 
-    $Mesa = count($registroDatosMesa); 
-} 
-if (isset($_SESSION['registroDatosPlato'])) { 
-    $registroDatosPlato = $_SESSION['registroDatosPlato']; 
-    $Plato = count($registroDatosPlato); 
-} 
-if (isset($_SESSION['registroDatosTipoDePlato'])) { 
-    $registroDatosTipoDePlato = $_SESSION['registroDatosTipoDePlato']; 
-    $TipoDePlato = count($registroDatosTipoDePlato); 
-} 
+    /*echo "<pre>";
+    print_r($_SESSION);
+    echo "<pre>"; */
 ?>
 <div class="panel-heading">
     <h2 class="panel-title">Gestión de Orden</h2>
-    <h3 class="panel-title">Actualización deOrden.</h3>
+    <h3 class="panel-title">Actualización de Orden.</h3>
 </div>
 <div>
     <fieldset>
@@ -31,7 +23,7 @@ if (isset($_SESSION['registroDatosTipoDePlato'])) {
             <table>
                 <tr>
                     <td>
-                        <input class="form-control" placeholder="ISBN" name="ordId" type="number" pattern="" required="required" autofocus readonly="readonly" 
+                        <input class="form-control" placeholder="Id" name="ordId" type="number" pattern="" required="required" autofocus readonly="readonly" 
                                value="<?php 
 									if(isset($actualizarDatosOrden->ordId)){ echo $actualizarDatosOrden->ordId; }
 							   ?>">
@@ -39,47 +31,39 @@ if (isset($_SESSION['registroDatosTipoDePlato'])) {
                 </tr>
                 <tr>
                     <td>                  
-                        <input class="form-control" placeholder="AUTOR" name="ordvalorTotal" type="text"  required="required" 
+                        <input class="form-control" placeholder="Precio Total" name="ordvalorTotal" type="number"  required="required" 
                                value="<?php 
 									if(isset($actualizarDatosOrden->ordvalorTotal)){ echo $actualizarDatosOrden->ordvalorTotal; }
 							   ?>">
                     </td>
-                </tr>                  
-                <tr>
-                    <td>                  
-                        <input class="form-control" placeholder="PRECIO" name="precio" type="number"  required="required" 
-                               value="<?php 
-									if(isset($actualizarDatosOrden->precio)){ echo $actualizarDatosOrden->precio; }
-							   ?>">
-                    </td>
-                </tr>  
+                </tr>                   
                 <tr>
                     <td>
-                        <select id="menu" name="menu"> 
+                        <hr>
+                        <h6>Numero Mesa</h6>
+                        <select class="form-control" id="ordIdMesa" name="ordIdMesa"> 
 							<?php
-							for ($j=0; $j< $Menu; $j++) {
+							for ($j=0; $j< $Mesa; $j++) {
 							?>
-								<option value ="<?php echo $registroDatosMenu[$j]->catLibId; ?>" 
+								<option value ="<?php echo $registroMesa[$j]->mesId; ?>" 
 								
                                            <?php
-                                if (isset($registroDatosMenu[$j]->catLibId) && isset($actualizarDatosOrden->menu) && ($registroDatosMenu[$j]->catLibId == $actualizarDatosOrden->menu)) {
+                                if (isset($registroMesa[$j]->mesId) && isset($actualizarDatosOrden->ordIdMesa) && ($registroMesa[$j]->mesId == $actualizarDatosOrden->ordIdMesa)) {
                                     echo "selected";
                                 }
-                                ?>                                       
-
-                                        > 
-								
-								<?php echo $registroDatosMenu[$j]->catLibNombre; ?></option> 
+                                ?>> 
+								<?php echo $registroMesa[$j]->mesNumeroMesa; ?></option> 
 							<?php
 							}
 							?>
 						</select> 
-                    </td>                       
-                </tr>             
+                        <hr>
+                    </td>   
+                </tr>   
                 <tr>            
                     <td>            
-                        <button type="submit" name="ruta" value="cancelarActualizarLibro">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
-                        <button type="submit" name="ruta" value="confirmaActualizarLibro">Actualizar Libro</button>
+                        <button type="submit" name="ruta" value="cancelarActualizarOrden">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="confirmaActualizarOrden">Actualizar Orden</button>
                     </td>
                 </tr>             
             </table>
