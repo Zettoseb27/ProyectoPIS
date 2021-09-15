@@ -33,6 +33,9 @@
                 case 'listarRol':
                     $this->listarRol();
                    break;
+                case 'eliminarRol':
+                   $this->eliminarRol();
+                   break;
                case 'actualizarRol':
                    $this->actualizarRol();
                    break;
@@ -40,7 +43,7 @@
                    $this->confirmaActualizarRol();
                    break;
                case 'cancelarActualizarRol':
-                   $this->cancelarActualizarRol();  
+                   $this->cancelarActualizarRol();   
                    break;
                case 'mostrarInsertarRol':
                    $this->mostrarInsertarRol();  
@@ -242,8 +245,11 @@
          public function listarRol() {
             $RolControlador = new RolControlador ($this->datos);
         }
-        public function actualizarRol() {
+        public function eliminarRol() {
             $RolControlador = new RolControlador ($this->datos);
+        }
+        public function actualizarRol() {
+            $RolControlador = new RolControlador ($this->datos); 
         }
         public function confirmaActualizarRol() {
             $RolControlador = new RolControlador ($this->datos);
@@ -252,7 +258,7 @@
             $RolControlador = new RolControlador ($this->datos);
         }
         public function mostrarInsertarRol() {
-            $RolControlador = new RolControlador ($this->datos);
+            $RolControlador = new RolControlador ($this->datos); 
         }
         public function insertarRol() {
             $RolControlador = new RolControlador ($this->datos);

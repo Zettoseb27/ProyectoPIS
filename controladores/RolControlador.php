@@ -11,6 +11,9 @@
                 case 'listarRol':
                     $this->listarRol();
                     break;
+                case 'eliminarRol':
+                   $this->eliminarRol();
+                   break;
                 case 'actualizarRol':
                     $this->actualizarRol();
                     break;
@@ -37,6 +40,14 @@
             session_start();
             $_SESSION['listaDeRol'] = $registroRol;
             header("location:principal.php?contenido=vistas/vistasRol/listarDTRegistroRol.php");
+         }
+         public function eliminarRol() {
+            $EliminarRol = new RolDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
+            $EliminarDeRol = $EliminarRol -> Eliminar(array($this->datos['idAct'])); // Se consulta el libro para modificar los datos
+            $actualizarDatosRol = $EliminarDeRol['registroEncontrado'][0];
+            session_start();
+            $_SESSION['mensaje'] = "Eliminación realizada."; 
+            header("location:Controlador.php?ruta=listarRol");
          }
          public function actualizarRol() {
             $gestarRol = new RolDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
