@@ -33,4 +33,6 @@ select usuId, usuLogin, usu_created_at
 from usuario_s
 where usuId = 1;
 
+update usuario_s set usuLogin = "SebastinaS@pis.com" where usuId = 5;
+update usuario_s set usuLogin = "SantiagoA@pis.com" where usuId = 6;
 

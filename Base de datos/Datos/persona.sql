@@ -24,4 +24,8 @@ where perId = 1 ;
 
 SELECT * FROM persona  WHERE perId = 1;
 SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=1;
 delete from persona where perId = 8;
+
+update persona set  perDocumento = '1.001.195.961', perNombre = 'Santiago', perApellido = 'Arevalo Beltran' where perId = 6;
+delete from persona where perId = 5;

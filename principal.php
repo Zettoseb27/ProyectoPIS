@@ -78,12 +78,19 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+    
+            </li>
 
+            <hr class="sidebar-divider">
+
+            <?php
+                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
+            ?>
             <!-- Heading -->
             <div class="sidebar-heading">
-                Platos
+                Administrador
             </div>
-             <!-- ROL -->
+                 <!-- ROL -->
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseone"
                     aria-expanded="true" aria-controls="collapseone">
@@ -98,6 +105,30 @@
                     </div>
                 </div>
             </li>
+                                    <?php
+                        }
+                        ?>
+
+            <hr class="sidebar-divider">
+
+
+
+
+
+
+
+
+
+
+
+
+                       
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Platos
+            </div>
+            
             <!-- TIPO DE PLATO -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -205,7 +236,14 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestion Horario Mesero:</h6>
                         <a class="collapse-item" href="Controlador.php?ruta=listarHorario&pag=0">Listar</a>
+                        <br>
+                        <?php
+                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
+                        ?>
                         <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarHorario">Agregar</a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </li>
@@ -214,6 +252,9 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
+            <?php
+                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
+                        ?>     
             <div class="sidebar-heading">
                 Cocina
             </div>
@@ -246,6 +287,9 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
+            <?php
+                        }
+                        ?>
 
             <!-- Nav Item - Tables 
             <li class="nav-item">
@@ -269,11 +313,10 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
-
+            <div id="content">  
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                        
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -414,7 +457,10 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Sebastian Sanabria</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                <?php echo $_SESSION['perNombre']. " ".$_SESSION['perApellido'];;
+                                    ?>
+                                </span>
                                 <img class="img-profile rounded-circle"
                                     src="plantilla/img/undraw_profile.svg">
                             </a>
@@ -458,7 +504,13 @@
 
             </div>
             <!-- End of Main Content -->
-
+                        <div>
+                            <?php
+                            echo '<pre>';
+                            print_r($_SESSION);
+                            echo '</pre>';
+                            ?>
+                        </div>
             <!-- Footer -->
 
             </footer>
