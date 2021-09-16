@@ -109,21 +109,11 @@
                         }
                         ?>
 
+
             <hr class="sidebar-divider">
-
-
-
-
-
-
-
-
-
-
-
-
-                       
-
+            <?php
+                        if (in_array(3,$_SESSION['rolesEnSesion'])) {
+            ?>        
             <!-- Heading -->
             <div class="sidebar-heading">
                 Platos
@@ -203,9 +193,15 @@
                         <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarOrden">Agregar</a>
                     </div>
                 </div>
+                <?php
+                        }
+                        ?>
             </li>
 
             <hr class="sidebar-divider">
+            <?php
+                        if (in_array(3,$_SESSION['rolesEnSesion'])) {
+            ?>
             <!-- Heading -->
             <div class="sidebar-heading">
                 Mesero
@@ -215,7 +211,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse8"
                     aria-expanded="true" aria-controls="collapse8">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Codigo Mesero</span>
+                    <span>Mesero</span>
                 </a>
                 <div id="collapse8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -237,15 +233,12 @@
                         <h6 class="collapse-header">Gestion Horario Mesero:</h6>
                         <a class="collapse-item" href="Controlador.php?ruta=listarHorario&pag=0">Listar</a>
                         <br>
-                        <?php
-                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
-                        ?>
                         <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarHorario">Agregar</a>
-                        <?php
-                        }
-                        ?>
                     </div>
                 </div>
+                <?php
+                        }
+                        ?>
             </li>
 
             <!-- Divider -->
@@ -253,11 +246,33 @@
 
             <!-- Heading -->
             <?php
-                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
+                        if (in_array(2,$_SESSION['rolesEnSesion'])) {
                         ?>     
             <div class="sidebar-heading">
                 Cocina
             </div>
+            <!-- COCINERO -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse10"
+                    aria-expanded="true" aria-controls="collapse10">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Cocinero</span>
+                </a>
+                <div id="collapse10" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Gestion Cocinero:</h6>
+                        <a class="collapse-item" href="Controlador.php?ruta=listarCocinero&pag=0">Listar</a>
+                        <br>
+                        <?php
+                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
+                        ?>
+                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarCocinero">Agregar</a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </li>
 
             <!-- Nav Item - Pages Collapse Menu 
             <li class="nav-item active">
@@ -504,13 +519,13 @@
 
             </div>
             <!-- End of Main Content -->
-                      <!--  <div>
+                       <div>
                             <?php
                             echo '<pre>';
                             print_r($_SESSION);
                             echo '</pre>';
                             ?>
-                        </div> -->
+                        </div> 
             <!-- Footer -->
 
             </footer>

@@ -13,8 +13,7 @@ echo "<pre>"; */
 
 ?>
 <div class="panel-heading">
-    <h2 class="panel-title">Gestión de libros</h2>
-    <h3 class="panel-title">Actualización de Libro.</h3>
+    <h2 class="panel-title">Actualización Cocinero</h2>
 </div>
 <div>
     <fieldset>

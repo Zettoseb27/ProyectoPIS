@@ -32,7 +32,7 @@ INSERT INTO horario (horId,horIdCodigoMesero,horHoraInicio,horHoraFin,horFecha,h
 (6,4,'8:00:00','2:00:00','2021-08-17','Se le descontara de las vacaciones por tonto');
 
 INSERT INTO horario (horId,horIdCodigoMesero,horHoraInicio,horHoraFin,horObservacion) VALUES 
-(6,4,'8:00:00','2:00:00','Se le descontara de las vacaciones por tonto');
+(6,8,'8:00:00','2:00:00','Se le descontara de las vacaciones por tonto');
 
 
 

@@ -113,7 +113,7 @@
                    $this->cancelarActualizarHorario();  
                    break;
                case 'mostrarInsertarHorario':
-                   $this->mostrarInsertarHorario();   
+                   $this->mostrarInsertarHorario();    
                    break;
                 case 'insertarHorario':   
                     $this->insertarHorario(); 
@@ -236,6 +236,9 @@
                 /* ---------  COCINERO -------------- */
                 case 'listarCocinero':
                     $this->listarCocinero();
+                    break;
+                case 'eliminarCocinero':
+                    $this->eliminarCocinero();
                     break;
                 case 'actualizarCocinero':
                     $this->actualizarCocinero();
@@ -475,8 +478,11 @@
         public function confirmaActualizarFactura() {
             $FacturaControlador = new FacturaControlador ($this->datos);
         }
-        /* ------------------------- HCOCINERO ----------------------------- */
+        /* ------------------------- COCINERO ----------------------------- */  
         public function listarCocinero() {
+            $CocineroControlador = new CocineroControlador($this->datos); 
+        }
+        public function eliminarCocinero() {
             $CocineroControlador = new CocineroControlador($this->datos); 
         }
         public function actualizarCocinero() { 

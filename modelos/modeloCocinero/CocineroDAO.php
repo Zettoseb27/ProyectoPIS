@@ -54,20 +54,20 @@
                 return['inserto' > 0, $pdoExc -> errorInfo[2]];
             }
         }
-        public function eliminar($cocId = array()) {
+        public function eliminar($Id = array()) {
 
             $planConsulta = "delete from cocinero where cocId = :cocId;";
 
             $eliminar = $this -> conexion -> prepare($planConsulta);
-            $eliminar -> bindParam(':cocId', $cocId[0], PDO:: PARAM_INT);    
+            $eliminar -> bindParam(':cocId', $Id[0], PDO:: PARAM_INT);    
             $resultado = $eliminar->execute();
 
             $this -> cierreBd();
 
             if (!empty($resultado)) {
-                return ['eliminar' => TRUE, 'registroEliminado' => array($cocId[0])];
+                return ['eliminar' => TRUE, 'registroEliminado' => array($Id[0])];
             } else {
-                return ['eliminar' => FALSE, 'registroEliminado' => array($cocId[0])];
+                return ['eliminar' => FALSE, 'registroEliminado' => array($Id[0])];
             }
 
         }

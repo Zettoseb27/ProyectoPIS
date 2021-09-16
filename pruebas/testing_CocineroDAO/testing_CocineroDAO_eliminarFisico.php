@@ -3,7 +3,7 @@
      include_once PATH.'modelos/ConBdMysql.php';
      include_once PATH.'modelos/modeloCocinero/CocineroDAO.php';
 
-     $cocId = array(1);
+     $cocId = array(2);
 
      $cocinero = new CocineroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
