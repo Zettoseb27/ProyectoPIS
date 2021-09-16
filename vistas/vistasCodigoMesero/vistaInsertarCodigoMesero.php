@@ -43,8 +43,8 @@ if (isset($_SESSION['mensaje'])) {
 
 <body id="page-top">
 <div class="panel-heading">
-    <h2 class="panel-title">Gestión de Plato</h2>
-    <h3 class="panel-title">Inserción de Plato.</h3>
+    <h2 class="panel-title">Gestión Codigo Mesero</h2>
+    <h3 class="panel-title">Inserción Codigo Mesero.</h3>
 </div>
 <div>
     <fieldset>
@@ -84,7 +84,7 @@ if (isset($_SESSION['mensaje'])) {
                         <button  href="#" class="btn btn-success btn-icon-split" class = ".text-white-50" type="submit" name="ruta" value="insertarCodigoMesero"><span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                         </span>
-                        <span class="text">Agregar Plato</span></button>
+                        <span class="text">Agregar Codigo Mesero</span></button>
                     </td>
                 </tr>  
             </table>

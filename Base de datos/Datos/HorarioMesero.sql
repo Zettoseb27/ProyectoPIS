@@ -26,4 +26,14 @@ select hr.horId,hr.horHoraFin,hr.horFecha,
             from horario hr 
             inner join codigo_mesero cm on hr.horIdCodigoMesero = cm.codMesId
             inner join persona p on cm.codMesIdMesero = p.perId
-                where hr.horId = 1;
+                where hr.horId = 5;
+                
+INSERT INTO horario (horId,horIdCodigoMesero,horHoraInicio,horHoraFin,horFecha,horObservacion) VALUES 
+(6,4,'8:00:00','2:00:00','2021-08-17','Se le descontara de las vacaciones por tonto');
+
+INSERT INTO horario (horId,horIdCodigoMesero,horHoraInicio,horHoraFin,horObservacion) VALUES 
+(6,4,'8:00:00','2:00:00','Se le descontara de las vacaciones por tonto');
+
+
+
+delete from horario where horId = 6;

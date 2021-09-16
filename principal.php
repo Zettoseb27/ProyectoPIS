@@ -493,24 +493,24 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"></h1>
-                    <?php
+                   <?php
                     if(isset($_GET['contenido'])){
                     include($_GET['contenido']);
                     }
-                    ?>
+                    ?> 
 
                 </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-                        <div>
+                      <!--  <div>
                             <?php
                             echo '<pre>';
                             print_r($_SESSION);
                             echo '</pre>';
                             ?>
-                        </div>
+                        </div> -->
             <!-- Footer -->
 
             </footer>

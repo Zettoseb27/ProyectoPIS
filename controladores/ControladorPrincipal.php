@@ -100,6 +100,9 @@
                 case 'listarHorario':
                     $this->listarHorario();
                    break;
+                case 'eliminarHorario':
+                    $this->eliminarHorario();
+                   break;
                case 'actualizarHorario':
                    $this->actualizarHorario();
                    break;
@@ -110,8 +113,14 @@
                    $this->cancelarActualizarHorario();  
                    break;
                case 'mostrarInsertarHorario':
-                   $this->mostrarInsertarHorario();  
-                   break;   
+                   $this->mostrarInsertarHorario();   
+                   break;
+                case 'insertarHorario':   
+                    $this->insertarHorario(); 
+                    break;
+               case "cancelarInsertarHorario":
+                $this->cancelarInsertarHorario(); 
+                    break;   
                 /* ------------- TIPO DE PLATO ------- */
                 case 'listarTipoPlato':
                     $this->listarTipoPlato();
@@ -188,7 +197,7 @@
                 case "cancelarActualizarMesa":
                 $this->cancelarActualizarMesa();  
                     break;
-                case "mostr arInsertarMesa":
+                case "mostrarInsertarMesa":
                 $this->mostrarInsertarMesa();  
                     break;
                 case "insertarMesa":
@@ -327,10 +336,13 @@
             $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
         }
         public function cancelarInsertarCodigoMesero() {
-            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos);
+            $CodigoMeseroControlador = new CodigoMeseroControlador ($this->datos); 
         }
         /* ------------------------- HORARIO  ----------------------------- */
          public function listarHorario() {
+            $HorarioControlador = new HorarioControlador ($this->datos);
+        }
+        public function eliminarHorario() {
             $HorarioControlador = new HorarioControlador ($this->datos);
         }
         public function actualizarHorario() {
@@ -343,6 +355,12 @@
             $HorarioControlador = new HorarioControlador ($this->datos);
         }
         public function mostrarInsertarHorario() {
+            $HorarioControlador = new HorarioControlador ($this->datos);
+        }
+        public function insertarHorario() {
+            $HorarioControlador = new HorarioControlador ($this->datos);
+        }
+        public function cancelarInsertarHorario() {
             $HorarioControlador = new HorarioControlador ($this->datos);
         }
          /* ------------------------- TIPO DE PLATO ----------------------------- */
