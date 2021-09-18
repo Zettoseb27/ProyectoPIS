@@ -1,5 +1,5 @@
 <?php
-     include_once '../../modelos/ConstantesConexion.php';
+     //include_once '../../modelos/ConstantesConexion.php';
      include_once PATH.'modelos/ConBdMysql.php';  
      class CodigoMeseroDAO extends ConBdMysql {
         public function __construct ($servidor, $base, $loginBD, $passwordBD) {

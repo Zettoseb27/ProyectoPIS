@@ -1,13 +1,14 @@
 <?php
-     include_once '../../modelos/ConstantesConexion.php'; 
+     //include_once '../../modelos/ConstantesConexion.php'; 
      include_once PATH.'modelos/ConBdMysql.php'; 
      class HorarioCocineroDAO extends ConBdMysql{
         public function __construct ($servidor, $base, $loginBD, $passwordBD) {
             parent::__construct($servidor, $base, $loginBD, $passwordBD);
         }
         public function seleccionarTodos() {
-            $consultar = "select horCocId, horCocHoraInicio, horCocHoraFin, horCocFecha
-            from horario_cocinero ;";
+            $consultar = "SELECT Hc.horCocId, C.cocIdCodigoCocinero,Hc.horCocHoraInicio, Hc.horCocHoraFin, Hc.horCocFecha
+            FROM horario_cocinero Hc 
+            INNER JOIN cocinero C ON Hc.horCocIdCocinero = C.cocId;";
             $registroHorario = $this -> conexion -> prepare($consultar);
             $registroHorario -> execute();
             $listaRegistro = array();
@@ -18,8 +19,7 @@
             return $listaRegistro;
         }
         public function seleccionarId($horCocId) {
-            $consultar = "select horCocId, horCocHoraInicio, horCocHoraFin, horCocFecha
-            from horario_cocinero where horCocId = ?;";
+            $consultar = "SELECT * FROM horario_cocinero WHERE horCocId = ?;";
             $listar = $this -> conexion -> prepare($consultar);
             $listar -> execute(array($horCocId[0]));
             $registroEncontrado = array();
@@ -35,23 +35,19 @@
         }
         public function insertar($registro) {
             try {
-                $consultar = "insert into horario_cocinero values (:horCocId, :horCocIdCocinero, :horCocHoraInicio, :horCocHoraFin, :horCocFecha, :horCocEstado, :horCocSesion, :horCocCreated_at, :horCocUpdated_at);";
+                $consultar = "INSERT INTO horario_cocinero (horCocId,horCocHoraInicio,horCocHoraFin,horCocFecha,horCocIdCocinero) VALUES (:horCocId,:horCocHoraInicio,:horCocHoraFin,:horCocFecha,:horCocIdCocinero);";
                 $insertar = $this-> conexion -> prepare($consultar);
                 $insertar -> bindParam("horCocId", $registro['horCocId']);
-                $insertar -> bindParam("horCocIdCocinero", $registro['horCocIdCocinero']);
                 $insertar -> bindParam("horCocHoraInicio", $registro['horCocHoraInicio']);
                 $insertar -> bindParam("horCocHoraFin", $registro['horCocHoraFin']);
                 $insertar -> bindParam("horCocFecha", $registro['horCocFecha']);
-                $insertar -> bindParam("horCocEstado", $registro['horCocEstado']);
-                $insertar -> bindParam("horCocSesion", $registro['horCocSesion']);
-                $insertar -> bindParam("horCocCreated_at", $registro['horCocCreated_at']);
-                $insertar -> bindParam("horCocUpdated_at", $registro['horCocUpdated_at']);
-                $insercion = $insertar -> execute();
+                $insertar -> bindParam("horCocIdCocinero", $registro['horCocIdCocinero']);
                 $clavePrimaria = $this -> conexion -> lastInsertId();
-                return ['inserto' => 1, 'resultado' => $clavePrimaria];
+                $insercion = $insertar->execute();
+                return ['inserto' => $insercion, 'resultado' => $clavePrimaria];
                 $this -> cierreBd();
             } catch (PDOException $pdoExc) {
-                return['inserto' > 0, $pdoExc -> errorInfo[2]];
+                return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
             }
         }
         public function eliminar($horCocId = array()) {

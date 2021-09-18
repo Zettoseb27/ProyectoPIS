@@ -7,14 +7,13 @@ if (isset($_SESSION['registroPersona'])) {
     $registroPersona = $_SESSION['registroPersona'];
     $Menu = count($registroPersona);
 } 
-/* echo "<pre>";
+/*echo "<pre>";
 print_r($_SESSION);
 echo "<pre>"; */
 
 ?>
 <div class="panel-heading">
-    <h2 class="panel-title">Gestión de Codigo Mesero</h2>
-    <h3 class="panel-title">Actualización de Codigo Mesero.</h3>
+    <h2 class="panel-title">Actualización de Codigo Mesero.</h2>
 </div>
 <div>
     <fieldset>
@@ -22,7 +21,7 @@ echo "<pre>"; */
             <table>
                 <tr>
                     <td>
-                        <input class="form-control" placeholder="Id" name="codMesId" type="number" pattern="" required="required" autofocus readonly="readonly" 
+                        <input class="form-control" placeholder="Id" name="codMesId" type="number" pattern="" required="required"  autofocus readonly="readonly"
                                value="<?php 
 									if(isset($actualizarDatosCodigoMesero->codMesId)){ echo $actualizarDatosCodigoMesero->codMesId; }
 							   ?>">
@@ -37,12 +36,13 @@ echo "<pre>"; */
                                <hr>
                     </td>
                 </tr>
-                    <td>  Documento 
-                        <br> <select class="form-control" id="codMesIdMesero" name="codMesIdMesero">  
+                    <td>  Nombre 
+                        <br> <select class="form-control" id="codMesIdMesero" name="codMesIdMesero" pattern="" autofocus  >  
 							<?php
 							for ($j=0; $j< $Menu; $j++) {
 							?>
-								<option value ="<?php echo $registroPersona[$j]->perId; ?>" 
+                               
+								<option disabled="" value ="<?php echo $registroPersona[$j]->perId; ?>" 
 								
                                            <?php
                                 if (isset($registroPersona[$j]->perId) && isset($actualizarDatosCodigoMesero->codMesIdMesero) && ($registroPersona[$j]->perId == $actualizarDatosCodigoMesero->codMesIdMesero)) {

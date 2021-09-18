@@ -36,3 +36,5 @@ where usuId = 1;
 update usuario_s set usuLogin = "SebastinaS@pis.com" where usuId = 5;
 update usuario_s set usuLogin = "SantiagoA@pis.com" where usuId = 6;
 
+select * from persona p join usuario_s u on p.perId=u.usuId 
+where u.usuLogin= 'SebastinaS@pis.com' and u.usuPassword = 'd9840773233fa6b19fde8caf765402f5' ;

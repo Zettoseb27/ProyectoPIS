@@ -1,5 +1,5 @@
 <?php
-          include_once '../../modelos/ConstantesConexion.php'; 
+          //include_once '../../modelos/ConstantesConexion.php'; 
           include_once PATH.'modelos/ConBdMysql.php'; 
           class HorarioDAO extends ConBdMysql{
              public function __construct ($servidor, $base, $loginBD, $passwordBD) {
@@ -66,7 +66,6 @@
                     $insertar -> bindParam("horFecha", $registro['horFecha']);
                     $insertar -> bindParam("horObservacion", $registro['horObservacion']);
                     $insertar -> bindParam("horIdCodigoMesero", $registro['horIdCodigoMesero']);
-                   
                     $insercion = $insertar -> execute();
                     $clavePrimaria = $this -> conexion -> lastInsertId();
                     return ['inserto' => $insercion, 'resultado' => $clavePrimaria];

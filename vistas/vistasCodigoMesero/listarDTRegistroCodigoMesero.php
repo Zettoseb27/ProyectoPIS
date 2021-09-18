@@ -50,7 +50,7 @@ if(isset($_SESSION['listarDeCodigoMesero'])){
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">Orden</h4>
+                            <h3 class="m-0 font-weight-bold text-primary">Codigo Mesero</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
