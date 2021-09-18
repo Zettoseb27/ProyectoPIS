@@ -36,21 +36,8 @@
     <link href="plantilla/css/sb-admin-2.min.css" rel="stylesheet">
 
 
+    
 
-<<<<<<< HEAD
-=======
-    <link href="plantilla/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="plantilla/css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="plantilla/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
->>>>>>> develop
 </head>
 
 <body id="page-top">
@@ -93,15 +80,7 @@
             ?>
             <!-- Heading -->
             <div class="sidebar-heading">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                Interface
-=======
-                Platos
->>>>>>> develop
-=======
                 Administrador
->>>>>>> develop
             </div>
                  <!-- ROL -->
              <li class="nav-item">
@@ -162,8 +141,6 @@
                     </div>
                 </div>
             </li>
-<<<<<<< HEAD
-=======
             <!-- MESA -->
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5"
@@ -221,12 +198,9 @@
             <div class="sidebar-heading">
                 Mesero
             </div>
-<<<<<<< HEAD
->>>>>>> develop
-            <!-- Nav Item - Utilities Collapse Menu -->
-=======
+
             <!-- CODIGO MESERO -->
->>>>>>> develop
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse8"
                     aria-expanded="true" aria-controls="collapse8">
@@ -269,11 +243,8 @@
                         if (in_array(2,$_SESSION['rolesEnSesion'])) {
                         ?>     
             <div class="sidebar-heading">
-<<<<<<< HEAD
-                Addons
-=======
                 Cocina
->>>>>>> develop
+
             </div>
             <!-- COCINERO -->
             <li class="nav-item">
@@ -411,18 +382,6 @@
                             </div>
                         </li>
 
-<<<<<<< HEAD
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-=======
-
->>>>>>> develop
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
@@ -465,18 +424,6 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
                         </li>
-<<<<<<< HEAD
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-=======
->>>>>>> develop
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
