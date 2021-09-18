@@ -87,5 +87,10 @@
             $_SESSION['mensaje'] = "Actualización realizada.";
             header("location:Controlador.php?ruta=listarOrden");
         } 
+        public function cancelarActualizarOrden() {
+         session_start();
+         $_SESSION['mensaje'] = "Desistió de la actualización";
+         header("location:Controlador.php?ruta=listarOrden");
      }
+   }
 ?>

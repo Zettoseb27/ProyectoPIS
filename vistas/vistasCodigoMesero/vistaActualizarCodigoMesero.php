@@ -3,10 +3,10 @@ if (isset($_SESSION['actualizarDatosCodigoMesero'])) {
     $actualizarDatosCodigoMesero = $_SESSION['actualizarDatosCodigoMesero'];    
     unset($_SESSION['actualizarCodigoMesero']); 
 }
-/*if (isset($_SESSION['registroPersona'])) { 
+if (isset($_SESSION['registroPersona'])) { 
     $registroPersona = $_SESSION['registroPersona'];
     $Menu = count($registroPersona);
-} */
+} 
 /* echo "<pre>";
 print_r($_SESSION);
 echo "<pre>"; */
@@ -34,31 +34,31 @@ echo "<pre>"; */
                                value="<?php 
 									if(isset($actualizarDatosCodigoMesero->codMesCodigoMesero)){ echo $actualizarDatosCodigoMesero->codMesCodigoMesero; }
 							   ?>">
+                               <hr>
                     </td>
-              <!--  </tr>
-                    <td> Documento 
-                        <select id="categoriaPersona_Documento" name="categoriaPersona_Documento"> 
+                </tr>
+                    <td>  Documento 
+                        <br> <select class="form-control" id="codMesIdMesero" name="codMesIdMesero">  
 							<?php
 							for ($j=0; $j< $Menu; $j++) {
 							?>
-								<option value ="<?php echo $registroPersona[$j]->perDocumento; ?>" 
+								<option value ="<?php echo $registroPersona[$j]->perId; ?>" 
 								
                                            <?php
-                                if (isset($registroPersona[$j]->perDocumento) && isset($actualizarDatosCodigoMesero->categoriaPersona_Documento) && ($registroPersona[$j]->perDocumento == $actualizarDatosCodigoMesero->categoriaPersona_Documento)) {
+                                if (isset($registroPersona[$j]->perId) && isset($actualizarDatosCodigoMesero->codMesIdMesero) && ($registroPersona[$j]->perId == $actualizarDatosCodigoMesero->codMesIdMesero)) {
                                     echo "selected";
                                 }
                                 ?>> 
-								<?php echo $registroPersona[$j]->perDocumento; ?>
-                                <?php echo $registroPersona[$j]->perNombre; ?>
-                                <?php echo $registroPersona[$j]->perApellido; ?></option> 
+								<?php echo $registroPersona[$j]->perNombre; ?>
+                                <?php echo $registroPersona[$j]->perApellido; ?> </option> 
                             
 							<?php
 							}
 							?>
 						</select> 
-                        
+                        <br>
                     </td>                       
-                </tr>       -->     
+                </tr>           
                 <tr>            
                     <td>            
                         <button type="submit" name="ruta" value="cancelarActualizarCodigoMesero">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;

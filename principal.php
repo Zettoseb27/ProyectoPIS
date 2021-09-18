@@ -81,16 +81,27 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+    
+            </li>
 
+            <hr class="sidebar-divider">
+
+            <?php
+                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
+            ?>
             <!-- Heading -->
             <div class="sidebar-heading">
+<<<<<<< HEAD
 <<<<<<< HEAD
                 Interface
 =======
                 Platos
 >>>>>>> develop
+=======
+                Administrador
+>>>>>>> develop
             </div>
-             <!-- ROL -->
+                 <!-- ROL -->
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseone"
                     aria-expanded="true" aria-controls="collapseone">
@@ -105,6 +116,30 @@
                     </div>
                 </div>
             </li>
+                                    <?php
+                        }
+                        ?>
+
+            <hr class="sidebar-divider">
+
+
+
+
+
+
+
+
+
+
+
+
+                       
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Platos
+            </div>
+            
             <!-- TIPO DE PLATO -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -208,11 +243,36 @@
                     </div>
                 </div>
             </li>
+            <!-- HORARIO MESERO -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse9"
+                    aria-expanded="true" aria-controls="collapse9">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Horario Mesero</span>
+                </a>
+                <div id="collapse9" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Gestion Horario Mesero:</h6>
+                        <a class="collapse-item" href="Controlador.php?ruta=listarHorario&pag=0">Listar</a>
+                        <br>
+                        <?php
+                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
+                        ?>
+                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarHorario">Agregar</a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
+            <?php
+                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
+                        ?>     
             <div class="sidebar-heading">
 <<<<<<< HEAD
                 Addons
@@ -249,6 +309,9 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
+            <?php
+                        }
+                        ?>
 
             <!-- Nav Item - Tables 
             <li class="nav-item">
@@ -272,11 +335,10 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
-
+            <div id="content">  
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                        
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -440,7 +502,10 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                <?php echo $_SESSION['perNombre']. " ".$_SESSION['perApellido'];;
+                                    ?>
+                                </span>
                                 <img class="img-profile rounded-circle"
                                     src="plantilla/img/undraw_profile.svg">
                             </a>
@@ -449,20 +514,16 @@
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
+                                    Perfil
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
+                                    Configuraciones
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Cerrar sesión
                                 </a>
                             </div>
                         </li>
@@ -477,18 +538,24 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"></h1>
-                    <?php
+                   <?php
                     if(isset($_GET['contenido'])){
                     include($_GET['contenido']);
                     }
-                    ?>
+                    ?> 
 
                 </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-
+                      <!--  <div>
+                            <?php
+                            echo '<pre>';
+                            print_r($_SESSION);
+                            echo '</pre>';
+                            ?>
+                        </div> -->
             <!-- Footer -->
 <<<<<<< HEAD
             <footer class="sticky-footer bg-white">
@@ -520,15 +587,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="plantilla/login.html">Logout</a>
+                    <a class="btn btn-primary" href="login.php">Cerrar sesión</a>
                 </div>
             </div>
         </div>

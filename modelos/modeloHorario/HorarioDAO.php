@@ -22,8 +22,7 @@
                 return $listaRegistro;
              }
              public function seleccionarId($hoRId) {
-                $consultar = "select * from horario
-                where horId = ?;";
+                $consultar = "SELECT * FROM horario WHERE horId = ?;";
                 $listar = $this -> conexion -> prepare($consultar);
                 $listar -> execute(array($hoRId[0]));
                 $registroEncontrado = array();
@@ -39,15 +38,15 @@
             }
             public function actualizar($registro) {
                 try {
-                    $CodigoMesero = $registro[0]['horIdCodigoMesero'];
                     $HoraInicio = $registro[0]['horHoraInicio'];
                     $HoraFin = $registro[0]['horHoraFin'];
                     $Fecha = $registro[0]['horFecha'];
+                    $CodigoMesero = $registro[0]['horIdCodigoMesero'];
                     $Id = $registro[0]['horId'];
                     if (isset($Id)) {
-                        $actualizar = "update horario set horIdCodigoMesero = ?, horHoraInicio = ?, horHoraFin = ?, horFecha = ? where horId = ?;"; 
+                        $actualizar = "update horario set  horHoraInicio = ?, horHoraFin = ?, horFecha = ?, horIdCodigoMesero = ? where horId = ?;"; 
                         $actualizacion = $this->conexion->prepare($actualizar);
-                        $resultadoAct = $actualizacion->execute(array($CodigoMesero,$HoraInicio,$HoraFin,$Fecha,$Id));
+                        $resultadoAct = $actualizacion->execute(array($HoraInicio,$HoraFin,$Fecha,$CodigoMesero,$Id));
                         $this->cierreBd();
                         return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
                     }
@@ -59,24 +58,21 @@
             }
             public function insertar($registro) {
                 try {
-                    $consultar = "insert into horario values (:horId, :horIdCodigoMesero, :horHoraInicio, :horHoraFin, :horFecha, :horObservacion, :horEstado, :horSesion, :horcreated_at, :horupdated_at);";
+                    $consultar = "INSERT INTO horario (horId,horHoraInicio,horHoraFin,horFecha,horObservacion,horIdCodigoMesero) VALUES (:horId,:horHoraInicio, :horHoraFin,:horFecha,:horObservacion,:horIdCodigoMesero);";
                     $insertar = $this-> conexion -> prepare($consultar);
                     $insertar -> bindParam("horId", $registro['horId']);
-                    $insertar -> bindParam("horIdCodigoMesero", $registro['horIdCodigoMesero']);
                     $insertar -> bindParam("horHoraInicio", $registro['horHoraInicio']);
                     $insertar -> bindParam("horHoraFin", $registro['horHoraFin']);
                     $insertar -> bindParam("horFecha", $registro['horFecha']);
                     $insertar -> bindParam("horObservacion", $registro['horObservacion']);
-                    $insertar -> bindParam("horEstado", $registro['horEstado']);
-                    $insertar -> bindParam("horSesion", $registro['horSesion']);
-                    $insertar -> bindParam("horcreated_at", $registro['horcreated_at']);
-                    $insertar -> bindParam("horupdated_at", $registro['horupdated_at']);
+                    $insertar -> bindParam("horIdCodigoMesero", $registro['horIdCodigoMesero']);
+                   
                     $insercion = $insertar -> execute();
                     $clavePrimaria = $this -> conexion -> lastInsertId();
-                    return ['inserto' => 1, 'resultado' => $clavePrimaria];
+                    return ['inserto' => $insercion, 'resultado' => $clavePrimaria];
                     $this -> cierreBd();
                 } catch (PDOException $pdoExc) {
-                    return['inserto' > 0, $pdoExc -> errorInfo[2]];
+                    return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
                 }
             }
             public function eliminar($horId = array()) {
