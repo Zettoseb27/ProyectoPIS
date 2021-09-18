@@ -16,13 +16,13 @@ class Usuario_sDAO extends ConBdMySql {
 //        echo"<pre>";print_r($sId);echo "</pre>";
         if (!isset($sId[2])) { //si la consulta no viene con el password (PARA REGISTRARSE)
             $planConsulta = "select * from persona p join usuario_s u on p.perId=u.usuId ";
-            $planConsulta .= " where p.perDocumento= ? or u.usuLogin = ? ;";
+            $planConsulta.= " where p.perDocumento= ? or u.usuLogin = ? ;";
             $listar = $this->conexion->prepare($planConsulta);
             $listar->execute(array($sId[0], $sId[1]));
         }
         if (isset($sId[2])) {//si la consulta viene con el password (PARA LOGUEARSE)
             $planConsulta = "select * from persona p join usuario_s u on p.perId=u.usuId ";
-            $planConsulta .= " where u.usuLogin= ? and u.usuPassword = ? ;";
+            $planConsulta.= " where u.usuLogin= ? and u.usuPassword = ? ;";
             $listar = $this->conexion->prepare($planConsulta);
             $listar->execute(array($sId[1], $sId[2]));
         }

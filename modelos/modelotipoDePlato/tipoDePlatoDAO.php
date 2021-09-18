@@ -1,6 +1,6 @@
 <?php
      
-     include_once "../../modelos/ConstantesConexion.php";
+     //include_once "../../modelos/ConstantesConexion.php";
      include_once PATH."modelos/ConBdMysql.php";
      class tipoDePlatoDAO extends ConBdMySql {
         public function __construct ($servidor, $base, $loginBD, $passwordBD) {

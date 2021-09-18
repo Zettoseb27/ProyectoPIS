@@ -29,3 +29,5 @@ delete from persona where perId = 8;
 
 update persona set  perDocumento = '1.001.195.961', perNombre = 'Santiago', perApellido = 'Arevalo Beltran' where perId = 6;
 delete from persona where perId = 5;
+
+select * from persona p join usuario_s u on p.perId=u.usuId where u.usuLogin= 1 and u.usuPassword = 2 ;

@@ -1,13 +1,14 @@
 <?php
-     include_once '../../modelos/ConstantesConexion.php'; 
+     //include_once '../../modelos/ConstantesConexion.php'; 
      include_once PATH.'modelos/ConBdMysql.php'; 
      class HorarioCocineroDAO extends ConBdMysql{
         public function __construct ($servidor, $base, $loginBD, $passwordBD) {
             parent::__construct($servidor, $base, $loginBD, $passwordBD);
         }
         public function seleccionarTodos() {
-            $consultar = "select horCocId, horCocHoraInicio, horCocHoraFin, horCocFecha
-            from horario_cocinero ;";
+            $consultar = "SELECT Hc.horCocId, C.cocIdCodigoCocinero,Hc.horCocHoraInicio, Hc.horCocHoraFin, Hc.horCocFecha
+            FROM horario_cocinero Hc 
+            INNER JOIN cocinero C ON Hc.horCocIdCocinero = C.cocId;";
             $registroHorario = $this -> conexion -> prepare($consultar);
             $registroHorario -> execute();
             $listaRegistro = array();
@@ -18,8 +19,8 @@
             return $listaRegistro;
         }
         public function seleccionarId($horCocId) {
-            $consultar = "select horCocId, horCocHoraInicio, horCocHoraFin, horCocFecha
-            from horario_cocinero where horCocId = ?;";
+            $consultar = "SELECT horCocId, horCocHoraInicio, horCocHoraFin, horCocFecha
+            FROM horario_cocinero WHERE horCocId = ?;";
             $listar = $this -> conexion -> prepare($consultar);
             $listar -> execute(array($horCocId[0]));
             $registroEncontrado = array();

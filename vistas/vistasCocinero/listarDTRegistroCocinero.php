@@ -1,9 +1,9 @@
 <?php
-    /*
-    echo "<pre>";
-    print_r($_SESSION['listaPlato']);      
-    echo "</pre>"; 
-    */
+    
+    /*echo "<pre>";
+    print_r($_SESSION['listarDeCocinero']);      
+    echo "</pre>"; */
+    
 
 if (isset($_SESSION['mensaje'])) {
     $mensaje = $_SESSION['mensaje'];
@@ -54,7 +54,7 @@ if(isset($_SESSION['listarDeCocinero'])){
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">Horario Mesero</h4>
+                            <h4 class="m-0 font-weight-bold text-primary">Codigo Cocinero</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -62,8 +62,9 @@ if(isset($_SESSION['listarDeCocinero'])){
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Codigo Mesero</th> 
-                                            <th>Created</th> 
+                                            <th>Codigo Cocinero</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th> 
                                             <th>Edit</th> 
                                             <th>Delete</th>
                                         </tr>
@@ -71,8 +72,9 @@ if(isset($_SESSION['listarDeCocinero'])){
                                     <tfoot>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Codigo Mesero</th> 
-                                            <th>Created</th> 
+                                            <th>Codigo Cocinero</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>  
                                             <th>Edit</th> 
                                             <th>Delete</th>
                                         </tr>
@@ -83,9 +85,10 @@ if(isset($_SESSION['listarDeCocinero'])){
                                         foreach ($listarDeCocinero as $key => $value) {
                                             ?>
                                             <tr>
-                                                <td><?php echo $listarDeCocinero[$i]-> cocId; ?></td>  
-                                                <td><?php echo $listarDeCocinero[$i]-> cocIdCodigoCocinero; ?></td>  
-                                                <td><?php echo $listarDeCocinero[$i]-> cocCreated_at; ?></td>  
+                                                <td><?php echo $listarDeCocinero[$i]-> cocId; ?></td>
+                                                <td><?php echo $listarDeCocinero[$i]-> cocIdCodigoCocinero; ?></td> 
+                                                <td><?php echo $listarDeCocinero[$i]-> perNombre ?></td> 
+                                                <td><?php echo $listarDeCocinero[$i]-> perApellido ?></td>  
                                                 <td><a href="Controlador.php?ruta=actualizarCocinero&idAct=<?php echo $listarDeCocinero[$i]->cocId; ?>">Actualizar</a></td>  
                                                 <td><a href="Controlador.php?ruta=eliminarCocinero&idAct=<?php echo $listarDeCocinero[$i]->cocId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                                             </tr>   

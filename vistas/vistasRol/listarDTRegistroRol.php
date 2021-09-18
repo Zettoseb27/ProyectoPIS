@@ -75,6 +75,7 @@
                                     <tbody>
                                             <?php
                                                         $i = 0;
+
                                                         foreach ($listaDeRol as $key => $value){
                                             ?>                      
                                                     <tr>

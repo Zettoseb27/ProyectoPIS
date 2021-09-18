@@ -59,9 +59,9 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="principal.php">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i > <img src="Imagenes/Plato/plato.png" alt="" width="40" height="40"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Pedido Instantaneo</div>
             </a>
@@ -273,6 +273,28 @@
                     </div>
                 </div>
             </li>
+            <!-- HORARIO COCINERO -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse11"
+                    aria-expanded="true" aria-controls="collapse11">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Horario Cocinero</span>
+                </a>
+                <div id="collapse11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Gestion Horario Cocinero:</h6>
+                        <a class="collapse-item" href="Controlador.php?ruta=listarHorarioCocinero&pag=0">Listar</a>
+                        <br>
+                        <?php
+                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
+                        ?>
+                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarHorarioCocinero">Agregar</a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </li>
 
             <!-- Nav Item - Pages Collapse Menu 
             <li class="nav-item active">
@@ -302,7 +324,7 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
-            <?php
+                        <?php
                         }
                         ?>
 
@@ -471,13 +493,12 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                 <?php echo $_SESSION['perNombre']. " ".$_SESSION['perApellido'];;
                                     ?>
                                 </span>
-                                <img class="img-profile rounded-circle"
-                                    src="plantilla/img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="plantilla/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -519,13 +540,13 @@
 
             </div>
             <!-- End of Main Content -->
-                       <div>
+                      <!-- <div>
                             <?php
                             echo '<pre>';
                             print_r($_SESSION);
                             echo '</pre>';
                             ?>
-                        </div> 
+                        </div>  -->
             <!-- Footer -->
 
             </footer>

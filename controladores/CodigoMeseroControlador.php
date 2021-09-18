@@ -1,6 +1,6 @@
 <?php
      include_once PATH.'modelos/modeloCodigoMesero/CodigoMeseroDAO.php'; 
-     //include_once PATH.'modelos/modeloPersona/PersonaDAO.php'; 
+     include_once PATH.'modelos/modeloPersona/PersonaDAO.php'; 
      class CodigoMeseroControlador{
          private $datos;
          public function __construct($datos) {
@@ -19,7 +19,8 @@
                     $this->actualizarCodigoMesero();
                     break;
                 case 'confirmaActualizarCodigoMesero':  
-                    $this->confirmaActualizarCodigoMesero(); 
+                    $this->confirmaActualizarCodigoMesero();
+                    break;  
                 case 'cancelarActualizarCodigoMesero':  
                     $this->cancelarActualizarCodigoMesero();
                     break;
@@ -112,12 +113,17 @@
                 session_start();
                 $_SESSION['codMesId'] = $this->datos['codMesId'];
                 $_SESSION['codMesIdMesero'] = $this->datos['codMesIdMesero'];
-                $_SESSION['codMesCodigoMesero'] = $this->datos['codMesCodigoMesero'];
+                $_SESSION['codMesCodigoMesero'] = $this->datos['codMesCodigoMesero'];  
     
                 $_SESSION['mensaje'] = "   El código " . $this->datos['codMesId'] . " ya existe en el sistema.";
     
                 header("location:Controlador.php?ruta=mostrarInsertarCodigoMesero");
+                }
+            }
+            public function cancelarInsertarCodigoMesero() {
+                session_start();
+                $_SESSION['mensaje'] = "Desistió de la insercion";
+                header("location:Controlador.php?ruta=listarCodigoMesero");
             }
         }
-    }
 ?>

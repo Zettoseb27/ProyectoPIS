@@ -72,6 +72,11 @@
             $_SESSION['mensaje'] = "Actualización realizada.";
             header("location:Controlador.php?ruta=listarHorario");
         }
+        public function cancelarActualizarHorario() {
+            session_start();
+            $_SESSION['mensaje'] = "Desistio de la actualizacion";
+            header("location:Controlador.php?ruta=listarHorario");
+         }
         public function mostrarInsertarHorario() {
             /*         * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
             $gestarCodigoMesero = new CodigoMeseroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);

@@ -77,7 +77,7 @@ if (isset($_SESSION['mensaje'])) {
                 </tr>             
                 <tr class="my-2">            
                     <td >    
-                        <button href="#" class="btn btn-danger btn-icon-split" type="submit" name="ruta" value="cancelarInsertarCoodigoMesero"> <span class="icon text-white-50">
+                        <button href="#" class="btn btn-danger btn-icon-split" type="submit" name="ruta" value="cancelarInsertarCodigoMesero"> <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>
                                         <span class="text">Cancelar</span> </button>&nbsp;&nbsp;||&nbsp;&nbsp;
