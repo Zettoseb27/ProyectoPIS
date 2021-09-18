@@ -542,17 +542,8 @@
                             ?>
                         </div>  -->
             <!-- Footer -->
-<<<<<<< HEAD
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
-                    </div>
-                </div>
-=======
 
->>>>>>> develop
-            </footer>
+
             <!-- End of Footer -->
 
         </div>
@@ -596,11 +587,6 @@
     <!-- Custom scripts for all pages-->
     <script src="plantilla/js/sb-admin-2.min.js"></script>
 
-<<<<<<< HEAD
-=======
-    
-
->>>>>>> develop
 </body>
 
 </html>
