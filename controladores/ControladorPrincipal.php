@@ -269,13 +269,19 @@
                     $this->actualizarHorarioCocinero();
                     break;
                 case 'confirmaActualizarHorarioCocinero':
-                    $this->confirmaActualizarHorarioCocinero();
+                    $this->confirmaActualizarHorarioCocinero(); 
                     break;
                 case 'cancelarActualizarHorarioCocinero': 
                         $this->cancelarActualizarCocinero(); 
                         break;
-                case 'InsertarHorarioCocinero': 
-                    $this->InsertarHorarioCocinero();
+                case 'mostrarInsertarHorarioCocinero': 
+                        $this->mostrarInsertarHorarioCocinero(); 
+                        break;
+                case 'insertarHorarioCocinero': 
+                    $this->insertarHorarioCocinero();
+                    break;
+                case 'cancelarInsertarHorarioCocinero': 
+                    $this->cancelarInsertarHorarioCocinero();
                     break;
                     
                 /* ---------  COCINA -------------- */
@@ -536,14 +542,20 @@
             $HorarioCocineroControlador = new HorarioCocineroControlador ($this->datos);
         }
         public function confirmaActualizarHorarioCocinero() {
-            $HorarioCocineroControlador = new HorarioCocineroControlador ($this->datos);
+            $HorarioCocineroControlador = new HorarioCocineroControlador ($this->datos); 
         }
         public function cancelarActualizarHorarioCocinero() { 
             $HorarioCocineroControlador = new HorarioCocineroControlador ($this->datos);
         }
-        public function InsertarHorarioHorarioCocinero() {
+        public function mostrarInsertarHorarioCocinero() { 
             $HorarioCocineroControlador = new HorarioCocineroControlador ($this->datos);
-        }      
+        }
+        public function insertarHorarioCocinero() {
+            $HorarioCocineroControlador = new HorarioCocineroControlador ($this->datos);
+        }
+        public function cancelarInsertarHorarioCocinero() {
+            $HorarioCocineroControlador = new HorarioCocineroControlador ($this->datos);
+        }          
         /* ------------------------- COCINA ----------------------------- */
         public function listarCocina() {
             $CocinaControlador = new CocinaControlador($this->datos); 

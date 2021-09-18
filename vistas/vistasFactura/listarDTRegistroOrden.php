@@ -60,6 +60,7 @@ if(isset($_SESSION['listaDeOrden'])){
                                             <th>Id</th>
                                             <th>Numero Mesa</th>
                                             <th>Plato</th> 
+                                            <th>Valor Total</th> 
                                             <th>Observacion</th> 
                                             <th>Descripcion</th> 
                                             <th>Adicional</th> 
@@ -74,6 +75,7 @@ if(isset($_SESSION['listaDeOrden'])){
                                             <th>Id</th>
                                             <th>Numero Mesa</th>
                                             <th>Plato</th> 
+                                            <th>Valor Total</th> 
                                             <th>Observacion</th> 
                                             <th>Descripcion</th> 
                                             <th>Adicional</th> 
@@ -92,6 +94,7 @@ if(isset($_SESSION['listaDeOrden'])){
                                                 <td><?php echo $listaDeOrden[$i]-> ordId; ?></td> 
                                                 <td><?php echo $listaDeOrden[$i]-> mesCantidadComensales; ?></td>  
                                                 <td><?php echo $listaDeOrden[$i]-> tipPlaPlato; ?></td>  
+                                                <td><?php echo $listaDeOrden[$i]-> ordvalorTotal; ?></td>  
                                                 <td><?php echo $listaDeOrden[$i]-> menObservacion; ?></td>  
                                                 <td><?php echo $listaDeOrden[$i]-> plaDescripcion; ?></td>  
                                                 <td><?php echo $listaDeOrden[$i]-> tipPlaAdicional; ?></td>   

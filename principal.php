@@ -66,16 +66,18 @@
                 <div class="sidebar-brand-text mx-3">Pedido Instantaneo</div>
             </a>
 
-            <!-- Divider -->
+            <!-- Divider --> <a class="collapse-item">
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="Controlador.php?ruta=listarOrden&pag=0">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Orden</span></a>
+                    <a class="nav-link" h href="Controlador.php?ruta=mostrarInsertarOrden">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Listar Orden</span></a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
     
@@ -180,7 +182,7 @@
                 </div>
             </li> -->
             <!-- ORDEN -->
-            <li class="nav-item">
+           <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse7"
                     aria-expanded="true" aria-controls="collapse7">
                     <i class="fas fa-fw fa-table"></i>
@@ -192,7 +194,7 @@
                         <a class="collapse-item" href="Controlador.php?ruta=listarOrden&pag=0">Listar</a>
                         <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarOrden">Agregar</a>
                     </div>
-                </div>
+                </div> -->
                 <?php
                         }
                         ?>

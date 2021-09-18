@@ -1,16 +1,17 @@
 <?php
-if (isset($_SESSION['actualizarDatosHorarioCocinero'])) {
-    $actualizarDatosHorarioCocinero = $_SESSION['actualizarDatosHorarioCocinero'];   
+if (isset($_SESSION['actualizarHorarioCocinero'])) {
+    $actualizarDatosHorarioCocinero = $_SESSION['actualizarHorarioCocinero'];   
     unset($_SESSION['actualizarCocina']); 
 }
-if (isset($_SESSION['registroMenu'])) { /* * ************************ */
-    $registroMenu = $_SESSION['registroMenu'];
-    $Menu = count($registroMenu);
+if (isset($_SESSION['registroCocinero'])) { /* * ************************ */
+    $registroCocinero = $_SESSION['registroCocinero'];
+    $Menu = count($registroCocinero);
 }
+/*
 echo "<pre>";
-print_r($_SESSION['registroCocinero']);
+print_r($_SESSION['actualizarHorarioCocinero']);
 echo "<pre>"; 
-
+*/
 ?>
 <div class="panel-heading">
     <h2 class="panel-title">Actualización de Horario Cocinero.</h2>
@@ -53,21 +54,21 @@ echo "<pre>";
                 </tr>  
                 <tr>
                     <td>
-                        <select id="categoriaLibro_catLibId" name="categoriaLibro_catLibId"> 
+                        <select class="form-control" id="horCocIdCocinero" name="horCocIdCocinero" disabled = ""> 
 							<?php
 							for ($j=0; $j< $Menu; $j++) {
 							?>
-								<option value ="<?php echo $registroMenu[$j]->catLibId; ?>" 
+								<option value ="<?php echo $registroCocinero[$j]->cocId; ?>" 
 								
                                            <?php
-                                if (isset($registroMenu[$j]->catLibId) && isset($actualizarDatosHorarioCocinero->categoriaLibro_catLibId) && ($registroMenu[$j]->catLibId == $actualizarDatosHorarioCocinero->categoriaLibro_catLibId)) {
+                                if (isset($registroCocinero[$j]->cocId) && isset($actualizarDatosHorarioCocinero->horCocIdCocinero) && ($registroCocinero[$j]->cocId == $actualizarDatosHorarioCocinero->horCocIdCocinero)) {
                                     echo "selected";
                                 }
                                 ?>                                       
 
                                         > 
 								
-								<?php echo $registroMenu[$j]->catLibNombre; ?></option> 
+								<?php echo $registroCocinero[$j]->cocIdCodigoCocinero; ?></option> 
 							<?php
 							}
 							?>
@@ -76,8 +77,8 @@ echo "<pre>";
                 </tr>             
                 <tr>            
                     <td>            
-                        <button type="submit" name="ruta" value="cancelarActualizarLibro">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
-                        <button type="submit" name="ruta" value="confirmaActualizarLibro">Actualizar Libro</button>
+                        <button type="submit" name="ruta" value="cancelarActualizarHorarioCocinero">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="confirmaActualizarHorarioCocinero">Actualizar Libro</button>
                     </td>
                 </tr>             
             </table>

@@ -46,7 +46,7 @@ echo "<pre>"; */
                     </td>
              </tr>
                     <td> Codigo Mesero 
-                        <br> <select  class="form-control" id="horIdCodigoMesero" name="horIdCodigoMesero"> 
+                        <br> <select  class="form-control" id="horIdCodigoMesero" name="horIdCodigoMesero" disabled = ""> 
 							<?php
                             
 							for ($j=0; $j< $Horario; $j++) {

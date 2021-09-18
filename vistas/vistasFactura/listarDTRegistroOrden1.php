@@ -1,10 +1,10 @@
-<?php
-    
+ <?php
+    /*
     echo "<pre>";
-    print_r ($_SESSION['listarDeFactura']);
-    echo "</pre>";
-    
-?>
+    print_r($_SESSION['listaDeOrden']);
+    echo "</pre>"; 
+    */
+ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,22 +23,24 @@
 	
 	<body>
 <?php
-if(isset($_SESSION['listarDeFactura'])){
+if(isset($_SESSION['listaDeOrden'])){
 	
-	 $listarDeFactura=$_SESSION['listarDeFactura'];
-	 unset($_SESSION['listarDeFactura']);	
+	 $listaDeOrden=$_SESSION['listaDeOrden'];
+	 unset($_SESSION['listaDeOrden']);
+	
 }
 ?>
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nombre Cliente</th> 
-                <th>Codigo Mesero</th>
-                <th>Adicional</th>
-                <th>Postre</th>
-                <th>Bebida</th>
-                <th>Valor Total a Pagar</th>
+                <th>Plato</th> 
+                <th>Valor Total</th> 
+                <th>Observacion</th> 
+                <th>Descripcion</th> 
+                <th>Adicional</th> 
+                <th>Bebida</th> 
+                <th>Postre</th> 
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -46,26 +48,29 @@ if(isset($_SESSION['listarDeFactura'])){
         <tbody>
             <?php
             $i = 0;
-            foreach ($listarDeFactura as $key => $value) {
+            foreach ($listaDeOrden as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listarDeFactura[$i]-> facId; ?></td>  
-                    <td><?php echo $listarDeFactura[$i]-> facNombreCliente; ?></td>  
-                    <td><?php echo $listarDeFactura[$i]-> codMesCodigoMesero; ?></td>  
-                    <td><?php echo $listarDeFactura[$i]-> tipPlaPlato; ?></td>
-                    <td><?php echo $listarDeFactura[$i]-> tipPlaPostre; ?></td>
-                    <td><?php echo $listarDeFactura[$i]-> tipPlaBebida; ?></td>
-                    <td><?php echo $listarDeFactura[$i]-> ordvalorTotal; ?></td>
-                    <td><a href="Controlador.php?ruta=actualizarFactura&idAct=<?php echo $listarDeFactura[$i]->facId; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarFactura&idAct=<?php echo $listarDeFactura[$i]->facId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><?php echo $listaDeOrden[$i]-> ordId; ?></td>  
+                    <td><?php echo $listaDeOrden[$i]-> tipPlaPlato; ?></td>  
+                    <td><?php echo $listaDeOrden[$i]-> ordvalorTotal; ?></td>  
+                    <td><?php echo $listaDeOrden[$i]-> menObservacion; ?></td>  
+                    <td><?php echo $listaDeOrden[$i]-> plaDescripcion; ?></td>  
+                    <td><?php echo $listaDeOrden[$i]-> tipPlaAdicional; ?></td>   
+                    <td><?php echo $listaDeOrden[$i]-> tipPlaBebida; ?></td>  
+                    <td><?php echo $listaDeOrden[$i]-> tipPlaPostre; ?></td> 
+                    <td><a href="Controlador.php?ruta=actualizarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
             }
-            $listarDeFactura=null;
+            $listaDeOrden=null;
             ?>
         </tbody>
     </table>
+
+
     <!--**************************************** -->  
     <!--LAS siguientes lìneas se agregan con el propòsito de dar funcionalidad a un DataTable-->
     <!--**************************************** -->
@@ -81,5 +86,8 @@ if(isset($_SESSION['listarDeFactura'])){
     </script>     
     <!--**************************************** -->
     <!--**************************************** -->   
+
+
+
 </body>
 </html>

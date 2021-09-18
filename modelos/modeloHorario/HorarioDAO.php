@@ -66,7 +66,6 @@
                     $insertar -> bindParam("horFecha", $registro['horFecha']);
                     $insertar -> bindParam("horObservacion", $registro['horObservacion']);
                     $insertar -> bindParam("horIdCodigoMesero", $registro['horIdCodigoMesero']);
-                   
                     $insercion = $insertar -> execute();
                     $clavePrimaria = $this -> conexion -> lastInsertId();
                     return ['inserto' => $insercion, 'resultado' => $clavePrimaria];
