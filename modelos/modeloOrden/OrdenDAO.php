@@ -8,12 +8,12 @@
         }
 
         public function seleccionarTodos(){ // Método: seleccionarTodos(), 
-            $planConsulta = "select  O.ordId,O.ordvalorTotal,
+            $planConsulta = "SELECT  O.ordId,O.ordvalorTotal,
             Ms.mesCantidadComensales,Ms.mesNumeroMesa,
             Mn.menObservacion,
             Pl.plaDescripcion,
             Tp.tipPlaAdicional,Tp.tipPlaBebida,Tp.tipPlaPostre, Tp.tipPlaPlato 
-    FROM orden O
+                FROM orden O
                 inner join mesa Ms on O.ordIdMesa = Ms.mesId 
                 inner join menu Mn on O.ordIdMenu = Mn.menId 
                 inner join plato Pl on Mn.menIdPlato = Pl.plaId 
@@ -47,22 +47,18 @@
 
          public function insertar($registro) { // Método: insertar($registro), 
             try {
-                $consulta = "insert into orden values (:ordId, :ordIdMenu, :ordIdMesa, :ordvalorTotal, :ordEstado, :ordSesion, :ordCreated_at, :ordUpdate_at);";
+                $consulta = "INSERT INTO orden (ordId,ordvalorTotal,ordIdMenu,ordIdMesa) VALUES (:ordId,:ordvalorTotal,:ordIdMenu,:ordIdMesa);";
                 $insertar = $this -> conexion -> prepare($consulta);
                 $insertar -> bindParam("ordId", $registro['ordId']);
+                $insertar -> bindParam("ordvalorTotal", $registro['ordvalorTotal']);
                 $insertar -> bindParam("ordIdMenu", $registro['ordIdMenu']);
                 $insertar -> bindParam("ordIdMesa", $registro['ordIdMesa']);
-                $insertar -> bindParam("ordvalorTotal", $registro['ordvalorTotal']);
-                $insertar -> bindParam("ordEstado", $registro['ordEstado']);
-                $insertar -> bindParam("ordSesion", $registro['ordSesion']);
-                $insertar -> bindParam("ordCreated_at", $registro['ordCreated_at']);
-                $insertar -> bindParam("ordUpdate_at", $registro['ordUpdate_at']);
                 $insercion = $insertar -> execute();
                 $clavePrimaria = $this -> conexion -> lastInsertId();
-                return ['inserto' => 1, 'resultado' => $clavePrimaria];
+                return ['inserto' => $insercion, 'resultado' => $clavePrimaria];
                 $this -> cierreBd();
             } catch (PDOException $pdoExc) {
-                return['inserto' > 0, $pdoExc -> errorInfo[2]];
+                return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
             }
 
         }

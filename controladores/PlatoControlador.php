@@ -78,8 +78,8 @@
         }
         public function mostrarInsertarPlato() {
             /*         * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
-            $gestarCategoriaLibros = new tipoDePlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
-            $registroTipoPlato = $gestarCategoriaLibros->seleccionarTodos();
+            $gestarTipoPlato = new tipoDePlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+            $registroTipoPlato = $gestarTipoPlato->seleccionarTodos();
             /*         * ************************************************************************* */
     
             session_start();

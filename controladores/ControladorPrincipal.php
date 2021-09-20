@@ -223,6 +223,15 @@
                 case "cancelarActualizarOrden":
                 $this->cancelarActualizarOrden();  
                     break;
+                case 'mostrarInsertarOrden': 
+                    $this->mostrarInsertarOrden();
+                    break;
+                case 'insertarOrden': 
+                    $this->insertarOrden(); 
+                    break;
+                case 'cancelarInsertarOrden':  
+                    $this->cancelarInsertarOrden();
+                    break;
                 /* ---------  FACTURA -------------- */
                 case 'listarFactura':
                     $this->listarFactura();
@@ -495,6 +504,15 @@
         }
         public function cancelarActualizarOrden() {
             $OrdenControlador = new OrdenControlador ($this->datos); 
+        }
+        public function mostrarInsertarOrden() {
+            $OrdenControlador = new OrdenControlador ($this->datos);
+        }
+        public function insertarOrden() {
+            $OrdenControlador = new OrdenControlador ($this->datos);
+        }
+        public function cancelarInsertarOrden() {
+            $OrdenControlador = new OrdenControlador ($this->datos);
         }
         /* ------------------------- FACTURA ----------------------------- */
         public function listarFactura() {

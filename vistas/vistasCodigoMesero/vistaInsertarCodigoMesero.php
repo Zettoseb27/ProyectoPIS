@@ -1,8 +1,8 @@
 <?php
 
- /*echo "<pre>";  
+echo "<pre>";  
 print_r($_SESSION['registroCodigoMesero']);
-echo "</pre>"; */
+echo "</pre>"; 
 
 if (isset($_SESSION['registroCodigoMesero'])) {
     $registroCodigoMesero = $_SESSION['registroCodigoMesero']; 
@@ -43,9 +43,7 @@ if (isset($_SESSION['mensaje'])) {
 
 <body id="page-top">
 <div class="panel-heading">
-    <h2 class="panel-title">Gestión Codigo Mesero</h2>
-    <h3 class="panel-title">Inserción Codigo Mesero.</h3>
-</div>
+    <h2 class="panel-title">Inserción Codigo Mesero.</h2>
 <div>
     <fieldset>
         <form role="form" method="POST" action="Controlador.php" id="formRegistro">

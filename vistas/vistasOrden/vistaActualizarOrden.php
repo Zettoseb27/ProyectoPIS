@@ -12,6 +12,10 @@ if  (isset($_SESSION['registroMesa'])) {
     /*echo "<pre>";
     print_r($_SESSION);
     echo "<pre>"; */
+
+    echo "<pre>";
+    print_r($_SESSION['registroMesa']);
+    echo "<pre>"; 
 ?>
 <div class="panel-heading">
     <h2 class="panel-title">Gestión de Orden</h2>

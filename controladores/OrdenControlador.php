@@ -1,9 +1,9 @@
 <?php
      include_once PATH. 'modelos/modeloOrden/OrdenDAO.php';
-     //include_once PATH. 'modelos/modeloMenu/MenuDAO.php'; 
+     include_once PATH. 'modelos/modeloMenu/MenuDAO.php'; 
      include_once PATH. 'modelos/modeloMesa/MesaDAO.php'; 
-     /*include_once PATH. 'modelos/modeloPlato/PlatoDAO.php'; 
-     include_once PATH. 'modelos/modelotipoDePlato/tipoDePlatoDAO.php'; */
+     include_once PATH. 'modelos/modeloPlato/PlatoDAO.php'; 
+     include_once PATH. 'modelos/modelotipoDePlato/tipoDePlatoDAO.php'; 
      class OrdenControlador {
          private $datos;
          public function __construct($datos) {
@@ -27,15 +27,18 @@
                case "cancelarActualizarOrden": //provisionalmente para trabajar con datatables
                   $this->cancelarActualizarOrden();
                   break;
-               case "mostrarInsertarLOrden": //provisionalmente para trabajar con datatables
-
-                  $this->mostrarInsertarLOrden();
+               case "mostrarInsertarOrden": //provisionalmente para trabajar con datatables
+                  $this->mostrarInsertarOrden();
                   break;
-
-               case "insertarLibro": //provisionalmente para trabajar con datatables
-
-                  $this->insertarLibro();
+               case "insertarOrden": //provisionalmente para trabajar con datatables
+                  $this->insertarOrden();
                   break;
+               case 'insertarOrden':  
+                    $this->insertarOrden();
+                    break;
+               case "cancelarInsertarOrden":
+                $this->cancelarInsertarOrden(); 
+                    break;
             }
          }
          public function listarOrden() {
@@ -64,11 +67,11 @@
             $gestarMesa = new MesaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
             $registroMesa = $gestarMesa->seleccionarTodos();
 
-            /*$gestarMesa = new PlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
+            $gestarMesa = new PlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
             $registroPlato = $gestarMesa->seleccionarTodos();
 
             $gestarTipoDePlato = new tipoDePlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
-            $registroTipoDePlato = $gestarTipoDePlato->seleccionarTodos();*/
+            $registroTipoDePlato = $gestarTipoDePlato->seleccionarTodos();
 
             session_start();
             $_SESSION['actualizarDatosOrden'] = $actualizarDatosOrden;
@@ -91,6 +94,53 @@
          session_start();
          $_SESSION['mensaje'] = "Desistió de la actualización";
          header("location:Controlador.php?ruta=listarOrden");
+      }
+      public function mostrarInsertarOrden() {
+         /*         * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
+         $gestaroRDEN = new MenuDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+         $registroOrden = $gestaroRDEN->seleccionarTodos();
+         /*         * ************************************************************************* */
+
+         /*         * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
+         $gestaroRDEN = new MesaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+         $registroMesa = $gestaroRDEN->seleccionarTodos();
+         /*         * ************************************************************************* */
+ 
+         session_start();
+         $_SESSION['registroOrden'] = $registroOrden;
+         $_SESSION['registroMesa'] = $registroMesa;
+         $registroOrden = null;
+         $registroMesa = null;
+         header("Location: principal.php?contenido=vistas/vistasOrden/vistaInsertarOrden.php");
      }
+     public function insertarOrden() {
+
+      //Se instancia OrdenDAO para insertar
+      $buscarCodigoMesero = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+      //Se consulta si existe ya el registro
+      $PlatoHallado = $buscarCodigoMesero->seleccionarId(array($this->datos['ordId']));
+      //Si no existe el libro en la base se procede a insertar ****  		
+      if (!$PlatoHallado['exitoSeleccionId']) {
+          $insertarPlato = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+          $insertoPlato = $insertarPlato->insertar($this->datos);  //inserción de los campos en la tabla libros 
+
+          $resultadoInsercionCodigoMesero = $insertoPlato['resultado'];  //Traer el id con que quedó el libro de lo contrario la excepción o fallo  
+
+          session_start();
+          $_SESSION['mensaje'] = "Registrado " . $this->datos['ordId'] . " con éxito.";
+
+          header("location:Controlador.php?ruta=listarOrden");
+      } else {// Si existe se retornan los datos y se envía el mensaje correspondiente ****
+          session_start();
+          $_SESSION['ordId'] = $this->datos['ordId'];
+          $_SESSION['ordvalorTotal'] = $this->datos['ordvalorTotal'];
+          $_SESSION['ordIdMenu'] = $this->datos['ordIdMenu']; 
+          $_SESSION['ordIdMesa'] = $this->datos['ordIdMesa'];   
+
+          $_SESSION['mensaje'] = "   El código " . $this->datos['ordId'] . " ya existe en el sistema.";
+
+          header("location:Controlador.php?ruta=mostrarInsertarOrden");
+          }
+      }
    }
 ?>

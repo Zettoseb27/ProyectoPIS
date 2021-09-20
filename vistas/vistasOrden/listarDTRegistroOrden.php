@@ -65,6 +65,7 @@ if(isset($_SESSION['listaDeOrden'])){
                                             <th>Adicional</th> 
                                             <th>Bebida</th> 
                                             <th>Postre</th> 
+                                            <th>Precio</th>
                                             <th>Edit</th> 
                                             <th>Delete</th> 
                                         </tr>
@@ -79,6 +80,7 @@ if(isset($_SESSION['listaDeOrden'])){
                                             <th>Adicional</th> 
                                             <th>Bebida</th> 
                                             <th>Postre</th> 
+                                            <th>Precio</th>
                                             <th>Edit</th> 
                                             <th>Delete</th> 
                                         </tr>
@@ -97,6 +99,7 @@ if(isset($_SESSION['listaDeOrden'])){
                                                 <td><?php echo $listaDeOrden[$i]-> tipPlaAdicional; ?></td>   
                                                 <td><?php echo $listaDeOrden[$i]-> tipPlaBebida; ?></td>  
                                                 <td><?php echo $listaDeOrden[$i]-> tipPlaPostre; ?></td> 
+                                                <td><?php echo $listaDeOrden[$i]-> ordvalorTotal; ?></td> 
                                                 <td><a href="Controlador.php?ruta=actualizarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>">Actualizar</a></td>  
                                                 <td><a href="Controlador.php?ruta=eliminarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                                             </tr>   

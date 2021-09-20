@@ -82,8 +82,8 @@
         }
         public function mostrarInsertarCodigoMesero() {
             /*         * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
-            $gestarCategoriaLibros = new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
-            $registroCodigoMesero = $gestarCategoriaLibros->seleccionarTodos();
+            $gestarCodigoMesero = new PersonaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+            $registroCodigoMesero = $gestarCodigoMesero->seleccionarTodos();
             /*         * ************************************************************************* */
     
             session_start();
