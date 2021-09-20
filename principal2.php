@@ -1,49 +1,24 @@
-<?php
-     session_start();
-
-    include_once 'modelos/ConstantesConexion.php';
-    include_once PATH . 'controladores/ManejoSesiones/BloqueDeSeguridad.php';
-
-    $seguridad= new BloqueDeSeguridad();
-    $seguridad->seguridad("login.php");
-
-     if (isset($_SESSION['mensaje'])) {
-        $mensaje = $_SESSION['mensaje'];
-        echo "<script languaje='javascript'>alert('$mensaje')</script>";
-        unset($_SESSION['mensaje']);
-    }
-?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-     
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pedido Instantaneo</title>
+    <title>SB Admin 2 - Blank</title>
 
     <!-- Custom fonts for this template-->
-    <link href="./plantilla/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="plantilla/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+        rel="plantilla/stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="./plantilla/css/sb-admin-2.min.css" rel="stylesheet">
-
-    <style type="text/css">
-    .bg-gradient-primary {
-    background-color: #616a6b;
-    background-image: linear-gradient(
-180deg,#616a6b 10%,#616a6b 100%);
-    background-size: cover;
-}
-</style>
-    
+    <link href="plantilla/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -56,249 +31,75 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="principal.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i > <img src="Imagenes/Plato/plato.png" alt="" width="40" height="40"></i>
+                    <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Pedido Instantaneo</div>
+                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
             </a>
 
-            <!-- Divider --> <a class="collapse-item">
+            <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="Controlador.php?ruta=listarOrden&pag=0">
+                <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Orden</span></a>
-                    <a class="nav-link" h href="Controlador.php?ruta=mostrarInsertarOrden">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Listar Orden</span></a>
+                    <span>Dashboard</span></a>
             </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
-    
-            </li>
 
-            <hr class="sidebar-divider">
-
-            <?php
-                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
-            ?>
             <!-- Heading -->
             <div class="sidebar-heading">
-                Administrador
+                Interface
             </div>
-                 <!-- ROL -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseone"
-                    aria-expanded="true" aria-controls="collapseone">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Rol</span>
-                </a>
-                <div id="collapseone" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Gestion Rol:</h6>
-                        <a class="collapse-item" href="Controlador.php?ruta=listarRol&pag=0">Listar</a>
-                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarRol">Agregar</a>
-                    </div>
-                </div>
-            </li>
-                                    <?php
-                        }
-                        ?>
 
-
-            <hr class="sidebar-divider">
-            <?php
-                        if (in_array(3,$_SESSION['rolesEnSesion'])) {
-            ?>        
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Platos
-            </div>
-            
-            <!-- TIPO DE PLATO -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tipo Plato</span>
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Components</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Gestion Tipo Plato:</h6>
-                        <a class="collapse-item" href="Controlador.php?ruta=listarTipoPlato&pag=0">Listar</a>
-                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarTipoPlato">Agregar</a>
-                    </div>
-                </div>
-            </li>
-            <!-- PLATO -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsethree"
-                    aria-expanded="true" aria-controls="collapsethree">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Plato</span>
-                </a>
-                <div id="collapsethree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Gestion Plato:</h6>
-                        <a class="collapse-item" href="Controlador.php?ruta=listarPlato&pag=0">Listar</a>
-                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarPlato">Agregar</a>
-                    </div>
-                </div>
-            </li>
-            <!-- MESA -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5"
-                    aria-expanded="true" aria-controls="collapse5">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Mesa</span>
-                </a>
-                <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Gestion Mesa:</h6>
-                        <a class="collapse-item" href="Controlador.php?ruta=listarMesa&pag=0">Listar</a>
-                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarMesa">Agregar</a>
-                    </div>
-                </div>
-            </li>
-            <!-- MENU 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse6"
-                    aria-expanded="true" aria-controls="collapse6">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Gestion Menu</span>
-                </a>
-                <div id="collapse6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="Controlador.php?ruta=listarMenu&pag=0">Listar</a>
-                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarMenu">Agregar</a>
-                    </div>
-                </div>
-            </li> -->
-            <!-- ORDEN -->
-           <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse7"
-                    aria-expanded="true" aria-controls="collapse7">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Orden</span>
-                </a>
-                <div id="collapse7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Gestion Orden:</h6>
-                        <a class="collapse-item" href="Controlador.php?ruta=listarOrden&pag=0">Listar</a>
-                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarOrden">Agregar</a>
-                    </div>
-                </div> -->
-                <?php
-                        }
-                        ?>
-            </li>
-
-            <hr class="sidebar-divider">
-            <?php
-                        if (in_array(3,$_SESSION['rolesEnSesion'])) {
-            ?>
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Mesero
-            </div>
-
-            <!-- CODIGO MESERO -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse8"
-                    aria-expanded="true" aria-controls="collapse8">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Mesero</span>
-                </a>
-                <div id="collapse8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Gestion Codigo Mesero:</h6>
-                        <a class="collapse-item" href="Controlador.php?ruta=listarCodigoMesero&pag=0">Listar</a>
-                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarCodigoMesero">Agregar</a>
+                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
             </li>
-            <!-- HORARIO MESERO -->
+
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse9"
-                    aria-expanded="true" aria-controls="collapse9">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Horario Mesero</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Utilities</span>
                 </a>
-                <div id="collapse9" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Gestion Horario Mesero:</h6>
-                        <a class="collapse-item" href="Controlador.php?ruta=listarHorario&pag=0">Listar</a>
-                        <br>
-                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarHorario">Agregar</a>
+                        <h6 class="collapse-header">Custom Utilities:</h6>
+                        <a class="collapse-item" href="utilities-color.html">Colors</a>
+                        <a class="collapse-item" href="utilities-border.html">Borders</a>
+                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                        <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
-                <?php
-                        }
-                        ?>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <?php
-                        if (in_array(2,$_SESSION['rolesEnSesion'])) {
-                        ?>     
             <div class="sidebar-heading">
-                Cocina
-
+                Addons
             </div>
-            <!-- COCINERO -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse10"
-                    aria-expanded="true" aria-controls="collapse10">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Cocinero</span>
-                </a>
-                <div id="collapse10" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Gestion Cocinero:</h6>
-                        <a class="collapse-item" href="Controlador.php?ruta=listarCocinero&pag=0">Listar</a>
-                        <br>
-                        <?php
-                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
-                        ?>
-                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarCocinero">Agregar</a>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                </div>
-            </li>
-            <!-- HORARIO COCINERO -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse11"
-                    aria-expanded="true" aria-controls="collapse11">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Horario Cocinero</span>
-                </a>
-                <div id="collapse11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Gestion Horario Cocinero:</h6>
-                        <a class="collapse-item" href="Controlador.php?ruta=listarHorarioCocinero&pag=0">Listar</a>
-                        <br>
-                        <?php
-                        if (in_array(1,$_SESSION['rolesEnSesion'])) {
-                        ?>
-                        <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarHorarioCocinero">Agregar</a>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                </div>
-            </li>
 
-            <!-- Nav Item - Pages Collapse Menu 
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
@@ -309,33 +110,30 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="plantilla/login.html">Login</a>
-                        <a class="collapse-item" href="plantilla/register.html">Register</a>
-                        <a class="collapse-item" href="plantilla/forgot-password.html">Forgot Password</a>
+                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="plantilla/404.html">404 Page</a>
-                        <a class="collapse-item active" href="plantilla/blank.html">Blank Page</a>
+                        <a class="collapse-item" href="404.html">404 Page</a>
+                        <a class="collapse-item active" href="blank.html">Blank Page</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="plantilla/charts.html">
+                <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
-                        <?php
-                        }
-                        ?>
 
-            <!-- Nav Item - Tables 
+            <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="plantilla/tables.html">
+                <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
-            </li> -->
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -352,15 +150,29 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">  
+            <div id="content">
+
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                        
+
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -389,6 +201,14 @@
                             </div>
                         </li>
 
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
@@ -431,6 +251,15 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
                         </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
@@ -439,7 +268,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="plantilla/img/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -451,7 +280,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="plantilla/img/undraw_profile_2.svg"
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
                                             alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -463,7 +292,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="plantilla/img/undraw_profile_3.svg"
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
                                             alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
@@ -494,29 +323,30 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    <h3>
-                                <?php echo $_SESSION['perNombre']. " ".$_SESSION['perApellido'];;
-                                    ?>
-                                </span>
-                                </h3>
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                              <!--  <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Perfil
+                                    Profile
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Configuraciones
-                                </a>-->
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Cerrar sesión
+                                    Logout
                                 </a>
                             </div>
                         </li>
@@ -530,24 +360,22 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800"></h1>
-                   <?php
-                    if(isset($_GET['contenido'])){
-                    include($_GET['contenido']);
-                    }
-                    ?> 
-                   
+                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+
                 </div>
-                
+                <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-                       <div>
-                            
-                        </div>  
+
             <!-- Footer -->
-
-
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
             <!-- End of Footer -->
 
         </div>
@@ -567,29 +395,29 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.php">Cerrar sesión</a>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="./plantilla/vendor/jquery/jquery.min.js"></script>
-    <script src="./plantilla/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="plantilla/vendor/jquery/jquery.min.js"></script>
+    <script src="plantilla/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="./plantilla/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="plantilla/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="./plantilla/js/sb-admin-2.min.js"></script>
+    <script src="plantilla/js/sb-admin-2.min.js"></script>
 
 </body>
 

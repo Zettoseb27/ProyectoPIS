@@ -102,7 +102,7 @@
                 $resultadoInsercionPlato = $insertoPlato['resultado'];  //Traer el id con que quedó el libro de lo contrario la excepción o fallo  
     
                 session_start();
-                $_SESSION['mensaje'] = "Registrado " . $this->datos['plaId'] . " con éxito.  Agregado Nuevo Libro con " . $resultadoInsercionPlato;
+                $_SESSION['mensaje'] = "Registrado " . $this->datos['plaId'] . " con éxito.";
     
                 header("location:Controlador.php?ruta=listarPlato");
             } else {// Si existe se retornan los datos y se envía el mensaje correspondiente ****

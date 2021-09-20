@@ -31,10 +31,18 @@
 
     <!-- Custom styles for this template-->
     <link href="plantilla/css/sb-admin-2.min.css" rel="stylesheet">
-
+    
+    <style type="text/css">
+    .bg-gradient-primary {
+    background-color: #616a6b;
+    background-image: linear-gradient(
+180deg,#616a6b 10%,#616a6b 100%);
+    background-size: cover;
+}
+</style>
 </head>
 
-<body class="bg-gradient-primary" src="imagenes/Login/presencation.jpg" alt="" width="440" height="440">
+<body class="bg-gradient-primary"  alt="" width="440" height="440">
 
     <div class="container">
 
@@ -47,7 +55,7 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body --> 
                         <div class="row">
-                            <div class="col-lg-6"> <img src="imagenes/Login/1.jpg" alt="" width="450" height="500"></div> 
+                            <div class="col-lg-6"> <img src="imagenes/Pamela/2.png" alt="" width="450" height="500"></div> 
                             <div class="col-lg-6" width="100" height="100">
                                 <div class="p-5" >
                                     <div class="text-center">

@@ -1,5 +1,5 @@
 <?php
-
+/*
 echo "<pre>";  
 print_r($_SESSION['registroOrden']); 
 echo "</pre>"; 
@@ -108,7 +108,7 @@ if (isset($_SESSION['mensaje'])) {
                         <button  href="#" class="btn btn-success btn-icon-split" class = ".text-white-50" type="submit" name="ruta" value="insertarOrden"><span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                         </span>
-                        <span class="text">Agregar Codigo Mesero</span></button>
+                        <span class="text">Agregar Orden</span></button>
                     </td>
                 </tr>  
             </table>

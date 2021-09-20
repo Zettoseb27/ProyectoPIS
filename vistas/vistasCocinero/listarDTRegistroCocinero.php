@@ -37,6 +37,15 @@ if (isset($_SESSION['mensaje'])) {
     <!-- Custom styles for this page -->
     <link href="plantilla/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <style type="text/css">
+    .bg-gradient-primary {
+    background-color: #616a6b;
+    background-image: linear-gradient(
+180deg,#616a6b 10%,#616a6b 100%);
+    background-size: cover;
+}
+</style>
+
 </head>
 
 <body id="page-top">
