@@ -5,8 +5,8 @@
 
      
      $registro[0]['ordId'] = 1;
-     $registro[0]['ordIdMesa'] = 4;
-     $registro[0]['ordValorTotal'] = 6000;
+     $registro[0]['ordIdMesa'] = 1;
+     $registro[0]['ordValorTotal'] = 5000;
     
      
      $rolActualizado = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);

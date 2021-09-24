@@ -5,7 +5,7 @@ include_once '../../modelos/ConstantesConexion.php';
 include_once PATH.'modelos/ConBdMysql.php';
 include_once PATH.'modelos/modeloRol/RolDAO.php';
 
-$rolId = array(20);
+$rolId = array(3);
 
 
 $Rol= new RolDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);

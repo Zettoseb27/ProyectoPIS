@@ -20,11 +20,6 @@ if (isset($_SESSION['registroMesa'])) {
      $cantMesa = count($registroMesa);
      // unset($_SESSION['registroMesa']);
  }
- if (isset($_SESSION['registroTipoDePlato'])) {
-    $registroTipoDePlato = $_SESSION['registroTipoDePlato']; 
-    $cantTipoDePlato = count($registroTipoDePlato);
-    // unset($_SESSION['registroOrden']);
-}
 
 if (isset($_SESSION['mensaje'])) {
     $mensaje = $_SESSION['mensaje'];
@@ -78,48 +73,19 @@ if (isset($_SESSION['mensaje'])) {
                         <div></div>  
                     </td>
                 </tr>
-
-       <!--         <tr>
+                <tr>
                     <td>
                         <select class="form-control" id="ordIdMenu" name="ordIdMenu">    
                              <option disabled="">Seleccione Menu</option>
                             <?php
                             for ($j = 0; $j < $cantCategorias; $j++) {
                                 ?>						
-                                <option value=<?php echo $registroOrden[$j]->menId; ?>> <?php echo $registroOrden[$j]->menId . " - " . $registroOrden[$j]->menId ?>   </option>
-						    <?php } ?>
-                        </select> 
-                        <hr>
-                    </td>                       
-                </tr> -->
-                
-                
-
-
-
-
-                <tr>
-                    <td>
-                        <select class="form-control" id="ordIdMenu" name="ordIdMenu">    
-                             <option disabled="">Seleccione Menu</option>
-                            <?php
-                            for ($j = 0; $j < $cantTipoDePlato; $j++) {
-                                ?>						
-                                <option value=<?php echo $registroTipoDePlato[$j]->tipPlaId; ?>> <?php echo $registroTipoDePlato[$j]->tipPlaId . " - " . $registroTipoDePlato[$j]->tipPlaPlato ?>   </option>
+                                <option value=<?php echo $registroOrden[$j]->menId; ?>> <?php echo $registroOrden[$j]->menId . " - " . $registroOrden[$j]->tipPlaPlato ?>   </option>
 						    <?php } ?>
                         </select> 
                         <hr>
                     </td>                       
                 </tr> 
-
-
-
-
-
-
-
-
-                
                 <tr>
                     <td>
                         <select class="form-control" id="ordIdMesa" name="ordIdMesa">

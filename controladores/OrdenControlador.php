@@ -1,8 +1,8 @@
 <?php
      include_once PATH. 'modelos/modeloOrden/OrdenDAO.php';
-     include_once PATH. 'modelos/modeloMenu/MenuDAO.php'; 
+     //include_once PATH. 'modelos/modeloMenu/MenuDAO.php'; 
      include_once PATH. 'modelos/modeloMesa/MesaDAO.php'; 
-     include_once PATH. 'modelos/modeloPlato/PlatoDAO.php'; 
+     //include_once PATH. 'modelos/modeloPlato/PlatoDAO.php'; 
      include_once PATH. 'modelos/modelotipoDePlato/tipoDePlatoDAO.php'; 
      class OrdenControlador {
          private $datos;
@@ -61,23 +61,17 @@
             $gestarOrden = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
             $consultaDeOrden = $gestarOrden->seleccionarId(array($this->datos['idAct']));
             $actualizarDatosOrden = $consultaDeOrden['registroEncontrado'][0]; 
-
-
-
             $gestarMesa = new MesaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
-            $registroMesa = $gestarMesa->seleccionarTodos();
-
-            $gestarMesa = new PlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
+            $registroMesa = $gestarMesa->seleccionarTodos(); 
+            /*$gestarMesa = new PlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
             $registroPlato = $gestarMesa->seleccionarTodos();
-
             $gestarTipoDePlato = new tipoDePlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD); 
-            $registroTipoDePlato = $gestarTipoDePlato->seleccionarTodos();
-
+            $registroTipoDePlato = $gestarTipoDePlato->seleccionarTodos();*/
             session_start();
             $_SESSION['actualizarDatosOrden'] = $actualizarDatosOrden;
             $_SESSION['registroMesa'] = $registroMesa;
-            /*$_SESSION['actualizarDatosPlato'] = $registroPlato;
-            $_SESSION['actualizarDatosTipoDePlato'] = $registroTipoDePlato;*/
+            //$_SESSION['actualizarDatosPlato'] = $registroPlato;
+            //$_SESSION['actualizarDatosTipoDePlato'] = $registroTipoDePlato;
 
             header("location:principal.php?contenido=vistas/vistasOrden/vistaActualizarOrden.php");
          }
@@ -105,12 +99,19 @@
          $gestaroRDEN = new MesaDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
          $registroMesa = $gestaroRDEN->seleccionarTodos();
          /*         * ************************************************************************* */
+
+         /*         * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
+         $gestaroRDEN = new tipoDePlatoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
+         $registroTipoDePlato = $gestaroRDEN->seleccionarTodos();
+         /*         * ************************************************************************* */
  
          session_start();
          $_SESSION['registroOrden'] = $registroOrden;
          $_SESSION['registroMesa'] = $registroMesa;
+         $_SESSION['registroTipoDePlato'] = $registroTipoDePlato;
          $registroOrden = null;
          $registroMesa = null;
+         $registroTipoDePlato = null;
          header("Location: principal.php?contenido=vistas/vistasOrden/vistaInsertarOrden.php");
      }
      public function insertarOrden() {

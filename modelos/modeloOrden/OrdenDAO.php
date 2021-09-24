@@ -64,9 +64,10 @@
         }
         public function actualizar($registro) {  
             try {
+                $Id = $registro[0]['ordId'];
                 $Mesa = $registro[0]['ordIdMesa'];
                 $ValorTotal = $registro[0]['ordValorTotal'];
-                $Id = $registro[0]['ordId'];
+                
                 if (isset($Id)) {
                     $actualizar  = "UPDATE orden SET ordIdMesa = ?,";
                     $actualizar.= "ordValorTotal = ?";
