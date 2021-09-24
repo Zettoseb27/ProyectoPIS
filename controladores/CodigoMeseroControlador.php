@@ -30,7 +30,7 @@
                 case 'insertarCodigoMesero':  
                     $this->insertarCodigoMesero();
                     break;
-               case "cancelarInsertarCodigoMesero":
+               case "cancelarInsertarCodigoMesero": 
                 $this->cancelarInsertarCodigoMesero(); 
                     break;
             }
@@ -69,7 +69,7 @@
          public function confirmaActualizarCodigoMesero() {  
              //echo _line_." "._file_."<br/"; exit;
             $gestarCodigoMesero = new CodigoMeseroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
-            $ActualizarCodigoMesero = $gestarCodigoMesero->actualizar(array($this->datos));
+            $actualizarCodigoMesero = $gestarCodigoMesero->actualizar(array($this->datos));
             session_start();
             $_SESSION['mensaje'] = "Actualización realizada."; 
             header("location:Controlador.php?ruta=listarCodigoMesero");

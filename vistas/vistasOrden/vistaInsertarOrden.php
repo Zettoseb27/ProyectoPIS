@@ -1,9 +1,9 @@
 <?php
-
+/*
 echo "<pre>";  
 print_r($_SESSION['registroTipoDePlato']); 
 echo "</pre>"; 
-/*echo "<pre>"; 
+echo "<pre>"; 
 print_r($_SESSION['registroMesa']);
 echo "</pre>"; 
 /*echo "<pre>"; 
@@ -92,12 +92,6 @@ if (isset($_SESSION['mensaje'])) {
                         <hr>
                     </td>                       
                 </tr> -->
-                
-                
-
-
-
-
                 <tr>
                     <td>
                         <select class="form-control" id="ordIdMenu" name="ordIdMenu">    

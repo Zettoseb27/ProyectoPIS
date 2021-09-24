@@ -67,7 +67,6 @@
                 $Id = $registro[0]['ordId'];
                 $Mesa = $registro[0]['ordIdMesa'];
                 $ValorTotal = $registro[0]['ordValorTotal'];
-                
                 if (isset($Id)) {
                     $actualizar  = "UPDATE orden SET ordIdMesa = ?,";
                     $actualizar.= "ordValorTotal = ?";
