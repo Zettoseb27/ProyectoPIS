@@ -40,13 +40,13 @@
                 try {
                     $HoraInicio = $registro[0]['horHoraInicio'];
                     $HoraFin = $registro[0]['horHoraFin'];
-                    $Fecha = $registro[0]['horFecha'];
-                    $CodigoMesero = $registro[0]['horIdCodigoMesero'];
+                    //$Fecha = $registro[0]['horFecha'];
+                    //$CodigoMesero = $registro[0]['horIdCodigoMesero'];
                     $Id = $registro[0]['horId'];
                     if (isset($Id)) {
-                        $actualizar = "update horario set  horHoraInicio = ?, horHoraFin = ?, horFecha = ?, horIdCodigoMesero = ? where horId = ?;"; 
+                        $actualizar = "update horario set  horHoraInicio = ?, horHoraFin = ? where horId = ?;"; 
                         $actualizacion = $this->conexion->prepare($actualizar);
-                        $resultadoAct = $actualizacion->execute(array($HoraInicio,$HoraFin,$Fecha,$CodigoMesero,$Id));
+                        $resultadoAct = $actualizacion->execute(array($HoraInicio,$HoraFin,$Id));
                         $this->cierreBd();
                         return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
                     }
