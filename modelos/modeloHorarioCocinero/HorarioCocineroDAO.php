@@ -50,47 +50,53 @@
                 return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
             }
         }
+        public function actualizar($registro) {
+            try {
+                $HoraInicio = $registro[0]['horCocHoraInicio'];
+                $HoraFin = $registro[0]['horCocHoraFin'];
+                //$Fecha = $registro[0]['horFecha'];
+                //$CodigoMesero = $registro[0]['horIdCodigoMesero'];
+                $Id = $registro[0]['horCocId'];
+                if (isset($Id)) {
+                    $actualizar = "update horario set  horCocHoraInicio = ?, horCocHoraFin = ? where horCocId = ?;"; 
+                    $actualizacion = $this->conexion->prepare($actualizar);
+                    $resultadoAct = $actualizacion->execute(array($HoraInicio,$HoraFin,$Id));
+                    $this->cierreBd();
+                    return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
+                }
+            } catch (PDOException $pdoExc) {
+                $this->cierreBd();
+                return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+            }
+        
+        }
         public function eliminar($horCocId = array()) {
-
             $planConsulta = "delete from horario_cocinero where horCocId = :horCocId;";
-
             $eliminar = $this -> conexion -> prepare($planConsulta);
             $eliminar -> bindParam(':horCocId', $horCocId[0], PDO:: PARAM_INT);    
             $resultado = $eliminar->execute();
-
             $this -> cierreBd();
-
             if (!empty($resultado)) {
                 return ['eliminar' => TRUE, 'registroEliminado' => array($horCocId[0])];
             } else {
                 return ['eliminar' => FALSE, 'registroEliminado' => array($horCocId[0])];
             }
-
         }
         public function habilitar($horCocId = array()) {
-
-
             try {
-
             $cambiarValorTotal = 1;
-
             if (isset($horCocId[0])) {
-
                 $actualizar = "update horario_cocinero set horCocEstado = ? where horCocId = ?;";
                 $actualizacion = $this-> conexion -> prepare($actualizar);
                 $actualizacion = $actualizacion -> execute(array($cambiarValorTotal, $horCocId[0]));
                 return['actualizacion' => $actualizacion, 'mensaje' => "Registro activado"];
                 }
-
             }catch (PDOException $pdoExc) {
                 return['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
             }
         }
-
         public function eliminadorLogico($horCocId = array()) {
-
             try {
-
             $cambiarEstado = 0;
             if (isset($horCocId[0])) {
                 $actualizar = "update horario_cocinero set horCocEstado = ? where horCocId = ?;";
@@ -101,9 +107,7 @@
         } catch (PDOException $pdoExc) {
             return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
         }
-
-    }
-         
-     }
+    }         
+ }
      
 ?>

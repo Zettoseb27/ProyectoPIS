@@ -13,8 +13,7 @@ echo "<pre>"; */
 
 ?>
 <div class="panel-heading">
-    <h2 class="panel-title">Gestión de Horario Mesero</h2>
-    <h3 class="panel-title">Actualización de Horario Mesero.</h3>
+    <h2 class="panel-title">Actualización de Horario Mesero.</h2>
 </div>
 <div>
     <fieldset>
@@ -30,7 +29,7 @@ echo "<pre>"; */
                 </tr>
                 <tr>
                     <td>                
-                        <input class="form-control" placeholder="Hora de Inicia" name="horHoraInicio" type="text"   required="required" 
+                        <input class="form-control" placeholder="Hora de Inicia" name="horHoraInicio" type="time"   required="required" 
                                value="<?php 
 									if(isset($actualizarDatosHorario->horHoraInicio)){ echo $actualizarDatosHorario->horHoraInicio; }
 							   ?>">
@@ -38,7 +37,7 @@ echo "<pre>"; */
                 </tr>
                 <tr>
                     <td>                
-                        <input class="form-control" placeholder="Hora Fin" name="horHoraFin" type="text"   required="required" 
+                        <input class="form-control" placeholder="Hora Fin" name="horHoraFin" type="time"   required="required" 
                                value="<?php 
 									if(isset($actualizarDatosHorario->horHoraFin)){ echo $actualizarDatosHorario->horHoraFin; }
 							   ?>">

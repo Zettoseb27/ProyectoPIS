@@ -30,7 +30,7 @@ echo "<pre>";
                 </tr>
                 <tr>
                     <td>                
-                        <input class="form-control" placeholder="TITULO" name="horCocHoraInicio" type="text"   required="required" 
+                        <input class="form-control" placeholder="Hora Inicio" name="horCocHoraInicio" type="time"   required="required" 
                                value="<?php 
 									if(isset($actualizarDatosHorarioCocinero->horCocHoraInicio)){ echo $actualizarDatosHorarioCocinero->horCocHoraInicio; }
 							   ?>">
@@ -38,22 +38,15 @@ echo "<pre>";
                 </tr>
                 <tr>
                     <td>                  
-                        <input class="form-control" placeholder="AUTOR" name="autor" type="text"  required="required" 
+                        <input class="form-control" placeholder="Hora Final" name="horCocHoraFin" type="time"  required="required" 
                                value="<?php 
-									if(isset($actualizarDatosHorarioCocinero->autor)){ echo $actualizarDatosHorarioCocinero->autor; }
+									if(isset($actualizarDatosHorarioCocinero->horCocHoraFin)){ echo $actualizarDatosHorarioCocinero->horCocHoraFin; }
 							   ?>">
+                               <hr>
                     </td>
-                </tr>                  
+                </tr>                   
                 <tr>
-                    <td>                  
-                        <input class="form-control" placeholder="PRECIO" name="precio" type="number"  required="required" 
-                               value="<?php 
-									if(isset($actualizarDatosHorarioCocinero->precio)){ echo $actualizarDatosHorarioCocinero->precio; }
-							   ?>">
-                    </td>
-                </tr>  
-                <tr>
-                    <td>
+                    <td> Codigo Cocinero
                         <select class="form-control" id="horCocIdCocinero" name="horCocIdCocinero" disabled = ""> 
 							<?php
 							for ($j=0; $j< $Menu; $j++) {
@@ -73,6 +66,7 @@ echo "<pre>";
 							}
 							?>
 						</select> 
+                        <br>
                     </td>                       
                 </tr>             
                 <tr>            

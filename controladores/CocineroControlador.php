@@ -69,7 +69,7 @@
          public function confirmaActualizarCocinero() {  
             //echo _line_." "._file_."<br/"; exit;
            $gestarCocinero = new CocineroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
-           $ActualizarCocinero = $gestarCocinero->actualizar(array($this->datos));
+           $actualizarCocinero = $gestarCocinero->actualizar(array($this->datos));
            session_start();
            $_SESSION['mensaje'] = "Actualización realizada."; 
            header("location:Controlador.php?ruta=listarCocinero");

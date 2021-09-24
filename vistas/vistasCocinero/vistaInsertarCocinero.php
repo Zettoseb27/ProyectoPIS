@@ -43,7 +43,7 @@ if (isset($_SESSION['mensaje'])) {
 
 <body id="page-top">
 <div class="panel-heading">
-    <h2 class="panel-title">Inserción Codigo Mesero.</h2>
+    <h2 class="panel-title">Inserción Codigo Cocinero.</h2>
 </div>
 <div>
     <fieldset>

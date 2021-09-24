@@ -51,47 +51,54 @@
                 return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
             }
         }
+        public function actualizar($registro) {
+            try {
+                
+                //$Estado = $registro[0]['codMesEstado'];
+                $CodigoCocinero = $registro[0]['cocIdCodigoCocinero'];
+                //$Persona = $registro[0]['codMesIdMesero'];
+                $Id = $registro[0]['cocId'];
+                if (isset($Id)) {
+                    $actualizar = "UPDATE cocinero SET cocIdCodigoCocinero = ?";
+                   // $actualizar.= "codMesIdMesero = ?";
+                    $actualizar.= "WHERE cocId = ?;";
+                    $actualizacion = $this->conexion->prepare($actualizar);
+                    $resultadoAct = $actualizacion->execute(array($CodigoCocinero,/*$Persona,$Estado,*/$Id));
+                    $this->cierreBd();
+                    return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
+                }
+            } catch (PDOException $pdoExc) {
+                    $this->cierreBd(); 
+                    return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+            }
+         }
         public function eliminar($Id = array()) {
-
             $consulta = "delete from cocinero where cocId = :cocId;";
-
             $eliminar = $this -> conexion -> prepare($consulta);
             $eliminar -> bindParam(':cocId', $Id[0], PDO:: PARAM_INT);    
             $resultado = $eliminar->execute();
-
             $this -> cierreBd();
-
             if (!empty($resultado)) {
                 return ['eliminar' => TRUE, 'registroEliminado' => array($Id[0])];
             } else {
                 return ['eliminar' => FALSE, 'registroEliminado' => array($Id[0])];
             }
-
         }
         public function habilitar($cocId = array()) {
-
-
             try {
-
             $cambiarValorTotal = 1;
-
             if (isset($cocId[0])) {
-
                 $actualizar = "update cocinero set cocEstado = ? where cocId = ?;";
                 $actualizacion = $this-> conexion -> prepare($actualizar);
                 $actualizacion = $actualizacion -> execute(array($cambiarValorTotal, $cocId[0]));
                 return['actualizacion' => $actualizacion, 'mensaje' => "Registro activado"];
                 }
-
             }catch (PDOException $pdoExc) {
                 return['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
             }
         }
-
         public function eliminadorLogico($cocId = array()) {
-
             try {
-
             $cambiarEstado = 0;
             if (isset($cocId[0])) {
                 $actualizar = "update cocinero set cocEstado = ? where cocId = ?;";
@@ -102,9 +109,7 @@
         } catch (PDOException $pdoExc) {
             return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
         }
-
     }
-         
-     }
+  }
      
 ?>
