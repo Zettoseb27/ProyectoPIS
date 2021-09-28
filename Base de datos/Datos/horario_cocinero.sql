@@ -1,3 +1,4 @@
+use proyecto;
 select * from horario_cocinero; 
 /* ------------------------------------------------- */
 select horCocId, horCocHoraInicio, horCocHoraFin, horCocFecha

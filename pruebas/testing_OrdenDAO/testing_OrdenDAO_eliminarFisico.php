@@ -3,11 +3,11 @@
      include_once PATH.'modelos/ConBdMysql.php';
      include_once PATH.'modelos/modeloOrden/OrdenDAO.php';
 
-     $ordId = array(1);
+     $Id = array(1);
 
      $orden = new OrdenDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 
-     $OrdenEliminadoFisico=$orden->eliminar($ordId);
+     $OrdenEliminadoFisico = $orden->eliminar($Id);
 
     echo "<pre>";
     print_r($OrdenEliminadoFisico);

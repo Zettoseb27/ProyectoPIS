@@ -1,115 +1,85 @@
 <?php
 
-    include_once "../../modelos/ConstantesConexion.php";
-    include_once PATH."modelos/ConBdMysql.php";
+include_once PATH.'modelos/ConBdMysql.php';
 
-     class Usuario_sDAO extends ConBdMySql {
+class Usuario_sDAO extends ConBdMySql {
 
-        public function __construct ($servidor, $base, $loginBD, $passwordBD) {
-            parent::__construct($servidor, $base, $loginBD, $passwordBD);
+    private $cantidadTotalRegistros;
+
+    function __construct($servidor, $base, $loginBD, $passwordBD) {
+        parent::__construct($servidor, $base, $loginBD, $passwordBD);
+    }
+
+    public function seleccionarId($sId) {//llega como parametro un array con datos a consultar
+//
+//        $resultadoConsulta = FALSE;
+//        echo"<pre>";print_r($sId);echo "</pre>";
+        if (!isset($sId[2])) { //si la consulta no viene con el password (PARA REGISTRARSE)
+            $planConsulta = "select * from persona p join usuario_s u on p.perId=u.usuId ";
+            $planConsulta.= " where p.perDocumento= ? or u.usuLogin = ? ;";
+            $listar = $this->conexion->prepare($planConsulta);
+            $listar->execute(array($sId[0], $sId[1]));
+        }
+        if (isset($sId[2])) {//si la consulta viene con el password (PARA LOGUEARSE)
+            $planConsulta = "select * from persona p join usuario_s u on p.perId=u.usuId ";
+            $planConsulta.= " where u.usuLogin= ? and u.usuPassword = ? ;";
+            $listar = $this->conexion->prepare($planConsulta);
+            $listar->execute(array($sId[1], $sId[2]));
+        }
+        if (!isset($sId[1]) && !isset($sId[2])) {//si la consulta viene con solo el documento (PARA ENCONTRAR PERSONA)
+            $planConsulta = "select * from persona p join usuario_s u on p.perId=u.usuId ";
+            $planConsulta .= " where p.perDocumento = ? ;";
+            $listar = $this->conexion->prepare($planConsulta);
+            $listar->execute(array($sId[0]));
         }
 
-       public function seleccionarTodos (){
-           $planConsulta = "select usuId, usuLogin, usu_created_at
-           from usuario_s;";
-           $registroUsuario_s = $this -> conexion -> prepare ($planConsulta);
-           $registroUsuario_s -> execute();
-           $listadoRegistroUsuario_s = array();
-           while($registro=$registroUsuario_s -> fetch(PDO::FETCH_OBJ)){
-               $listadoRegistroUsuario_s[] = $registro;
-           }
-               $this->cierreBd();
-               return $listadoRegistroUsuario_s;
-       }
-       public function seleccionarId($usuId) {
-            $consultar = "select usuId, usuLogin, usu_created_at
-            from usuario_s
-            where usuId = ?;";
-            $listar = $this -> conexion -> prepare($consultar);
-            $listar -> execute(array($usuId[0]));
-            $registroEncontrado = array();
-            while ($registro = $listar -> fetch(PDO::FETCH_OBJ)) {
-                $registroEncontrado[] = $registro;
-            }
-            $this->cierreBd();
-            if (!empty($registroEncontrado)) {
-                return ['exitoSeleccionId' => true, 'registroEncontrado' => $registroEncontrado];
-            } else {
-                return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
-            }
-       }
-       public function insertar($registro) {
-            try {
-                $consultar = "insert into usuario_s values (:usuId, :usuLogin, :usuPassword, :usuUsuSesion, :usuEstado, :usuRemember_token, :usu_created_at, :usu_updated_at);";
-                $insertar = $this -> conexion -> prepare($consultar);
-                $insertar -> bindParam("usuId", $registro['usuId']);
-                $insertar -> bindParam("usuLogin", $registro['usuLogin']);
-                $insertar -> bindParam("usuPassword", $registro['usuPassword']);
-                $insertar -> bindParam("usuUsuSesion", $registro['usuUsuSesion']);
-                $insertar -> bindParam("usuEstado", $registro['usuEstado']);
-                $insertar -> bindParam("usuRemember_token", $registro['usuRemember_token']);
-                $insertar -> bindParam("usu_created_at", $registro['usu_created_at']);
-                $insertar -> bindParam("usu_updated_at", $registro['usu_updated_at']);
-                $insercion = $insertar -> execute();
-                $clavePrimaria = $this -> conexion -> lastInsertId();
-                return ['inserto' => 1, 'resultado' => $clavePrimaria];
-                $this -> cierreBd();
-            } catch (PDOException $pdoExc) {
-                return['inserto' > 0, $pdoExc -> errorInfo[2]];
-            }
-       }
-       public function eliminar($usuId = array()) {
+        $registroEncontrado = array();
+        while ($registro = $listar->fetch(PDO::FETCH_OBJ)) {
+            $registroEncontrado[] = $registro;
+        }
 
-        $planConsulta = "delete from usuario_s where usuId = :usuId;";
-
-        $eliminar = $this -> conexion -> prepare($planConsulta);
-        $eliminar -> bindParam(':usuId', $usuId[0], PDO:: PARAM_INT);    
-        $resultado = $eliminar->execute();
-
-        $this -> cierreBd();
-
-        if (!empty($resultado)) {
-            return ['eliminar' => TRUE, 'registroEliminado' => array($usuId[0])];
+        if (isset($registroEncontrado[0]->usuId) && $registroEncontrado[0]->usuId != FALSE) {
+            return ['exitoSeleccionId' => 1, 'registroEncontrado' => $registroEncontrado];
         } else {
-            return ['eliminar' => FALSE, 'registroEliminado' => array($usuId[0])];
-        }
-
-    }
-    public function habilitar($usuId = array()) {
-
-
-        try {
-
-        $cambiarValorTotal = 1;
-
-        if (isset($usuId[0])) {
-
-            $actualizar = "update usuario_s set usuEstado = ? where usuId = ?;";
-            $actualizacion = $this-> conexion -> prepare($actualizar);
-            $actualizacion = $actualizacion -> execute(array($cambiarValorTotal, $usuId[0]));
-            return['actualizacion' => $actualizacion, 'mensaje' => "Registro activado"];
-            }
-
-        }catch (PDOException $pdoExc) {
-            return['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+            return ['exitoSeleccionId' => 0, 'registroEncontrado' => $registroEncontrado];
         }
     }
 
-    public function eliminadorLogico($usuId = array()) {
+    public function insertar($registro) {
 
         try {
 
-        $cambiarEstado = 0;
-        if (isset($usuId[0])) {
-            $actualizar = "update usuario_s set usuEstado = ? where usuId = ?;";
-            $actualizacion = $this->conexion->prepare($actualizar);
-            $actualizacion = $actualizacion->execute(array($cambiarEstado, $usuId[0]));
-            return ['actualizacion' => $actualizacion, 'mensaje' => "Registro Desactivado."];
+            $inserta = $this->conexion->prepare('INSERT INTO usuario_s (usuLogin, usuPassword) VALUES ( :usuLogin, :usuPassword )');
+            $inserta->bindParam(":usuLogin", $registro['email']);
+            $inserta->bindParam(":usuPassword", $registro['password']);
+            $insercion = $inserta->execute();
+            $clavePrimariaConQueInserto = $this->conexion->lastInsertId();
+
+            return ['inserto' => 1, 'resultado' => $clavePrimariaConQueInserto];
+        } catch (Exception $exc) {
+            return ['inserto' => 0, 'resultado' => $exc->getTraceAsString()];
         }
-    } catch (PDOException $pdoExc) {
-        return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+    }
+
+    public function seleccionarTodos() {
+
+        $planConsulta = "select * from usuario_s order by usuId DESC;"; //Se prepara la consulta
+
+        $registrosUsuario_s = $this->conexion->prepare($planConsulta); //Se envia la consulta
+        $registrosUsuario_s->execute(); //Ejecución de la consulta
+        $listadoRegistrosUsuario_s = array();
+        @$listadoRegistrosUsuario_s[0]->usuId = "";
+        @$listadoRegistrosUsuario_s[0]->usuLogin = "Seleccione";
+
+        while ($registro = $registrosUsuario_s->fetch(PDO::FETCH_OBJ)) {
+            $listadoRegistrosUsuario_s[] = $registro;
+        }
+
+        $this->cierreBd();
+
+        return $listadoRegistrosUsuario_s;
     }
 
 }
-    }
-    
+
+

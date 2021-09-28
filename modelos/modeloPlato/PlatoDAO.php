@@ -1,6 +1,6 @@
 <?php
 
-     include_once '../../modelos/ConstantesConexion.php';
+     //include_once '../../modelos/ConstantesConexion.php';
      include_once PATH.'modelos/ConBdMysql.php'; 
      
      class PlatoDAO extends ConBdMysql{
@@ -9,8 +9,9 @@
      }
      public function seleccionarTodos() {
 
-        $consultar = "select plaId, plaDescripcion ,plaPrecio, plaEstado
-        from plato ;";
+        $consultar = "select Pl.plaId, Pl.plaDescripcion, Pl.plaPrecio, Pl.plaEstado, Tp.tipPlaPlato
+        from plato Pl
+        inner join tipo_plato Tp on Pl.plaIdTipoPlato = Tp.tipPlaId;";
 
         $registroPlato = $this -> conexion -> prepare($consultar);
         $registroPlato -> execute();
@@ -24,8 +25,7 @@
         return $listadoPlato;
      }
      public function seleccionarId($plaId) {
-         $consultar = "select plaId, plaDescripcion ,plaPrecio, plaEstado
-         from plato where plaId = ?;";
+         $consultar = "SELECT * FROM plato where plaId = ?;";
 
          $listar = $this -> conexion -> prepare($consultar);
          $listar -> execute(array($plaId[0]));
@@ -43,23 +43,44 @@
      }
      public function insertar($registro) {
          try{
-        $consultar = "insert into plato values (:plaId, :plaIdTipoPlato, :plaDescripcion, :plaPrecio, :plaEstado, :plaSesion, :placreated_at, :plaupdate_at);";
+        $consultar = "INSERT INTO plato (plaId,plaDescripcion,plaPrecio,plaEstado,plaIdTipoPlato) VALUES (:plaId, :plaDescripcion, :plaPrecio, :plaEstado, :plaIdTipoPlato);";
         $insertar = $this -> conexion -> prepare($consultar);
         $insertar -> bindParam("plaId", $registro['plaId']);
-        $insertar -> bindParam("plaIdTipoPlato", $registro['plaIdTipoPlato']);
         $insertar -> bindParam("plaDescripcion", $registro['plaDescripcion']);
         $insertar -> bindParam("plaPrecio", $registro['plaPrecio']);
         $insertar -> bindParam("plaEstado", $registro['plaEstado']);
-        $insertar -> bindParam("plaSesion", $registro['plaSesion']);
-        $insertar -> bindParam("placreated_at", $registro['placreated_at']);
-        $insertar -> bindParam("plaupdate_at", $registro['plaupdate_at']);
+        $insertar -> bindParam("plaIdTipoPlato", $registro['plaIdTipoPlato']);
         $insercion = $insertar -> execute();
         $clavePrimaria = $this -> conexion -> lastInsertId();
-        return ['inserto' => 1, 'resultado' => $clavePrimaria];
+        return ['inserto' => $insercion, 'resultado' => $clavePrimaria];
         $this -> cierreBd();
         } catch (PDOException $pdoExc) {
-        return['inserto' > 0, $pdoExc -> errorInfo[2]];
+        return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
         }
+    }
+    public function actualizar($registro) {  
+        try {
+            $Descripcion = $registro[0]['plaDescripcion'];
+            $Precio = $registro[0]['plaPrecio'];
+            //$Estado = $registro[0]['plaEstado'];
+            $TipoPlato = $registro[0]['plaIdTipoPlato'];
+            $Id = $registro[0]['plaId'];
+            if (isset($Id)) {
+                $actualizar  = "UPDATE plato SET plaDescripcion = ?,";
+                $actualizar.= " plaPrecio = ? ,";
+                //$actualizar.= " plaEstado = ? ,";
+                $actualizar.= " plaIdTipoPlato = ? ";
+                $actualizar.= " WHERE plaId = ?;";
+                $actualizacion = $this->conexion->prepare($actualizar);
+                $resultadoAct = $actualizacion->execute(array($Descripcion, $Precio,/* $Estado,*/ $TipoPlato, $Id));
+                $this->cierreBd();
+                //MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
+            }
+        } catch (PDOException $pdoExc) {
+			$this->cierreBd();
+            return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+        }	
     }
     public function eliminar($plaId = array()) {
         $planConsulta = "delete from plato where plaId = :plaId;";

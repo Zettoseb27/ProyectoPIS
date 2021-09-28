@@ -1,5 +1,5 @@
 <?php
-     include_once '../../modelos/ConstantesConexion.php';
+     //include_once '../../modelos/ConstantesConexion.php';
      include_once PATH.'modelos/ConBdMysql.php';  
 
      class MesaDAO extends ConBdMysql {
@@ -8,64 +8,73 @@
          }
 
          public function seleccionarTodos() {
-
             $consultar = "select mesId, mesNumeroMesa, mesCantidadComensales, mesCreated_at
             from mesa ;";
-
-            $registroMesa = $this -> conexion -> prepare($consultar);
-            $registroMesa -> execute();
-
+            $registroEncontrado = $this -> conexion -> prepare($consultar);
+            $registroEncontrado -> execute();
             $listadoRegistroMesa = array();
-
-            while ($registro = $registroMesa -> fetch(PDO::FETCH_OBJ)) {
+            while ($registro = $registroEncontrado -> fetch(PDO::FETCH_OBJ)) {
                $listadoRegistroMesa[] = $registro;
             }
             $this->cierreBd();
-
             return $listadoRegistroMesa;
          }
 
          public function seleccionarId($mesId) {
-            $consultar = "select mesId, mesNumeroMesa, mesCantidadComensales, mesCreated_at
-            from mesa where mesId = ?;";
+            $consultar = "SELECT * FROM mesa WHERE mesId = ?;";
             
             $listar = $this-> conexion -> prepare($consultar);
             $listar -> execute(array($mesId[0]));
-            $registroMesa = array();
+            $registroEncontrado = array();
 
             while ($registro = $listar -> fetch(PDO::FETCH_OBJ)) {
-               $registroMesa[] = $registro;
+               $registroEncontrado[] = $registro;
             }
             $this->cierreBd();
 
-            if (!empty($registroMesa)) {
-               return ['exitoSeleccionId' => true, 'registroME$registroMesa' => $registroMesa];
-           } else {
-               return ['exitoSeleccionId' => false, 'registroME$registroMesa' => $registroMesa];
+            if (!empty($registroEncontrado)) {
+               return ['exitoSeleccionId' => true, 'registroEncontrado' => $registroEncontrado];
+           } else { 
+               return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
            }
      }
+     public function actualizar($registro) {
+        try {
+        $NumeroMesa = $registro[0]['mesNumeroMesa'];
+        $Comensales = $registro[0]['mesCantidadComensales'];
+        $Id = $registro[0]['mesId'];
+        if (isset($Id)) {
+            $actualizar = "UPDATE mesa SET mesNumeroMesa = ? ,";
+            $actualizar.= "mesCantidadComensales = ? ";
+            $actualizar.= "where mesId= ?;";
+            $actualizacion = $this->conexion->prepare($actualizar);
+            $resultadoAct=$actualizacion->execute(array($NumeroMesa,$Comensales,$Id));
+            $this->cierreBd();
+						
+            //MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
+            return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];	
+        }
+            } catch (PDOException $pdoExc) {
+                $this->cierreBd();
+                return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+            }
+    }
      public function insertar($registro) {
      
       try {
-         $consultar = "insert into mesa values (:mesId, :mesNumeroMesa, :mesCantidadComensales, :mesEstado, :mesSesion, :mesCreated_at, :mesUpdated_at);";
+         $consultar = "insert into mesa (mesId,mesNumeroMesa,mesCantidadComensales) values (:mesId, :mesNumeroMesa, :mesCantidadComensales);";
 
          $insertar = $this -> conexion -> prepare($consultar);
 
          $insertar -> bindParam("mesId", $registro["mesId"]);        
          $insertar -> bindParam("mesNumeroMesa", $registro["mesNumeroMesa"]);
          $insertar -> bindParam("mesCantidadComensales", $registro["mesCantidadComensales"]);
-         $insertar -> bindParam("mesEstado", $registro["mesEstado"]);
-         $insertar -> bindParam("mesSesion", $registro["mesSesion"]);
-         $insertar -> bindParam("mesCreated_at", $registro["mesCreated_at"]);
-         $insertar -> bindParam("mesUpdated_at", $registro["mesUpdated_at"]);
-
          $insercion = $insertar -> execute();
          $clavePrimaria = $this -> conexion -> lastInsertId();
-
-         return ['inserto' => 1, 'resultado' => $clavePrimaria];
+         return ['inserto' => $insercion, 'resultado' => $clavePrimaria];
          $this -> cierreBd();
       } catch (PDOException $pdoExc) {
-         return['inserto' > 0, $pdoExc -> errorInfo[2]];
+         return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
       }
      }
      public function eliminar($mesId = array()) {

@@ -4,7 +4,7 @@
      include_once PATH."modelos/ConBdMysql.php";
      include_once PATH. "modelos/modeloCocinero/CocineroDAO.php";
 
-     $cocId = array(5);
+     $cocId = array(2);
 
      $menu = new CocineroDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
 

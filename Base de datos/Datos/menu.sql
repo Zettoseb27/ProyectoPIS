@@ -7,8 +7,10 @@ insert into menu values (1,1,'Comida muy caliente',1,null,'2021-08-12 9:22:00','
 
 insert into menu values (6,5,'Comida muy caliente',1,null,'2021-08-12 10:22:00','2021-08-12 11:23:00');
 /* -------------------------------------------------------------------- */
-select menId,menObservacion,menEstado,menCreated_at
-from menu ;
+select me.menId, tp.tipPlaPlato ,me.menObservacion,tp.tipPlaAdicional,
+tp.tipPlaPostre, me.menEstado
+from menu me
+join tipo_plato tp on me.menId = tp.tipPlaId;
 /* --------------------------------------------------------------------- */
 select menId,menObservacion,menEstado,menCreated_at
 from menu 

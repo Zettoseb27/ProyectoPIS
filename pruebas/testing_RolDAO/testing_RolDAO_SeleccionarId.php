@@ -10,6 +10,7 @@ $rolId = array(2);
 $Rol = new RolDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASEÑA_BD);
 $SeleccionarRol = $Rol->seleccionarId($rolId);
 
+
 echo "<pre>";
 print_r($SeleccionarRol);
 echo "</pre>";

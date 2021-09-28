@@ -9,7 +9,7 @@ insert into rol values (1,'cocinero','encargo de la preparacion de los platos',1
 INSERT INTO rol VALUES
 (5, 'Administrador', 'Administrador', 1, NULL, '2019-06-07 10:18:36', '2019-06-07 10:18:36'),
 (6, 'Operario', 'Operario', 1, NULL, '2019-06-07 10:18:57', '2019-06-07 10:18:57'),
-(7, 'Cliente', 'Cliente', 1, NULL, '2019-06-07 10:19:16', '2019-06-07 10:19:16'),
+(7, 'Cliente', 'Cliente', 1, NULL, '2019-06-07 10:19:16', '2019-06-07 usuario_s10:19:16'),
 (8, 'Vendedor', 'Vendedor', 1, NULL, '2019-06-07 10:19:35', '2019-06-07 10:19:35'),
 (9, 'Almacenista', 'Almacenista', 1, NULL, '2019-06-07 10:20:42', '2019-06-07 10:20:42');
     
@@ -22,3 +22,7 @@ from rol where rolId = 1;
 /* ------------------------------------------------ */
 delete from rol 
 where rolId = 3;
+
+/* ---------------------- Actualizar ------------------------ */
+update rol set rolNombre='Coconi',rolDescripcion='Chef',rolEstado='2',rolUsuSesion=null,
+rol_created_at='2021-08-12 09:22:00',rol_updated_at='2021-08-12 09:22:00' where rolId=1;

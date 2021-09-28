@@ -10,6 +10,8 @@ insert into mesa values (1,1,4,1,'Afan','2021-08-11 22:01:00','2021-08-11 22:01:
 select mesId, mesNumeroMesa, mesCantidadComensales, mesCreated_at
 from mesa ;
  /* ----------------------------------------------------------------- */
+update mesa set mesNumeroMesa=´$NumeroMesa', mesCantidadComensales ='$CantidadComensales',
+ mesEstado='$Estado', where mesId='$2'"; 
  
 select mesId, mesNumeroMesa, mesCantidadComensales, mesCreated_at
 from mesa 

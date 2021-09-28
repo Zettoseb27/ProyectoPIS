@@ -1,13 +1,15 @@
 <?php
-     include_once '../../modelos/ConstantesConexion.php';
+     //include_once '../../modelos/ConstantesConexion.php';
      include_once PATH.'modelos/ConBdMysql.php';  
      class CodigoMeseroDAO extends ConBdMysql {
         public function __construct ($servidor, $base, $loginBD, $passwordBD) {
             parent::__construct($servidor, $base, $loginBD, $passwordBD);
      }
      public function seleccionarTodos() {
-        $constultar = "select codMesId, codMesCodigoMesero,codMescreated_at
-        from codigo_mesero;";
+        $constultar = "select codMesId, codMesCodigoMesero,
+        P.perNombre, P.perApellido, P.perDocumento
+        from codigo_mesero Cm
+        inner join persona P on Cm.codMesIdMesero = P.perId;";
         $registroCodigoMesero = $this -> conexion -> prepare($constultar);
         $registroCodigoMesero -> execute();
         $listaRegistroCodigoMesero = array();
@@ -18,9 +20,7 @@
         return $listaRegistroCodigoMesero;
      }
      public function seleccionarId($codMesId) {
-        $constultar = "select codMesId, codMesCodigoMesero,codMescreated_at
-        from codigo_mesero
-        where codMesId = ?;";
+        $constultar = "SELECT * FROM codigo_mesero WHERE codMesId = ?;";
         $listar = $this -> conexion -> prepare($constultar);
         $listar -> execute(array($codMesId[0]));
         $registroEncontrado = array();
@@ -33,28 +33,45 @@
         } else {
             return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
         }
+     } 
+     public function actualizar($registro) {
+        try {
+            
+            //$Estado = $registro[0]['codMesEstado'];
+            $CodigoMesero = $registro[0]['codMesCodigoMesero'];
+            //$Persona = $registro[0]['codMesIdMesero'];
+            $Id = $registro[0]['codMesId'];
+            if (isset($Id)) {
+                $actualizar = "UPDATE codigo_mesero SET codMesCodigoMesero = ?";
+               // $actualizar.= "codMesIdMesero = ?";
+                $actualizar.= "WHERE codMesId = ?;";
+                $actualizacion = $this->conexion->prepare($actualizar);
+                $resultadoAct = $actualizacion->execute(array($CodigoMesero,/*$Persona,$Estado,*/$Id));
+                $this->cierreBd();
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];
+            }
+        } catch (PDOException $pdoExc) {
+                $this->cierreBd(); 
+                return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+        }
      }
      public function insertar($registro) {
         try {
-            $constultar = "insert into codigo_mesero values (:codMesId, :codMesIdMesero, :codMesCodigoMesero, :codMesEstado, :codMesSesion, :codMescreated_at, :codMesupdated_at );";
+            $constultar = "INSERT INTO codigo_mesero  (codMesId, codMesIdMesero, codMesCodigoMesero) VALUES (:codMesId, :codMesIdMesero, :codMesCodigoMesero);";
             $insertar = $this -> conexion -> prepare($constultar);
             $insertar -> bindParam("codMesId", $registro['codMesId']);
             $insertar -> bindParam("codMesIdMesero", $registro['codMesIdMesero']);
             $insertar -> bindParam("codMesCodigoMesero", $registro['codMesCodigoMesero']);
-            $insertar -> bindParam("codMesEstado", $registro['codMesEstado']);
-            $insertar -> bindParam("codMesSesion", $registro['codMesSesion']);
-            $insertar -> bindParam("codMescreated_at", $registro['codMescreated_at']);
-            $insertar -> bindParam("codMesupdated_at", $registro['codMesupdated_at']);
             $insercion = $insertar -> execute();
             $clavePrimaria = $this -> conexion -> lastInsertId();
-            return ['inserto' => 1, 'resultado' => $clavePrimaria];
+            return ['inserto' => $insercion, 'resultado' => $clavePrimaria];
             $this -> cierreBd();
         } catch (PDOException $pdoExc) {
-            return['inserto' > 0, $pdoExc -> errorInfo[2]];
+            return['inserto' => $insercion, $pdoExc -> errorInfo[2]];
         }
      }
      public function eliminar($codMesId = array()) {
-        $planConsulta = "delete from codigo_mesero where codMesId = :codMesId;";
+        $planConsulta = "SET FOREIGN_KEY_CHECKS=0; delete from codigo_mesero where codMesId = :codMesId;";
         $eliminar = $this -> conexion -> prepare($planConsulta);
         $eliminar -> bindParam(':codMesId', $codMesId[0], PDO:: PARAM_INT);    
         $resultado = $eliminar->execute();
