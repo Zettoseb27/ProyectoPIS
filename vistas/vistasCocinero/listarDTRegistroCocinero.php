@@ -97,9 +97,9 @@ if(isset($_SESSION['listarDeCocinero'])){
                                                 <td><?php echo $listarDeCocinero[$i]-> cocId; ?></td>
                                                 <td><?php echo $listarDeCocinero[$i]-> cocIdCodigoCocinero; ?></td> 
                                                 <td><?php echo $listarDeCocinero[$i]-> perNombre ?></td> 
-                                                <td><?php echo $listarDeCocinero[$i]-> perApellido ?></td>  
-                                                <td><a href="Controlador.php?ruta=actualizarCocinero&idAct=<?php echo $listarDeCocinero[$i]->cocId; ?>">Actualizar</a></td>  
-                                                <td><a href="Controlador.php?ruta=eliminarCocinero&idAct=<?php echo $listarDeCocinero[$i]->cocId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                                <td><?php echo $listarDeCocinero[$i]-> perApellido ?></td>   
+                                                <td><a class="btn btn-success btn-circle" href="Controlador.php?ruta=actualizarCocinero&idAct=<?php echo $listarDeCocinero[$i]->cocId; ?>"><i class = "fas fa-check" ></i></a></td> 
+                                                <td ><a class = "btn btn-danger btn-circle" href="Controlador.php?ruta=eliminarCocinero&idAct=<?php echo $listarDeCocinero[$i]->cocId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')"><i class = "fas fa-trash" ></i></a></t
                                             </tr>   
                                             <?php
                                             $i++;

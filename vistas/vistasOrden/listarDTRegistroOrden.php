@@ -98,7 +98,7 @@ if(isset($_SESSION['listaDeOrden'])){
                                         $i = 0;
                                         foreach ($listaDeOrden as $key => $value) {
                                             ?>
-                                            <tr>
+                                            <tr >
                                                 <td><?php echo $listaDeOrden[$i]-> ordId; ?></td> 
                                                 <td><?php echo $listaDeOrden[$i]-> mesCantidadComensales; ?></td>  
                                                 <td><?php echo $listaDeOrden[$i]-> tipPlaPlato; ?></td>  
@@ -108,14 +108,15 @@ if(isset($_SESSION['listaDeOrden'])){
                                                 <td><?php echo $listaDeOrden[$i]-> tipPlaBebida; ?></td>  
                                                 <td><?php echo $listaDeOrden[$i]-> tipPlaPostre; ?></td> 
                                                 <td><?php echo $listaDeOrden[$i]-> ordvalorTotal; ?></td> 
-                                                <td><a href="Controlador.php?ruta=actualizarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>">Actualizar</a></td>  
-                                                <td><a href="Controlador.php?ruta=eliminarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                                <td><a class="btn btn-success btn-circle" href="Controlador.php?ruta=actualizarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>"><i class = "fas fa-check" ></i></a></td> 
+                                                <td ><a class = "btn btn-danger btn-circle" href="Controlador.php?ruta=eliminarOrden&idAct=<?php echo $listaDeOrden[$i]->ordId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')"><i class = "fas fa-trash" ></i></a></td>  
                                             </tr>   
                                             <?php
                                             $i++;
                                         }
                                         $listaDeOrden=null;
                                         ?>
+                                        
                                     </tbody>
                                 </table>
                             </div>

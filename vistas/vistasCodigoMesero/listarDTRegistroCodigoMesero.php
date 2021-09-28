@@ -96,8 +96,8 @@ if(isset($_SESSION['listarDeCodigoMesero'])){
                                                     <td><?php echo $listarDeCodigoMesero[$i]-> perNombre; ?></td>  
                                                     <td><?php echo $listarDeCodigoMesero[$i]-> perApellido; ?></td>   
                                                     <td><?php echo $listarDeCodigoMesero[$i]-> perDocumento; ?></td>  
-                                                    <td><a href="Controlador.php?ruta=actualizarCodigoMesero&idAct=<?php echo $listarDeCodigoMesero[$i]->codMesId; ?>">Actualizar</a></td>  
-                                                    <td><a href="Controlador.php?ruta=eliminarCodigoMesero&idAct=<?php echo $listarDeCodigoMesero[$i]->codMesId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                                    <td><a class="btn btn-success btn-circle" href="Controlador.php?ruta=actualizarCodigoMesero&idAct=<?php echo $listarDeCodigoMesero[$i]->codMesId; ?>"><i class = "fas fa-check" ></i></a></td> 
+                                                    <td ><a class = "btn btn-danger btn-circle" href="Controlador.php?ruta=eliminarCodigoMesero&idAct=<?php echo $listarDeCodigoMesero[$i]->codMesId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')"><i class = "fas fa-trash" ></i></a></td> 
                                                 </tr>   
                                                 <?php  
                                                 $i++;

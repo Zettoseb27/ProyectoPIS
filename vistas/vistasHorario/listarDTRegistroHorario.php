@@ -106,8 +106,8 @@ if(isset($_SESSION['listarDeHorario'])){
                                                     <td><?php echo $listarDeHorario[$i]-> horHoraInicio; ?></td>  
                                                     <td><?php echo $listarDeHorario[$i]-> horHoraFin; ?></td>  
                                                     <td><?php echo $listarDeHorario[$i]-> horFecha; ?></td>  
-                                                    <td><a href="Controlador.php?ruta=actualizarHorario&idAct=<?php echo $listarDeHorario[$i]->horId; ?>">Actualizar</a></td>  
-                                                    <td><a href="Controlador.php?ruta=eliminarHorario&idAct=<?php echo $listarDeHorario[$i]->horId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                                    <td><a class="btn btn-success btn-circle" href="Controlador.php?ruta=actualizarHorario&idAct=<?php echo $listarDeHorario[$i]->horId; ?>"><i class = "fas fa-check" ></i></a></td> 
+                                                    <td ><a class = "btn btn-danger btn-circle" href="Controlador.php?ruta=eliminarHorario&idAct=<?php echo $listarDeHorario[$i]->horId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')"><i class = "fas fa-trash" ></i></a></t
                                                 </tr>   
                                                 <?php
                                                 $i++;

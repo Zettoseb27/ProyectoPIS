@@ -102,9 +102,9 @@ if (isset($_SESSION['mensaje'])) {
                                                 <td><?php echo $listaPlato[$i] -> plaDescripcion; ?></td>  
                                                 <td><?php echo $listaPlato[$i] -> plaPrecio; ?></td>  
                                                 <td><?php echo $listaPlato[$i] -> plaEstado; ?></td>  
-                                            
-                                                <td><a href="Controlador.php?ruta=actualizarPlato&idAct=<?php echo $listaPlato[$i]->plaId; ?>">Actualizar</a></td>  
-                                                <td><a href="Controlador.php?ruta=eliminarPlato&idAct=<?php echo $listaPlato[$i]->plaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>
+                                                <td><a class="btn btn-success btn-circle" href="Controlador.php?ruta=actualizarPlato&idAct=<?php echo $listaPlato[$i]->plaId; ?>"><i class = "fas fa-check" ></i></a></td> 
+                                                <td ><a class = "btn btn-danger btn-circle" href="Controlador.php?ruta=eliminarPlato&idAct=<?php echo $listaPlato[$i]->plaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')"><i class = "fas fa-trash" ></i></a></td> 
+                                                
                                                 </tr>             
                                         <?php 
                                         $i++;

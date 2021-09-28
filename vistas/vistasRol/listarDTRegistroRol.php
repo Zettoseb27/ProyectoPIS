@@ -87,9 +87,8 @@
                                                         <td><?php echo $listaDeRol[$i] -> rolNombre; ?></td>  
                                                         <td><?php echo $listaDeRol[$i] -> rolDescripcion; ?></td>  
                                                         <td><?php echo $listaDeRol[$i] -> rol_created_at; ?></td>  
-                                                    
-                                                        <td><a href="Controlador.php?ruta=actualizarRol&idAct=<?php echo $listaDeRol[$i] -> rolId; ?>">Actualizar</a></td>  
-                                                        <td><a href="Controlador.php?ruta=eliminarRol&idAct=<?php echo $listaDeRol[$i] -> rolId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                                        <td><a class="btn btn-success btn-circle" href="Controlador.php?ruta=actualizarRol&idAct=<?php echo $listaDeRol[$i]->rolId; ?>"><i class = "fas fa-check" ></i></a></td> 
+                                                        <td ><a class = "btn btn-danger btn-circle" href="Controlador.php?ruta=eliminarRol&idAct=<?php echo $listaDeRol[$i]->rolId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')"><i class = "fas fa-trash" ></i></a></td>
                                                     </tr>             
                                             <?php 
                                                         $i++;

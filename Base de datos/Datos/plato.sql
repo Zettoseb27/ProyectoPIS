@@ -1,6 +1,9 @@
 use proyecto;
 select * from plato;
 
+SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=1;
+
 insert into plato values (1,1,'arroz con pollo y papa a la francesa',12000,1,null,'2021-08-12 8:43:00','2021-08-12 8:44:00');
 insert into plato values (2,2,'pechuga a la plancha y arroz blanco',15000,1,null,'2021-08-12 8:47:00', '2021-08-12 8:48:00'),
 (3,3,'sopa con pollo papa crioalla y pastusa',9000,1,null,'2021-08-12 8:52:00', '2021-08-12 8:52:00'),

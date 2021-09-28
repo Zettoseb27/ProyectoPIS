@@ -43,7 +43,7 @@
          }
          public function eliminarTipoPlato() {
             $EliminarRol = new tipoDePlatoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASEÑA_BD);
-            $EliminarDeRol = $EliminarRol -> Eliminar(array($this->datos['idAct'])); // Se consulta el libro para modificar los datos
+            $EliminarDeRol = $EliminarRol -> eliminar(array($this->datos['idAct'])); // Se consulta el libro para modificar los datos
             $actualizarDatosRol = $EliminarDeRol['registroEncontrado'][0];
             session_start();
             $_SESSION['mensaje'] = "Eliminación realizada."; 

@@ -81,7 +81,7 @@
             $resultado = $eliminar -> execute();
             $this->cierreBd();
             if (!empty($resultado)) {
-                return ['eliminar' => TRUE, 'registroEliminado' => array($tipPlaId[0])];
+                return ['eliminar' => TRUE, 'registroEliminado' => array($tipPlaId[1])];
             } else {
                 return ['eliminar' => FALSE, 'registroEliminado' => array($tipPlaId[0])];
             }

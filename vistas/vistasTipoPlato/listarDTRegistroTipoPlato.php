@@ -107,8 +107,8 @@ if(isset($_SESSION['listaTipoPlato'])){
                                             <td><?php echo $listaTipoPlato[$i]->tipPlaAdicional; ?></td>  
                                             <td><?php echo $listaTipoPlato[$i]->tipPlaBebida; ?></td>  
                                             <td><?php echo $listaTipoPlato[$i]->tipPlaPostre; ?></td>   
-                                            <td><a href="Controlador.php?ruta=ActualizarTipoPlato&idAct=<?php echo $listaTipoPlato[$i]->tipPlaId; ?>">Actualizar</a></td>  
-                                            <td><a href="Controlador.php?ruta=eliminarTipoPlato&idAct=<?php echo $listaTipoPlato[$i]->tipPlaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                                            <td><a class="btn btn-success btn-circle" href="Controlador.php?ruta=ActualizarTipoPlato&idAct=<?php echo $listaTipoPlato[$i]->tipPlaId; ?>"><i class = "fas fa-check" ></i></a></td> 
+                                            <td ><a class = "btn btn-danger btn-circle" href="Controlador.php?ruta=eliminarTipoPlato&idAct=<?php echo $listaTipoPlato[$i]->tipPlaId; ?>" onclick="return confirm('Está seguro de eliminar el registro?')"><i class = "fas fa-trash" ></i></a></td>
                                         </tr>   
                                         <?php
                                         $i++;
