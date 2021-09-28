@@ -19,7 +19,7 @@ class ConBdMySql {
 
             $this->conexion = new PDO($dsn, $loginBD, $passwordBD, $options);
 			
-			echo "Conexión a base de datos ok";
+			//echo "Conexión a base de datos ok";
 			
         } catch (Exception $ex) {
 
